@@ -2,6 +2,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/login.css">
     <title>Conduit</title>
 </head>
 <body>
@@ -16,13 +17,15 @@
         </nav>
     </header>
     <article>
-        <div class = 'sub_title'>Sign In</div>
-        <div class = 'sub_desc'>Need an account?</div>
-        <form>
-            <input type = 'text' placeholder = 'Email'>
-            <input type = 'password' placeholder = 'Password'>
-            <input type = 'submit' value = 'Sign in'>
-        </form>
+        <div id = 'main'>
+            <div id = 'sub_title'>Sign In</div>
+            <div id = 'b_register'><a href = './register.html'>Need an account?</a></div>
+            <form>
+                <input class = 'text_box' type = 'text' placeholder = 'Email'>
+                <input class = 'text_box' type = 'password' placeholder = 'Password'>
+                <input id = 'b_submit' type = 'submit' value = 'Sign in'>
+            </form>
+        </div>
     </article>
 </body>
 </html>
