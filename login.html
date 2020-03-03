@@ -2,6 +2,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'> 
     <link rel="stylesheet" href="./css/login.css">
     <title>Conduit</title>
 </head>
@@ -11,15 +12,17 @@
         <nav>
             <ul>
                 <li><a href = './index.html'>Home</a></li>
-                <li><a href = './login.html'>Sign in</a></li>
+                <li><a href = './login.html' id = 'selected'>Sign in</a></li>
                 <li><a href = './register.html'>Sign up</a></li>
             </ul>
         </nav>
     </header>
     <article>
         <div id = 'main'>
-            <div id = 'sub_title'>Sign In</div>
-            <div id = 'b_register'><a href = './register.html'>Need an account?</a></div>
+            <p>
+                <div id = 'sub_title'>Sign In</div>
+                <a id = 'b_register' href = './register.html'>Need an account?</a></h5>
+            </p>
             <form>
                 <input class = 'text_box' type = 'text' placeholder = 'Email'>
                 <input class = 'text_box' type = 'password' placeholder = 'Password'>
