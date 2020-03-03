@@ -2,6 +2,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'> 
     <link rel="stylesheet" href="./css/register.css">
     <title>Conduit</title>
 </head>
@@ -12,14 +13,16 @@
             <ul>
                 <li><a href = './index.html'>Home</a></li>
                 <li><a href = './login.html'>Sign in</a></li>
-                <li><a href = './register.html'>Sign up</a></li>
+                <li><a href = './register.html' id = 'selected'>Sign up</a></li>
             </ul>
         </nav>
     </header>
     <article>
         <div id = 'main'>
-            <div id = 'sub_title'>Sign In</div>
-            <div id = 'b_login'><a href = './login.html'>Have an account?</a></div>
+            <p>
+                <div id = 'sub_title'>Sign Up</div>
+                <a id = 'b_login' href = './login.html'>Have an account?</a>
+            </p>
             <form>
                 <input class = 'text_box' type = 'text' placeholder = 'Username'>
                 <input class = 'text_box' type = 'text' placeholder = 'Email'>

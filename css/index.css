@@ -1,12 +1,35 @@
 
+a {
+    text-decoration: none;
+}
+
+html {
+    height: fit-content;
+    overflow-y: auto;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 header {
-    width: 100%;
+    width: 80%;
     display: flex;
     flex-direction: row;
+
+    font-family: 'Source Sans Pro', sans-serif;
 }
 
 header > #title {
+    line-height: 3rem;
     font-size: 1.5rem;
+    font-weight: bolder;
+}
+
+header > #title > a {
+    color: rgb(92, 184, 92);
 }
 
 header > nav {
@@ -20,4 +43,16 @@ header > nav > ul {
     justify-content: space-between;
     list-style: none;
     width: 200px;
+}
+
+header > nav > ul > li > a {
+    color: rgb(146, 146, 146);
+}
+
+header > nav > ul > li > a:hover {
+    color: black;
+}
+
+#selected {
+    color: black;
 }

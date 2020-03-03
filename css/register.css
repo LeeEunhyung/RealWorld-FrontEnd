@@ -1,44 +1,157 @@
 
+a {
+    text-decoration: none;
+}
+
+input::placeholder {
+    color: rgb(209, 209, 209);
+    font-family: inherit;
+    text-indent: 1em;
+}
+
+article > #main > a:hover {
+    text-decoration: underline;
+    color: rgb(67, 124, 67);
+}
+
+html {
+    height: fit-content;
+    overflow-y: auto;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 header {
-    width: 100%;
+    width: 80%;
     display: flex;
     flex-direction: row;
+
+    font-family: 'Source Sans Pro', sans-serif;
 }
 
-#title {
+header > #title {
+    line-height: 3rem;
     font-size: 1.5rem;
+    font-weight: bolder;
 }
 
-nav {
+header > #title > a {
+    color: rgb(92, 184, 92);
+}
+
+header > nav {
     width: 100%;
     display: flex;
     justify-content: flex-end;
 }
 
-ul {
+header > nav > ul {
     display: flex;
     justify-content: space-between;
     list-style: none;
     width: 200px;
 }
 
+header > nav > ul > li > a {
+    color: rgb(146, 146, 146);
+}
+
+header > nav > ul > li > a:hover {
+    color: black;
+}
+
+#selected {
+    color: black;
+}
+
 article {
+    width: 100%;
+    display: flex;
     justify-content: center;
     align-items: center;
 }
 
-#main {
+article > #main {
+    height: 400px;
     display: flex;
     align-items: center;
     flex-direction: column;
+
+    font-family: 'Source Sans Pro', sans-serif;
 }
 
-form {
+article > #main > #sub_title {
+    color: black;
+    font-size: 2.5rem;
+}
+
+article > #main > a {
+    color: rgb(92, 184, 92);
+    font-size: 1rem;
+}
+
+article > #main > form {
+    height: 252px;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     flex-direction: column;
 }
 
-#b_submit {
+article > #main > form > .text_box {
+    height: 50px;
+    width: 100%;
+    border-radius: 5px;
+    border: rgb(230, 230, 230) solid 1px;
+
+    font-size: 18px;
+    font-family: inherit;
+    text-indent: 1em;
+}
+
+article > #main > form > #b_submit {
+    width: 100px;
+    height: 50px;
     align-self: flex-end;
+    background-color: rgb(92, 184, 92);
+    border-radius: 5px;
+    border: none;
+
+    font-size: 18px;
+    font-family: inherit;
+    color: white;
+}
+
+@media ( max-width: 1970px ) {
+    @media (min-width: 900px){
+        article > #main {
+            width: 30%;
+        }
+
+        article > #main > form {
+            width: 100%;
+        }
+    }
+}
+
+@media ( max-width: 900px ) {
+    article > #main {
+        width: 500px;
+    }
+
+    @media (min-width: 700px){
+        article > #main > form {
+            width: 60%;
+        }
+    }
+}
+
+@media ( max-width: 700px ) {
+    article > #main > form {
+        width: 100%;
+    }
 }
