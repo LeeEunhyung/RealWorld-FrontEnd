@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400|Titillium+Web:700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/index.css">
+    <title>Conduit</title>
+</head>
+<body>
+    <header>
+        <p id = 'title'><a href = './index.html'>conduit</a></p>
+        <nav>
+            <ul>
+                <li><a href = './index.html'>Home</a></li>
+                <li><a href = './index2.html'>Home2</a></li>
+                <li><a href = './login.html'>Sign in</a></li>
+                <li><a href = './register.html'>Sign up</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div id = 'home'>
+        <div id = 'banner'>
+            <h1 id = 'banner_title'>conduit</h1>
+            <p id = 'banner_desc'>A place to share your knowledge.</p>
+        </div>
+        <main>
+            <section>
+                <ul>
+                    <li><a href = './index.html'>Global Feed</a></li>
+                    <!-- aside 클릭 시 li 추가 / 추가될 때에만 링크 이동 가능-->
+                </ul>
+                <article>
+                    <div class = 'contents'>
+                        <div class = 'top'>
+                            <a href = './mypage.html'><img src = './img/smiley-cyrus.jpg' width = '35' height = '35'></a>
+                            <div class = 'info'>
+                                <a href = './mypage.html'>LeeEunhyung</a>
+                                <time datetime = '2020-03-04'>Wed Mar 04 2020</time>
+                            </div>
+                            <input type = 'button' value = '♥ 0'>
+                        </div>
+                        <a href='./content.html' class = 'middle'>
+                            <h2>TEST</h2>
+                            <p>test</p>
+                        </a>
+                        <a href = './content.html' class = 'bottom'>Read more...</a>
+                    </div>
+                    
+                </article>
+                <div id = 'page_number'>
+                    <input type = 'button' value = '1' class = 'selected'>
+                    <input type = 'button' value = '2' class = 'unselected'>
+                    <input type = 'button' value = '3' class = 'unselected'>
+                    <!-- page number -->
+                </div>
+            </section>
+            <aside>
+                <div id = 'tag_box'>
+                    <p>Popular Tags</p>
+                    <div id = 'tag_buttons'>
+                        <input type = 'button' value = 'test'>
+                        <input type = 'button' value = 'butt'>
+                        <input type = 'button' value = 'dragons'>
+                        <input type = 'button' value = 'training'>
+                        <input type = 'button' value = 'tags'>
+                        <input type = 'button' value = 'as'>
+                        <input type = 'button' value = 'coffee'>
+                        <input type = 'button' value = 'animation'>
+                        <input type = 'button' value = 'baby'>
+                        <input type = 'button' value = 'tag1'>
+                        <input type = 'button' value = 'money'>
+                        <input type = 'button' value = 'japan'>
+                        <input type = 'button' value = 'flowers'>
+                        <input type = 'button' value = 'cars'>
+                        <input type = 'button' value = 'caramel'>
+                        <input type = 'button' value = 'happiness'>
+                        <input type = 'button' value = 'sugar'>
+                        <input type = 'button' value = 'cookies'>
+                        <input type = 'button' value = 'sushi'>
+                        <input type = 'button' value = 'clean'>
+                    </div>
+                </div>
+                <!-- Popular Tags -->
+            </aside>
+        </main>
+    </div>
+    <footer></footer>
+</body>
+</html>

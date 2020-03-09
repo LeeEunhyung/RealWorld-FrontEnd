@@ -1,0 +1,184 @@
+
+a {
+    text-decoration: none;
+}
+
+input::placeholder {
+    color: rgb(209, 209, 209);
+    font-family: inherit;
+    text-indent: 1em;
+}
+
+main > #signin > a:hover {
+    text-decoration: underline;
+    color: rgb(72, 124, 72);
+}
+
+html {
+    height: fit-content;
+    overflow-y: auto;
+}
+
+body {
+    margin: 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+header {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+header > #title {
+    margin: 0px;
+    line-height: 3rem;
+    font-size: 1.5rem;
+    font-weight: bolder;
+    font-family: 'Titillium Web', sans-serif;
+}
+
+header > #title > a {
+    color: rgb(92, 184, 92);
+}
+
+header > nav {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+header > nav > ul {
+    padding: 0px;
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+    width: 250px;
+}
+
+header > nav > ul > li > a {
+    color: rgb(146, 146, 146);
+}
+
+header > nav > ul > li > a:hover {
+    color: black;
+}
+
+#selected {
+    color: black;
+}
+
+main {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+main > #signin {
+    height: 400px;
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+main > #signin > p {
+    color: black;
+    font-size: 2.5rem;
+    margin: 20px 0px 5px;
+}
+
+main > #signin > a {
+    color: rgb(92, 184, 92);
+    font-size: 1rem;
+    margin: 5px 0px 20px;
+}
+
+main > #signin > form {
+    height: 185px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+main > #signin > form > .text_box {
+    height: 50px;
+    width: 100%;
+    border-radius: 5px;
+    border: rgb(230, 230, 230) solid 1px;
+
+    font-size: 18px;
+    font-family: inherit;
+    text-indent: 1em;
+}
+
+main > #signin > form > #b_submit {
+    width: 100px;
+    height: 50px;
+    align-self: flex-end;
+    background-color: rgb(92, 184, 92);
+    border-radius: 5px;
+    border: none;
+
+    font-size: 18px;
+    font-family: inherit;
+    color: white;
+}
+
+main > #signin > form > #b_submit:hover {
+    background-color: rgb(72, 124, 72);
+}
+
+@media screen and ( min-width: 1200px ) {
+    header {
+        width: 1080px;
+    }
+    main > #signin {
+        width: 600px;
+    }
+}
+
+@media screen and ( max-width: 1200px ) and ( min-width: 1000px ) {
+    header {
+        width: 860px;
+    }
+    main > #signin {
+        width:460px;
+    }
+}
+
+@media screen and ( max-width: 1000px ) and ( min-width: 770px ) {
+    header {
+        width: 700px;
+    }
+    main > #signin {
+        width:330px;
+    }
+}
+
+@media screen and ( max-width: 770px ) and ( min-width: 560px ) {
+    header {
+        width: 550px;
+    }
+    main > #signin {
+        width:500px;
+    }
+}
+
+@media screen and ( max-width: 560px ) {
+    header {
+        width: 90%;
+    }
+    main > #signin {
+        width: 95%;
+    }
+}
