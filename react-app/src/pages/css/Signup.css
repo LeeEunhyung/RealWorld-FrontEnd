@@ -1,29 +1,18 @@
 
-a {
-    text-decoration: none;
-}
-
-input::placeholder {
+.Signup input::placeholder {
     color: rgb(209, 209, 209);
     font-family: inherit;
     text-indent: 1em;
 }
 
-main > #signup > a:hover {
+.Signup a:hover {
     text-decoration: underline;
     color: rgb(72, 124, 72);
 }
 
-main {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-main > #signup {
-    height: 400px;
-    width: fit-content;
+.Signup {
+    width: 90%;
+    max-width: 60rem;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -31,40 +20,42 @@ main > #signup {
     font-family: 'Source Sans Pro', sans-serif;
 }
 
-main > #signup > p {
+.Signup section p {
     color: black;
     font-size: 2.5rem;
     margin: 20px 0px 5px;
 }
 
-main > #signup > a {
+.Signup section a {
     color: rgb(72, 184, 72);
     font-size: 1rem;
     margin: 5px 0px 20px;
+    display: block;
 }
 
-main > #signup > form {
-    height: 252px;
+.Signup form {
+    height: 15rem;
     width: 100%;
+    max-width: 40rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
     flex-direction: column;
 }
 
-main > #signup > form > .text_box {
+.Signup form input[type = "text"],
+.Signup form input[type = "password"] {
     height: 50px;
     width: 100%;
     border-radius: 5px;
     border: rgb(230, 230, 230) solid 1px;
 
-    font-size: 18px;
-    font-family: inherit;
+    font-size: 1.2rem;
     text-indent: 1em;
 }
 
-main > #signup > form > #b_submit {
-    width: 100px;
+.Signup form input[type = "submit"] {
+    width: 7rem;
     height: 50px;
     align-self: flex-end;
     background-color: rgb(92, 184, 92);
@@ -76,48 +67,6 @@ main > #signup > form > #b_submit {
     color: white;
 }
 
-main > #signup > form > #b_submit:hover {
+.Signup form input[type = "submit"]:hover {
     background-color: rgb(72, 124, 72);
-}
-
-@media screen and ( min-width: 1200px ) {
-    main > #signup {
-        width: 600px;
-    }
-}
-
-@media screen and ( max-width: 1200px ) and ( min-width: 1000px ) {
-    header {
-        width: 860px;
-    }
-    main > #signup {
-        width:460px;
-    }
-}
-
-@media screen and ( max-width: 1000px ) and ( min-width: 770px ) {
-    header {
-        width: 700px;
-    }
-    main > #signup {
-        width:330px;
-    }
-}
-
-@media screen and ( max-width: 770px ) and ( min-width: 560px ) {
-    header {
-        width: 550px;
-    }
-    main > #signup {
-        width:500px;
-    }
-}
-
-@media screen and ( max-width: 560px ) {
-    header {
-        width: 90%;
-    }
-    main > #signup {
-        width: 95%;
-    }
 }

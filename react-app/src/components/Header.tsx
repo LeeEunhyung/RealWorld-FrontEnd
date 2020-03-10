@@ -1,15 +1,17 @@
 import React from 'react';
+import './css/Header.css';
 
-function setNavi(this: any, e: any) {
-    const mode = e.currentTarget.value;
-    alert(mode);
-    //this.props.setMode(mode);
-}
+function Header(props: any) {
+    const setNavi = (e: any) => {
+        e.preventDefault();
+        const mode = e.currentTarget.value;
+        //alert(mode);
+        props.setMode(mode);
+    }
 
-function Header() {
     return(
         <header>
-            <h1><a href = "./index.html">conduit</a></h1>
+            <h1><a href = "#" onClick = {setNavi}>conduit</a></h1>
             <nav>
                 <input type = "button" value = "Home" onClick = {setNavi}></input>
                 <input type = "button" value = "Sign in" onClick = {setNavi}></input>

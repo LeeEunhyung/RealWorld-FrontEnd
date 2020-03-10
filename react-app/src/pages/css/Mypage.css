@@ -3,7 +3,6 @@ nav { /* specificity: 1 */
     width: 100%;
     display: flex;
     justify-content: flex-end;
-    
 }
 
 ul { /* specificity: 1 */
@@ -29,7 +28,7 @@ main { /* specificity: 1 */
     align-items: center;
 }
 
-section { /* specificity: 1 */
+.SectionContainer { /* specificity: 1 */
     width: 90%;
     max-width: 50rem;
 
@@ -72,7 +71,7 @@ a:hover { /* specificity: 11 */
     color: black;
 }
 
-.user-info { /* specificity: 10 */
+.UserInfo { /* specificity: 10 */
     width: 100%;
     height: 16rem;
     background-color: rgb(240, 240, 240);
@@ -81,7 +80,7 @@ a:hover { /* specificity: 11 */
     align-items: center;
 }
 
-.user-info-container { /* specificity: 10 */
+.UserInfoContainer { /* specificity: 10 */
     width: 100%;
     max-width: 60rem;
     display: flex;
@@ -93,16 +92,16 @@ a:hover { /* specificity: 11 */
     text-align: center;
 }
 
-.user-info-container img { /* specificity: 11 */
+.UserInfoContainer img { /* specificity: 11 */
     width: 6rem;
     border-radius: 100%;
 }
 
-.user-info-container h1 { /* specificity: 11 */
+.UserInfoContainer h1 { /* specificity: 11 */
     font-size: 1.3rem;
 }
 
-.user-info-container input[type = "button"] { /* specificity: 21 */
+.UserInfoContainer input[type = "button"] { /* specificity: 21 */
     align-self: flex-end;
 
     background-color: rgb(240, 240, 240);
@@ -110,7 +109,7 @@ a:hover { /* specificity: 11 */
     color: rgb(155, 155, 155);
 }
 
-.user-info-container input[type = "button"]:hover {
+.UserInfoContainer input[type = "button"]:hover {
     background-color: rgb(200, 200, 200);
 }
 
@@ -126,21 +125,21 @@ input[type = "button"] { /* specificity: 11 */
     cursor: pointer;
 }
 
-section nav { /* specificity: 2 */
+.SectionContainer nav { /* specificity: 2 */
     display: flex;
     justify-content: flex-start;
 }
 
-section ul { /* specificity: 2 */
+.SectionContainer ul { /* specificity: 2 */
     padding: 0;
     padding-top: 2rem;
 }
 
-section .selected { /* specificity: 11 */
+.SectionContainer .selected { /* specificity: 11 */
     border-bottom: .1rem solid rgb(119, 212, 119);
 }
 
-section .selected a { /* specificity: 12 */
+.SectionContainer .selected a { /* specificity: 12 */
     color: rgb(119, 212, 119);
 }
 

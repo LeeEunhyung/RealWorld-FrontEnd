@@ -1,22 +1,4 @@
 
-Header { /* specificity: 1 */
-    width: 100%;
-    max-width: 70rem;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    
-    text-align: center;
-}
-
-Header h1 { /* specificity: 2 */
-    margin: 0;
-    padding: .5rem 1.8rem .5rem;
-    font-family: "Titillium Web", sans-serif;
-    font-size: 1.5rem;
-}
-
-
 nav { /* specificity: 1 */
     width: 100%;
     display: flex;
@@ -34,15 +16,6 @@ ul { /* specificity: 1 */
     padding: .5rem 1.3rem .5rem;
 }
 
-Header input[type = "button"] {
-    background-color: white;
-    color: rgb(155, 155, 155);
-    border: none;
-    padding: 1rem;
-    font-size: 1rem;
-    outline: none;
-}
-
 li { /* specificity: 1 */
     padding: .5rem;
     list-style: none;
@@ -51,15 +24,16 @@ li { /* specificity: 1 */
 main { /* specificity: 1 */
     width: 100%;
 
+    margin-bottom: 1rem;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
 .SectionContainer { /* specificity: 1 */
-    width: 100%;
+    /* width: 100%; */
     height: fit-content;
-    max-width: 50rem;
+    /* max-width: 55rem; */
 
     display: flex;
     flex-direction: column;
@@ -67,6 +41,9 @@ main { /* specificity: 1 */
     align-items: center;
 
     text-align: start;
+
+    flex-grow: 1;
+    flex-basis: 30rem;
 }
 
 time { /* specificity: 1 */
@@ -123,8 +100,8 @@ a:hover { /* specificity: 11 */
 }
 
 .MainContainer { /* specificity: 10 */
-    width: 100%;
-    max-width: 60rem;
+    width: 90%;
+    max-width: 70rem;
     display: flex;
     flex-direction: row;
     
@@ -144,18 +121,6 @@ input[type = "button"] { /* specificity: 11 */
     cursor: pointer;
 }
 
-.SectionContainer {
-    padding: 1rem;
-
-    flex-grow: 1;
-    flex-basis: 30rem;
-}
-
-aside {
-    flex-grow: 1;
-    flex-basis: 40rem;
-}
-
 .SectionContainer nav { /* specificity: 2 */
     display: flex;
     justify-content: flex-start;
@@ -172,6 +137,10 @@ aside {
 
 .SectionContainer a { /* specificity: 12 */
     color: rgb(119, 212, 119);
+}
+
+.SectionContainer section {
+    flex-direction: row;
 }
 
 article { /* specificity: 1 */
@@ -286,7 +255,12 @@ article { /* specificity: 1 */
     padding: 0.5rem;
     background-color: whitesmoke;
     margin: 1rem;
-    border-radius: 10%;
+    border-radius: 5%;
+
+    height: fit-content;
+    min-width: 10rem;
+    flex-grow: 1;
+    flex-basis: 1rem;
 }
 
 .AsideContainer h2 {
@@ -305,6 +279,10 @@ article { /* specificity: 1 */
     background-color: silver;
     color: white;
     border: none;
-    border-radius: 40%;
+    border-radius: 30%;
     margin: .2rem;
+}
+
+.AsideContainer section input[type = "button"]:hover {
+    background-color: darkgray;
 }

@@ -2,11 +2,11 @@ import React from 'react';
 
 function PageNumber() {
     return(
-        <section>
+        <div className = "PageNumber">
             <input type = "button" value = "1"></input>
             <input type = "button" value = "2"></input>
             <input type = "button" value = "3"></input>
-        </section>
+        </div>
     );
 }
 

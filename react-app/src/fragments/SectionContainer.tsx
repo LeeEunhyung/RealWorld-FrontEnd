@@ -9,6 +9,7 @@ function SectionContainer() {
         <div className = "SectionContainer">
             <ContentsNavi></ContentsNavi>
             <Contents></Contents>
+            <Contents></Contents>
             <PageNumber></PageNumber>
         </div>
     );

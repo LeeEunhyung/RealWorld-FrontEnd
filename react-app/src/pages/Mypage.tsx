@@ -1,4 +1,6 @@
 import React from 'react';
+import './css/Mypage.css';
+
 import SectionContainer from '../fragments/SectionContainer';
 import UserInfo from '../components/UserInfo';
 

@@ -1,19 +1,20 @@
 import React from 'react';
+import './css/Signup.css';
 
 function Signup() {
     return(
-        <main>
-            <div id = 'signup'>
+        <div className = 'Signup'>
+            <section>
                 <p>Sign Up</p>
-                <a href = './login.html'>Have an account?</a>
-                <form>
-                    <input className = 'text_box' type = 'text' placeholder = 'Username'></input>
-                    <input className = 'text_box' type = 'text' placeholder = 'Email'></input>
-                    <input className = 'text_box' type = 'password' placeholder = 'Password'></input>
-                    <input id = 'b_submit' type = 'submit' value = 'Sign in'></input>
-                </form>
-            </div>
-        </main>
+                <a href = './login.html'>Have an account?</a>  
+            </section>
+            <form>
+                <input type = 'text' placeholder = 'Username'></input>
+                <input type = 'text' placeholder = 'Email'></input>
+                <input type = 'password' placeholder = 'Password'></input>
+                <input type = 'submit' value = 'Sign in'></input>
+            </form>
+        </div>
     );
 }
 

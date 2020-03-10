@@ -1,30 +1,19 @@
 
-a {
-    text-decoration: none;
-}
-
-input::placeholder {
+.Signin input::placeholder {
     color: rgb(209, 209, 209);
     font-family: inherit;
-    text-indent: 1em;
+    text-indent: 1rem;
 }
 
-main > #signin > a:hover {
+.Signin a:hover {
     text-decoration: underline;
     color: rgb(72, 124, 72);
 }
 
-
-main {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-main > #signin {
+.Signin {
     height: 400px;
-    width: fit-content;
+    width: 90%;
+    max-width: 60rem;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -32,39 +21,41 @@ main > #signin {
     font-family: 'Source Sans Pro', sans-serif;
 }
 
-main > #signin > p {
+.Signin section p {
     color: black;
     font-size: 2.5rem;
     margin: 20px 0px 5px;
 }
 
-main > #signin > a {
+.Signin section a {
     color: rgb(92, 184, 92);
     font-size: 1rem;
     margin: 5px 0px 20px;
+    display: block;
 }
 
-main > #signin > form {
+.Signin form {
     height: 185px;
     width: 100%;
+    max-width: 40rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
     flex-direction: column;
 }
 
-main > #signin > form > .text_box {
+.Signin form input[type = "text"],
+.Signin form input[type = "password"] {
     height: 50px;
     width: 100%;
     border-radius: 5px;
     border: rgb(230, 230, 230) solid 1px;
 
-    font-size: 18px;
-    font-family: inherit;
+    font-size: 1.2rem;
     text-indent: 1em;
 }
 
-main > #signin > form > #b_submit {
+.Signin form input[type = "submit"] {
     width: 100px;
     height: 50px;
     align-self: flex-end;
@@ -77,51 +68,6 @@ main > #signin > form > #b_submit {
     color: white;
 }
 
-main > #signin > form > #b_submit:hover {
+.Signin form input[type = "submit"]:hover {
     background-color: rgb(72, 124, 72);
-}
-
-@media screen and ( min-width: 1200px ) {
-    header {
-        width: 1080px;
-    }
-    main > #signin {
-        width: 600px;
-    }
-}
-
-@media screen and ( max-width: 1200px ) and ( min-width: 1000px ) {
-    header {
-        width: 860px;
-    }
-    main > #signin {
-        width:460px;
-    }
-}
-
-@media screen and ( max-width: 1000px ) and ( min-width: 770px ) {
-    header {
-        width: 700px;
-    }
-    main > #signin {
-        width:330px;
-    }
-}
-
-@media screen and ( max-width: 770px ) and ( min-width: 560px ) {
-    header {
-        width: 550px;
-    }
-    main > #signin {
-        width:500px;
-    }
-}
-
-@media screen and ( max-width: 560px ) {
-    header {
-        width: 90%;
-    }
-    main > #signin {
-        width: 95%;
-    }
 }
