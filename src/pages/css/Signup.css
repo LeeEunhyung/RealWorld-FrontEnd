@@ -1,0 +1,72 @@
+
+.Signup input::placeholder {
+    color: rgb(209, 209, 209);
+    font-family: inherit;
+    text-indent: 1em;
+}
+
+.Signup a:hover {
+    text-decoration: underline;
+    color: rgb(72, 124, 72);
+}
+
+.Signup {
+    width: 90%;
+    max-width: 60rem;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+.Signup section p {
+    color: black;
+    font-size: 2.5rem;
+    margin: 20px 0px 5px;
+}
+
+.Signup section a {
+    color: rgb(72, 184, 72);
+    font-size: 1rem;
+    margin: 5px 0px 20px;
+    display: block;
+}
+
+.Signup form {
+    height: 15rem;
+    width: 100%;
+    max-width: 40rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.Signup form input[type = "text"],
+.Signup form input[type = "password"] {
+    height: 50px;
+    width: 100%;
+    border-radius: 5px;
+    border: rgb(230, 230, 230) solid 1px;
+
+    font-size: 1.2rem;
+    text-indent: 1em;
+}
+
+.Signup form input[type = "submit"] {
+    width: 7rem;
+    height: 50px;
+    align-self: flex-end;
+    background-color: rgb(92, 184, 92);
+    border-radius: 5px;
+    border: none;
+
+    font-size: 18px;
+    font-family: inherit;
+    color: white;
+}
+
+.Signup form input[type = "submit"]:hover {
+    background-color: rgb(72, 124, 72);
+}
