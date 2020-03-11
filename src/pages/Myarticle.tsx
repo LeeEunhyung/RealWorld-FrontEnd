@@ -1,14 +1,13 @@
-import React from 'react';
+import React from 'react'
 
 function Myarticle() {
-    return (
-        <main>
-            <div className = "ContentTitle">
-                <h1>TEST</h1>
-            </div>
+  return (
+    <main>
+      <div className="ContentTitle">
+        <h1>TEST</h1>
+      </div>
+    </main>
+  )
+}
 
-        </main>
-    );
-  }
-  
-  export default Myarticle;
+export default Myarticle

@@ -1,13 +1,13 @@
-import React from 'react';
+import React from 'react'
 
 function PageNumber() {
-    return(
-        <div className = "PageNumber">
-            <input type = "button" value = "1"></input>
-            <input type = "button" value = "2"></input>
-            <input type = "button" value = "3"></input>
-        </div>
-    );
+  return (
+    <div className="PageNumber">
+      <input type="button" value="1" />
+      <input type="button" value="2" />
+      <input type="button" value="3" />
+    </div>
+  )
 }
 
-export default PageNumber;
+export default PageNumber

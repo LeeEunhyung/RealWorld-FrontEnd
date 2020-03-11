@@ -30,22 +30,6 @@ main { /* specificity: 1 */
     align-items: center;
 }
 
-.SectionContainer { /* specificity: 1 */
-    /* width: 100%; */
-    height: fit-content;
-    /* max-width: 55rem; */
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    text-align: start;
-
-    flex-grow: 1;
-    flex-basis: 30rem;
-}
-
 time { /* specificity: 1 */
     color: rgb(180, 180, 180);
     font-size: .6rem;
@@ -119,6 +103,22 @@ input[type = "button"] { /* specificity: 11 */
     font-weight: lighter;
     font-family: inherit;
     cursor: pointer;
+}
+
+.SectionContainer { /* specificity: 1 */
+    /* width: 100%; */
+    height: fit-content;
+    /* max-width: 55rem; */
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: start;
+
+    flex-grow: 1;
+    flex-basis: 30rem;
 }
 
 .SectionContainer nav { /* specificity: 2 */
@@ -258,7 +258,7 @@ article { /* specificity: 1 */
     border-radius: 5%;
 
     height: fit-content;
-    min-width: 10rem;
+    min-width: 5rem;
     flex-grow: 1;
     flex-basis: 1rem;
 }
@@ -279,7 +279,7 @@ article { /* specificity: 1 */
     background-color: silver;
     color: white;
     border: none;
-    border-radius: 30%;
+    border-radius: 1rem;
     margin: .2rem;
 }
 
