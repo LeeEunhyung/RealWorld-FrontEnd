@@ -18,7 +18,7 @@ function Header(props: IProps) {
   return (
     <header>
       <h1>
-        <a>conduit</a>
+        <a href="#">conduit</a>
       </h1>
       <nav>
         <input type="button" value="Home" onClick={setNavi} />
