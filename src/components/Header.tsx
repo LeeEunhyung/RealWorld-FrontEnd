@@ -1,6 +1,8 @@
 import React from 'react'
 import './css/Header.css'
 
+// import img from '../pages/img/profile.jpg'
+
 interface IProps {
   setMode: (mode: string) => void
 }
@@ -17,13 +19,12 @@ function Header(props: IProps) {
 
   return (
     <header>
-      <h1>
-        <a>conduit</a>
-      </h1>
+      <h1>Conduit</h1>
       <nav>
-        <input type="button" value="Home" onClick={setNavi} />
+        <input type="button" value="New story" onClick={setNavi} />
         <input type="button" value="Sign in" onClick={setNavi} />
         <input type="button" value="Sign up" onClick={setNavi} />
+        {/* <img src={img} onClick={setNavi}></img> */}
       </nav>
     </header>
   )

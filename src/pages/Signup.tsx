@@ -5,7 +5,7 @@ function Signup() {
   return (
     <div className="Signup">
       <section>
-        <p>Sign Up</p>
+        <h1>Sign Up</h1>
         <a href="./login.html">Have an account?</a>
       </section>
       <form>

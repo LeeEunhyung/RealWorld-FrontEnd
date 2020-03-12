@@ -1,15 +1,14 @@
 import React from 'react'
-import img from '../pages/img/smiley-cyrus.jpg'
+import './css/UserInfo.css'
+import img from '../pages/img/profile.jpg'
 
 function UserInfo() {
   return (
     <div className="UserInfo">
-      <div className="UserInfoContainer">
-        <img src={img} alt="smile"></img>
-        <h1>LeeEunhyung</h1>
-        <p>Hello World!</p>
-        <input type="button" value="+ Follow LeeEunhyung" />
-      </div>
+      <img src={img} alt="smile"></img>
+      <h1>LeeEunhyung</h1>
+      <p>Hello World!</p>
+      <input type="button" value="+ Follow LeeEunhyung" />
     </div>
   )
 }

@@ -13,7 +13,7 @@ function App() {
   const selectPage = (_mode: string) => {
     let page = <Home></Home>
 
-    if (_mode === 'Home') {
+    if (_mode === 'New story') {
       page = <Home></Home>
     } else if (_mode === 'Sign in') {
       page = <Signin></Signin>

@@ -1,0 +1,15 @@
+.SectionContainer {
+    max-width: 900px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.SectionContainer section {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    flex-wrap: wrap;
+    
+    justify-content: center;
+}

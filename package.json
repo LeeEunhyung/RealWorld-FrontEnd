@@ -1,102 +1,105 @@
 {
-  "name": "react-app",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.5.0",
-    "@testing-library/user-event": "^7.2.1",
-    "@types/jest": "^24.9.1",
-    "@types/node": "^12.12.29",
-    "@types/react": "^16.9.23",
-    "@types/react-dom": "^16.9.5",
-    "react": "^16.13.0",
-    "react-dom": "^16.13.0",
-    "react-scripts": "3.4.0",
-    "typescript": "^3.7.5"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "lint": "eslint --ext .ts,.tsx src/",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "root": true,
-    "overrides": [
-        {
-            "files": [
-                "*.ts",
-                "*.tsx"
-            ],
-            "parser": "@typescript-eslint/parser",
-            "parserOptions": {
-                "ecmaVersion": 6,
-                "sourceType": "module",
-                "ecmaFeatures": {
-                    "modules": true
+    "name": "react-app",
+    "version": "0.1.0",
+    "private": true,
+    "dependencies": {
+        "@testing-library/jest-dom": "^4.2.4",
+        "@testing-library/react": "^9.5.0",
+        "@testing-library/user-event": "^7.2.1",
+        "@types/jest": "^24.9.1",
+        "@types/node": "^12.12.29",
+        "@types/react": "^16.9.23",
+        "@types/react-dom": "^16.9.5",
+        "react": "^16.13.0",
+        "react-dom": "^16.13.0",
+        "react-scripts": "3.4.0",
+        "styled-components": "^5.0.1",
+        "typescript": "^3.7.5",
+        "yarn": "^1.22.4"
+    },
+    "scripts": {
+        "start": "react-scripts start",
+        "lint": "eslint --ext .ts,.tsx src/",
+        "build": "react-scripts build",
+        "test": "react-scripts test",
+        "eject": "react-scripts eject"
+    },
+    "eslintConfig": {
+        "root": true,
+        "overrides": [
+            {
+                "files": [
+                    "*.ts",
+                    "*.tsx"
+                ],
+                "parser": "@typescript-eslint/parser",
+                "parserOptions": {
+                    "ecmaVersion": 6,
+                    "sourceType": "module",
+                    "ecmaFeatures": {
+                        "modules": true
+                    }
+                },
+                "plugins": [
+                    "@typescript-eslint"
+                ],
+                "rules": {},
+                "extends": [
+                    "prettier",
+                    "prettier/@typescript-eslint"
+                ]
+            }
+        ],
+        "plugins": [
+            "prettier"
+        ],
+        "rules": {
+            "prettier/prettier": "error"
+        },
+        "extends": [
+            "prettier"
+        ]
+    },
+    "browserslist": {
+        "production": [
+            ">0.2%",
+            "not dead",
+            "not op_mini all"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
+    },
+    "devDependencies": {
+        "@types/styled-components": "^5.0.1",
+        "@typescript-eslint/eslint-plugin": "^2.23.0",
+        "@typescript-eslint/parser": "^2.23.0",
+        "eslint": "^6.8.0",
+        "eslint-config-prettier": "^6.10.0",
+        "eslint-plugin-prettier": "^3.1.2",
+        "prettier": "^1.19.1"
+    },
+    "prettier": {
+        "parser": "typescript",
+        "trailingComma": "all",
+        "semi": false,
+        "singleQuote": true,
+        "overrides": [
+            {
+                "files": "*.json",
+                "options": {
+                    "parser": "json"
                 }
             },
-            "plugins": [
-                "@typescript-eslint"
-            ],
-            "rules": {},
-            "extends": [
-                "prettier",
-                "prettier/@typescript-eslint"
-            ]
-        }
-    ],
-    "plugins": [
-        "prettier"
-    ],
-    "rules": {
-        "prettier/prettier": "error"
-    },
-    "extends": [
-        "prettier"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
-  "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^2.23.0",
-    "@typescript-eslint/parser": "^2.23.0",
-    "eslint": "^6.8.0",
-    "eslint-config-prettier": "^6.10.0",
-    "eslint-plugin-prettier": "^3.1.2",
-    "prettier": "^1.19.1"
-  },
-  "prettier": {
-    "parser": "typescript",
-    "trailingComma": "all",
-    "semi": false,
-    "singleQuote": true,
-    "overrides": [
-        {
-            "files": "*.json",
-            "options": {
-                "parser": "json"
+            {
+                "files": "*.yaml",
+                "options": {
+                    "parser": "yaml",
+                    "tabWidth": 2
+                }
             }
-        },
-        {
-            "files": "*.yaml",
-            "options": {
-                "parser": "yaml",
-                "tabWidth": 2
-            }
-        }
-    ]
-  }
+        ]
+    }
 }

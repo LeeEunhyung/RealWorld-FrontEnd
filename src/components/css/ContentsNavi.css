@@ -1,0 +1,36 @@
+nav {
+    height: 60px;
+    max-width: 1200px;
+    margin: 1rem 0 1rem;
+}
+
+nav ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+}
+
+nav li {
+    width: 184px;
+    height: 60px;
+    text-align: center;
+    line-height: 4rem;
+}
+
+nav .Selected {
+    border-bottom: 6px solid #ff4501;
+}
+
+nav .Unselected {
+    border-bottom: 6px solid #c8c8c8;
+}
+
+nav a {
+    font-family: Futura;
+    font-size: 1.2rem;
+    font-weight: 500;
+    text-decoration: none;
+    color: #000000;
+}

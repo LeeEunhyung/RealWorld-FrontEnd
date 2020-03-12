@@ -1,4 +1,6 @@
 import React from 'react'
+import './css/MainContainer.css'
+
 import SectionContainer from './SectionContainer'
 import AsideContainer from './AsideContainer'
 
