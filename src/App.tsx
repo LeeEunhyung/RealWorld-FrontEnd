@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
-import './App.css'
+//import './App.css'
+import styled from 'styled-components'
 
 import Home from './pages/Home'
 import Signin from './pages/Signin'
@@ -8,7 +9,13 @@ import Header from './components/Header'
 import Mypage from './pages/Mypage'
 
 function App() {
-  const [mode, setMode] = useState(<Mypage></Mypage>)
+  const App = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  `
+
+  const [mode, setMode] = useState(<Home></Home>)
 
   const selectPage = (_mode: string) => {
     let page = <Home></Home>
@@ -27,10 +34,10 @@ function App() {
   }
 
   return (
-    <div className="App">
+    <App>
       <Header setMode={selectPage}></Header>
       {mode}
-    </div>
+    </App>
   )
 }
 

@@ -1,15 +1,21 @@
 import React from 'react'
+import styled from 'styled-components'
 
-import './css/Home.css'
 import ContentsNavi from '../components/ContentsNavi'
 import MainContainer from '../fragments/MainContainer'
 
+const StyledHome = styled.div`
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+`
+
 function Home() {
   return (
-    <div className="Home">
+    <StyledHome>
       <ContentsNavi></ContentsNavi>
       <MainContainer></MainContainer>
-    </div>
+    </StyledHome>
   )
 }
 

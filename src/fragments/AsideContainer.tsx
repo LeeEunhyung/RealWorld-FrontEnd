@@ -1,13 +1,25 @@
 import React from 'react'
-import './css/AsideContainer.css'
+import styled from 'styled-components'
 
 import Tags from '../components/Tags'
 
+const StyledAsideContainer = styled.div`
+  margin: 5px 15px 5px;
+  flex-grow: 1;
+  flex-basis: 1px;
+  width: 280px;
+  max-width: 900px;
+  height: fit-content;
+  background-color: #ffffff;
+  border-radius: 30px;
+  box-shadow: 3px 3px 6px 0 #bdb9a6, -3px -3px 6px 0 #fffefa;
+`
+
 function AsideContainer() {
   return (
-    <div className="AsideContainer">
+    <StyledAsideContainer>
       <Tags></Tags>
-    </div>
+    </StyledAsideContainer>
   )
 }
 

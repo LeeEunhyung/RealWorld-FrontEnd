@@ -1,12 +1,26 @@
 import React from 'react'
-import './css/SectionContainer.css'
+import styled from 'styled-components'
 
 import Contents from '../components/Contents'
 import PageNumber from '../components/PageNumber'
 
+const StyledSectionContainer = styled.div`
+  max-width: 900px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  & section {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+`
+
 function SectionContainer() {
   return (
-    <div className="SectionContainer">
+    <StyledSectionContainer>
       <section>
         <Contents></Contents>
         <Contents></Contents>
@@ -16,7 +30,7 @@ function SectionContainer() {
         <Contents></Contents>
       </section>
       <PageNumber></PageNumber>
-    </div>
+    </StyledSectionContainer>
   )
 }
 
