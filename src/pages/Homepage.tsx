@@ -6,25 +6,25 @@ import MainContainer from '../fragments/MainContainer'
 import data from '../data/data.json'
 
 const StyledHome = styled.div`
-  max-width: 1200px;
-  display: flex;
-  flex-direction: column;
+    max-width: 1200px;
+    display: flex;
+    flex-direction: column;
 `
 
 function Homepage() {
-  const [naviMenu, setNaviMenu] = useState('Feed')
-  const [ID, setID] = useState('jake')
+    const [naviMenu, setNaviMenu] = useState('Feed')
+    const [ID, setID] = useState('jake')
 
-  const _setNaviMenu = (_naviMenu: string) => {
-    setNaviMenu(_naviMenu)
-  }
+    const _setNaviMenu = (_naviMenu: string) => {
+        setNaviMenu(_naviMenu)
+    }
 
-  return (
-    <StyledHome>
-      <ContentsNavi selectNaviMenu={_setNaviMenu}></ContentsNavi>
-      <MainContainer contents={data.articles}></MainContainer>
-    </StyledHome>
-  )
+    return (
+        <StyledHome>
+            <ContentsNavi selectNaviMenu={setNaviMenu} />
+            <MainContainer contents={data.articles} />
+        </StyledHome>
+    )
 }
 
 export default Homepage

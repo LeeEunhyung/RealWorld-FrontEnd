@@ -10,24 +10,24 @@ import Mypage from './pages/Mypage'
 import ContentDetailPage from './pages/ContentDetailPage'
 
 const StyledApp = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 `
 
 function App() {
-  return (
-    <StyledApp>
-      <Router>
-        <Header></Header>
-        <Route exact path="/" component={Homepage}></Route>
-        <Route path="/login" component={Loginpage}></Route>
-        <Route path="/register" component={Registerpage}></Route>
-        <Route path="/mypage" component={Mypage}></Route>
-        <Route path="/contentdetail" component={ContentDetailPage}></Route>
-      </Router>
-    </StyledApp>
-  )
+    return (
+        <StyledApp>
+            <Router>
+                <Header />
+                <Route exact path="/" component={Homepage} />
+                <Route path="/login" component={Loginpage} />
+                <Route path="/register" component={Registerpage} />
+                <Route path="/mypage" component={Mypage} />
+                <Route path="/contentdetail" component={ContentDetailPage} />
+            </Router>
+        </StyledApp>
+    )
 }
 
 export default App
