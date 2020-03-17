@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styled from 'styled-components'
 
 const StyledPageNumber = styled.div`
@@ -35,13 +35,16 @@ const StyledPageNumber = styled.div`
   }
 `
 
-function PageNumber() {
+interface IProps {
+  contentsCount: number
+}
+
+function PageNumber(props: IProps) {
+  const ButtonsNum = props.contentsCount / 6
+
   return (
     <StyledPageNumber>
       <input className="arrow" type="button" value="<" />
-      <input className="number" type="button" value="1" />
-      <input className="number" type="button" value="2" />
-      <input className="number" type="button" value="3" />
       <input className="arrow" type="button" value=">" />
     </StyledPageNumber>
   )

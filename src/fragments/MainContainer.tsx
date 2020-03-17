@@ -12,10 +12,14 @@ const StyledMainContainer = styled.div`
   flex-wrap: wrap;
 `
 
-function MainContainer() {
+interface IProps {
+  contents: any
+}
+
+function MainContainer(props: IProps) {
   return (
     <StyledMainContainer>
-      <SectionContainer></SectionContainer>
+      <SectionContainer contents={props.contents}></SectionContainer>
       <AsideContainer></AsideContainer>
     </StyledMainContainer>
   )

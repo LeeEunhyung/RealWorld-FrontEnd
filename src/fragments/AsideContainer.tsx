@@ -1,9 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import Tags from '../components/Tags'
+import Tags from './Tags'
 
-const StyledAsideContainer = styled.div`
+const StyledAsideContainer = styled.aside`
   margin: 5px 15px 5px;
   flex-grow: 1;
   flex-basis: 1px;

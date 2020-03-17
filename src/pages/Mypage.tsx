@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 
 import SectionContainer from '../fragments/SectionContainer'
-import UserInfo from '../components/UserInfo'
+import UserInfo from '../fragments/UserInfo'
+import ContentsNavi from '../fragments/ContentsNavi'
 
 const StyledMain = styled.main`
   margin: 20px;
@@ -17,11 +18,19 @@ const StyledMain = styled.main`
 `
 
 function Mypage() {
+  const [contents, setContents] = useState('Feed')
+
+  const _setContents = (_naviMenu: string) => {
+    setContents(_naviMenu)
+  }
+
   return (
-    <StyledMain>
-      <UserInfo></UserInfo>
-      <SectionContainer></SectionContainer>
-    </StyledMain>
+    <div>
+      <ContentsNavi selectNaviMenu={_setContents}></ContentsNavi>
+      <StyledMain>
+        <UserInfo></UserInfo>
+      </StyledMain>
+    </div>
   )
 }
 

@@ -1,7 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
+import Title from '../components/Title'
+import { Link } from 'react-router-dom'
 
-const StyledSignup = styled.div`
+const StyledSignin = styled.div`
   margin: 20px;
   background-color: #ffffff;
   width: 90%;
@@ -16,18 +18,6 @@ const StyledSignup = styled.div`
   background-image: url(https://live.staticflickr.com/7340/12389517865_a835a9cc5e_b.jpg);
   background-size: 900px;
   background-position: center center;
-  & a {
-    text-decoration: none;
-    color: #ff4501;
-    font-size: 1rem;
-    margin: 5px 0 20px;
-    display: block;
-    text-align: center;
-    font-weight: bolder;
-  }
-  & a:hover {
-    text-decoration: underline;
-  }
   & section {
     display: flex;
     flex-direction: column;
@@ -85,21 +75,36 @@ const StyledSignup = styled.div`
   }
 `
 
-function Signup() {
+const StyledLink = styled.li`
+  list-style: none;
+  & a {
+    color: #ff4501;
+    text-decoration: none;
+    font-size: 1rem;
+    margin: 5px 0 20px;
+    display: block;
+    text-align: center;
+    font-weight: bolder;
+  }
+  & a:hover {
+    text-decoration: underline;
+  }
+`
+
+function Loginpage() {
   return (
-    <StyledSignup>
-      <section>
-        <h1>Sign Up</h1>
-        <a href="./login.html">Have an account?</a>
-      </section>
+    <StyledSignin>
+      <Title title="Sign In"></Title>
+      <StyledLink>
+        <Link to="/register">Need an account?</Link>
+      </StyledLink>
       <form>
-        <input type="text" placeholder="Username" />
         <input type="text" placeholder="Email" />
         <input type="password" placeholder="Password" />
         <input type="submit" value="Sign in" />
       </form>
-    </StyledSignup>
+    </StyledSignin>
   )
 }
 
-export default Signup
+export default Loginpage

@@ -1,43 +1,32 @@
-import React, { useState } from 'react'
-//import './App.css'
+import React from 'react'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 import styled from 'styled-components'
 
-import Home from './pages/Home'
-import Signin from './pages/Signin'
-import Signup from './pages/Signup'
-import Header from './components/Header'
+import Header from './fragments/Header'
+import Homepage from './pages/Homepage'
+import Loginpage from './pages/Loginpage'
+import Registerpage from './pages/Registerpage'
 import Mypage from './pages/Mypage'
+import ContentDetailPage from './pages/ContentDetailPage'
+
+const StyledApp = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`
 
 function App() {
-  const App = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  `
-
-  const [mode, setMode] = useState(<Home></Home>)
-
-  const selectPage = (_mode: string) => {
-    let page = <Home></Home>
-
-    if (_mode === 'New story') {
-      page = <Home></Home>
-    } else if (_mode === 'Sign in') {
-      page = <Signin></Signin>
-    } else if (_mode === 'Sign up') {
-      page = <Signup></Signup>
-    } else if (_mode === 'My page') {
-      page = <Mypage></Mypage>
-    }
-
-    setMode(page)
-  }
-
   return (
-    <App>
-      <Header setMode={selectPage}></Header>
-      {mode}
-    </App>
+    <StyledApp>
+      <Router>
+        <Header></Header>
+        <Route exact path="/" component={Homepage}></Route>
+        <Route path="/login" component={Loginpage}></Route>
+        <Route path="/register" component={Registerpage}></Route>
+        <Route path="/mypage" component={Mypage}></Route>
+        <Route path="/contentdetail" component={ContentDetailPage}></Route>
+      </Router>
+    </StyledApp>
   )
 }
 

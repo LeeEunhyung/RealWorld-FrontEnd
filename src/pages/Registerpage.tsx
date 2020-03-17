@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const StyledSignin = styled.div`
+const StyledSignup = styled.div`
   margin: 20px;
   background-color: #ffffff;
   width: 90%;
@@ -85,20 +85,21 @@ const StyledSignin = styled.div`
   }
 `
 
-function Signin() {
+function Registserpage() {
   return (
-    <StyledSignin>
+    <StyledSignup>
       <section>
-        <h1>Sign In</h1>
-        <a href="./register.html">Need an account?</a>
+        <h1>Sign Up</h1>
+        <a href="./login.html">Have an account?</a>
       </section>
       <form>
+        <input type="text" placeholder="Username" />
         <input type="text" placeholder="Email" />
         <input type="password" placeholder="Password" />
         <input type="submit" value="Sign in" />
       </form>
-    </StyledSignin>
+    </StyledSignup>
   )
 }
 
-export default Signin
+export default Registserpage
