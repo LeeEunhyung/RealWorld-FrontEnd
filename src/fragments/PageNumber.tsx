@@ -20,8 +20,6 @@ interface IProps {
 }
 
 function PageNumber(props: IProps) {
-    const buttonsNum = props.contentsCount / 6
-
     const countNumberButton = () => {}
 
     return (

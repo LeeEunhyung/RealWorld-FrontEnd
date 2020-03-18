@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 
 import Contents from './Contents'
@@ -23,25 +23,6 @@ interface IProps {
 }
 
 function SectionContainer(props: IProps) {
-    const showContents = () => {
-        let contentsList = []
-        let contents = props.contents
-        contentsList.push(
-            contents.map((data, i) => {
-                return (
-                    <Contents
-                        key={i}
-                        title={data.title}
-                        desc={data.description}
-                        imgSrc={data.author.iamge}
-                    />
-                )
-            }),
-        )
-
-        return contentsList
-    }
-
     const _setContentsByPage = (_contentsNum: number) => {}
 
     return (

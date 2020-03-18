@@ -21,7 +21,7 @@ interface IProps {
 function ContentImage(props: IProps) {
     return (
         <StyledImage>
-            <img src={props.imgSrc} />
+            <img src={props.imgSrc} alt={props.imgSrc} />
         </StyledImage>
     )
 }

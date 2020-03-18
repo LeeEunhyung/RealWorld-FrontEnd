@@ -12,12 +12,8 @@ const StyledHome = styled.div`
 `
 
 function Homepage() {
+    // eslint-disable-next-line
     const [naviMenu, setNaviMenu] = useState('Feed')
-    const [ID, setID] = useState('jake')
-
-    const _setNaviMenu = (_naviMenu: string) => {
-        setNaviMenu(_naviMenu)
-    }
 
     return (
         <StyledHome>
