@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
+import { observer } from 'mobx-react'
 
 import NumberButton from '../components/NumberButton'
+import ArticleContext from '../../ArticleContext'
 
 const StyledPageNumber = styled.div`
     max-width: 560px;
@@ -14,24 +16,20 @@ const StyledPageNumber = styled.div`
     margin: 10px;
 `
 
-interface IProps {
-    contentsCount: number
-    pageNumber: number
-}
-
-function setPageNumberList(index: number) {
+function setPageNumberList(length: number) {
+    let pageNumber = length % 6 === 0 ? length / 6 : Math.floor(length / 6) + 1
     let i = 0
     let list = []
-    console.log(index)
-    while (i < index) {
+    while (i < pageNumber) {
         list[i] = i + 1
         i = i + 1
     }
     return list
 }
 
-function PageNumber(props: IProps) {
-    const pageNumberList: number[] = setPageNumberList(props.pageNumber)
+const PageNumber = observer(() => {
+    const article = useContext(ArticleContext)
+    const pageNumberList: number[] = setPageNumberList(article.contents.length)
 
     return (
         <StyledPageNumber>
@@ -44,6 +42,6 @@ function PageNumber(props: IProps) {
             <NumberButton className="arrow" value=">" />
         </StyledPageNumber>
     )
-}
+})
 
 export default PageNumber

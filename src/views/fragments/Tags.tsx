@@ -1,5 +1,8 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
+import { observer } from 'mobx-react'
+
+import ArticleContext from '../../ArticleContext'
 
 const StyledTags = styled.section`
     margin: 1rem;
@@ -17,20 +20,17 @@ const StyledTags = styled.section`
     }
 `
 
-interface IProps {
-    contents: any[]
-}
-
-function Tags(props: IProps) {
+const Tags = observer(() => {
+    const article = useContext(ArticleContext)
     return (
         <StyledTags>
-            {props.contents.map((data: any) => {
+            {article.contents.map((data: any) => {
                 return data.tagList.map((data: any) => {
                     return <input key={data} type="button" value={data} />
                 })
             })}
         </StyledTags>
     )
-}
+})
 
 export default Tags

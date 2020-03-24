@@ -1,4 +1,6 @@
 import { observable, action } from 'mobx'
+import { createContext } from 'react'
+import data from './data/data.json'
 
 class ArticleClass {
     public data: any
@@ -27,4 +29,6 @@ class ArticleClass {
     }
 }
 
-export default ArticleClass
+const ArticleContext = createContext(new ArticleClass(data, 'cat'))
+
+export default ArticleContext
