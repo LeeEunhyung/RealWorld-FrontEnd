@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
 
-//import SectionContainer from '../fragments/SectionContainer'
 import UserInfo from '../fragments/UserInfo'
 
 const StyledMain = styled.main`

@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
 import { observer } from 'mobx-react'
 
@@ -21,16 +21,14 @@ const StyledSectionContainer = styled.div`
 
 const SectionContainer = observer(() => {
     const article = useContext(ArticleContext)
-    // eslint-disable-next-line
-    const [selectedNumber, setSelectedNumber] = useState(1)
 
     return (
         <StyledSectionContainer>
             <section>
                 {article.contents.map((data, i) => {
                     if (
-                        i >= (selectedNumber - 1) * 6 &&
-                        i < selectedNumber * 6
+                        i >= (article.selectedPage - 1) * 6 &&
+                        i < article.selectedPage * 6
                     ) {
                         return (
                             <Contents
@@ -41,8 +39,9 @@ const SectionContainer = observer(() => {
                                 favorited={data.favorited}
                             />
                         )
+                    } else {
+                        return null
                     }
-                    return null
                 })}
             </section>
             <PageNumber />

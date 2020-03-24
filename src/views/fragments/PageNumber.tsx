@@ -16,8 +16,7 @@ const StyledPageNumber = styled.div`
     margin: 10px;
 `
 
-function setPageNumberList(length: number) {
-    let pageNumber = length % 6 === 0 ? length / 6 : Math.floor(length / 6) + 1
+function setPageNumberList(pageNumber: number) {
     let i = 0
     let list = []
     while (i < pageNumber) {
@@ -29,17 +28,40 @@ function setPageNumberList(length: number) {
 
 const PageNumber = observer(() => {
     const article = useContext(ArticleContext)
-    const pageNumberList: number[] = setPageNumberList(article.contents.length)
+    const pageNumberList: number[] = setPageNumberList(article.pageCount)
+
+    const setClickedNumber = (clickedNumber: string | number) => {
+        if (clickedNumber === '<') {
+            article.selectedPage = 1
+        } else if (clickedNumber === '>') {
+            article.selectedPage = article.pageCount
+        } else {
+            article.selectedPage = Number(clickedNumber)
+        }
+    }
 
     return (
         <StyledPageNumber>
-            <NumberButton className="arrow" value="<" />
+            <NumberButton
+                setClickedNumber={setClickedNumber}
+                className="arrow"
+                value="<"
+            />
             {pageNumberList.map(data => {
                 return (
-                    <NumberButton key={data} className="number" value={data} />
+                    <NumberButton
+                        setClickedNumber={setClickedNumber}
+                        key={data}
+                        className="number"
+                        value={data}
+                    />
                 )
             })}
-            <NumberButton className="arrow" value=">" />
+            <NumberButton
+                setClickedNumber={setClickedNumber}
+                className="arrow"
+                value=">"
+            />
         </StyledPageNumber>
     )
 })

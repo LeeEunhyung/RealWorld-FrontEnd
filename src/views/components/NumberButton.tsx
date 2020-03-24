@@ -10,6 +10,7 @@ const StyledButton = styled.input`
         inset -1px -1px 1px 0 rgba(184, 184, 184, 0.1);
     outline: none;
     margin: 4px;
+    cursor: pointer;
     &.arrow {
         background-color: #000000;
         color: #ffffff;
@@ -18,22 +19,29 @@ const StyledButton = styled.input`
         background-color: #ffffff;
         color: #000000;
     }
+    :hover {
+        background-color: #ff4501;
+        color: #ffffff;
+    }
 `
 
 interface IProps {
     value: string | number
     className: string
+    setClickedNumber: (clickedNumber: number | string) => void
 }
 
-function ContentButton(props: IProps) {
+function NumberButton(props: IProps) {
     return (
         <StyledButton
             className={props.className}
             type="button"
             value={props.value}
-            onClick={function() {}}
+            onClick={function(e: any) {
+                props.setClickedNumber(e.target.value)
+            }}
         />
     )
 }
 
-export default ContentButton
+export default NumberButton

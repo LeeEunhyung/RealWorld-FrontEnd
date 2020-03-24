@@ -127,6 +127,134 @@
         "image": "https://i.chzbgr.com/full/9358120192/h03A0BB51/cat",
         "following": false
       }
+    }, {
+      "slug": "how-to-train-your-dragon5",
+      "title": "How to train your dragon5",
+      "description": "Ever wonder how?",
+      "body": "It takes a Jacobian",
+      "tagList": ["dragons", "training"],
+      "createdAt": "2016-02-18T03:22:56.637Z",
+      "updatedAt": "2016-02-18T03:48:35.824Z",
+      "favorited": false,
+      "favoritesCount": 0,
+      "author": {
+        "username": "jake",
+        "bio": "I work at statefarm",
+        "image": "https://i.stack.imgur.com/xHWG8.jpg",
+        "following": false
+      }
+    }, {
+      "slug": "meow5",
+      "title": "meow5",
+      "description": "meow meow",
+      "body": "It a cat",
+      "tagList": ["cat", "meow"],
+      "createdAt": "2016-02-18T03:22:56.637Z",
+      "updatedAt": "2016-02-18T03:48:35.824Z",
+      "favorited": true,
+      "favoritesCount": 0,
+      "author": {
+        "username": "cat",
+        "bio": "I work at statefarm",
+        "image": "https://i.chzbgr.com/full/9358120192/h03A0BB51/cat",
+        "following": false
+      }
+    }, {
+      "slug": "how-to-train-your-dragon6",
+      "title": "How to train your dragon6",
+      "description": "Ever wonder how?",
+      "body": "It takes a Jacobian",
+      "tagList": ["dragons", "training"],
+      "createdAt": "2016-02-18T03:22:56.637Z",
+      "updatedAt": "2016-02-18T03:48:35.824Z",
+      "favorited": false,
+      "favoritesCount": 0,
+      "author": {
+        "username": "jake",
+        "bio": "I work at statefarm",
+        "image": "https://i.stack.imgur.com/xHWG8.jpg",
+        "following": false
+      }
+    }, {
+      "slug": "how-to-train-your-dragon7",
+      "title": "How to train your dragon7",
+      "description": "Ever wonder how?",
+      "body": "It takes a Jacobian",
+      "tagList": ["dragons", "training"],
+      "createdAt": "2016-02-18T03:22:56.637Z",
+      "updatedAt": "2016-02-18T03:48:35.824Z",
+      "favorited": true,
+      "favoritesCount": 0,
+      "author": {
+        "username": "jake",
+        "bio": "I work at statefarm",
+        "image": "https://i.stack.imgur.com/xHWG8.jpg",
+        "following": false
+      }
+    }, {
+      "slug": "how-to-train-your-dragon8",
+      "title": "How to train your dragon8",
+      "description": "Ever wonder how?",
+      "body": "It takes a Jacobian",
+      "tagList": ["dragons", "training"],
+      "createdAt": "2016-02-18T03:22:56.637Z",
+      "updatedAt": "2016-02-18T03:48:35.824Z",
+      "favorited": false,
+      "favoritesCount": 0,
+      "author": {
+        "username": "jake",
+        "bio": "I work at statefarm",
+        "image": "https://i.stack.imgur.com/xHWG8.jpg",
+        "following": false
+      }
+    }, {
+      "slug": "meow6",
+      "title": "meow6",
+      "description": "meow meow",
+      "body": "It a cat",
+      "tagList": ["cat", "meow"],
+      "createdAt": "2016-02-18T03:22:56.637Z",
+      "updatedAt": "2016-02-18T03:48:35.824Z",
+      "favorited": false,
+      "favoritesCount": 0,
+      "author": {
+        "username": "cat",
+        "bio": "I work at statefarm",
+        "image": "https://i.chzbgr.com/full/9358120192/h03A0BB51/cat",
+        "following": false
+      }
+    }, {
+      "slug": "meow7",
+      "title": "meow7",
+      "description": "meow meow",
+      "body": "It a cat",
+      "tagList": ["cat", "meow"],
+      "createdAt": "2016-02-18T03:22:56.637Z",
+      "updatedAt": "2016-02-18T03:48:35.824Z",
+      "favorited": false,
+      "favoritesCount": 0,
+      "author": {
+        "username": "cat",
+        "bio": "I work at statefarm",
+        "image": "https://i.chzbgr.com/full/9358120192/h03A0BB51/cat",
+        "following": false
+      }
+    }, {
+      "slug": "meow8",
+      "title": "meow8",
+      "description": "meow meow",
+      "body": "It a cat",
+      "tagList": ["cat", "meow"],
+      "createdAt": "2016-02-18T03:22:56.637Z",
+      "updatedAt": "2016-02-18T03:48:35.824Z",
+      "favorited": false,
+      "favoritesCount": 0,
+      "author": {
+        "username": "cat",
+        "bio": "I work at statefarm",
+        "image": "https://i.chzbgr.com/full/9358120192/h03A0BB51/cat",
+        "following": false
+      }
     }],
-    "articlesCount": 6
+    "articlesCount": 16
   }
