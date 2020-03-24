@@ -18,10 +18,24 @@ const StyledButton = styled.input`
         background-color: #ff4501;
         color: #ffffff;
     }
+    &.true {
+        background-color: #ff4501;
+        color: #ffffff;
+    }
 `
 
-function ContentButton() {
-    return <StyledButton type="button" value="♡" />
+interface IProps {
+    favorited: boolean
+}
+
+function ContentButton(props: IProps) {
+    return (
+        <StyledButton
+            className={String(props.favorited)}
+            type="button"
+            value="♡"
+        />
+    )
 }
 
 export default ContentButton

@@ -10,9 +10,8 @@ const StyledNavi = styled.ul`
 `
 // 스타일 바꾸기, 클릭한 메뉴 선택 유지, My page는 사진으로
 const StyledNaviList = styled.li`
+    min-height: 25px;
     list-style: none;
-    height: 50px;
-    line-height: 3rem;
     background-color: rgba(0, 0, 0, 0);
     color: rgb(155, 155, 155);
     border: none;
@@ -26,7 +25,18 @@ const StyledNaviList = styled.li`
         display: block;
         color: #ffffff;
         text-decoration: none;
-        font-size: 1rem;
+        font-size: 1.05rem;
+    }
+    &.mypage {
+        width: 50px;
+        height: 50px;
+        border-radius: 70px;
+        background-image: url(https://cdn.mensagenscomamor.com/content/images/m000498499.jpg?v=1&w=300&h=300);
+        background-size: 100%;
+        background-position: center center;
+        a {
+            color: rgba(0, 0, 0, 0);
+        }
     }
 `
 
@@ -42,7 +52,7 @@ function Navi() {
             <StyledNaviList>
                 <Link to="/register">Sign up</Link>
             </StyledNaviList>
-            <StyledNaviList>
+            <StyledNaviList className="mypage">
                 <Link to="/mypage">My page</Link>
             </StyledNaviList>
         </StyledNavi>

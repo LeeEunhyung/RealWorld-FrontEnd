@@ -20,7 +20,7 @@ function MainContainer(props: IProps) {
     return (
         <StyledMainContainer>
             <SectionContainer contents={props.contents} />
-            <AsideContainer />
+            <AsideContainer contents={props.contents} />
         </StyledMainContainer>
     )
 }

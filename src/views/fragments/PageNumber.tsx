@@ -16,16 +16,31 @@ const StyledPageNumber = styled.div`
 
 interface IProps {
     contentsCount: number
-    pageNumber: (_contentsNum: number) => void
+    pageNumber: number
+}
+
+function setPageNumberList(index: number) {
+    let i = 0
+    let list = []
+    console.log(index)
+    while (i < index) {
+        list[i] = i + 1
+        i = i + 1
+    }
+    return list
 }
 
 function PageNumber(props: IProps) {
-    const countNumberButton = () => {}
+    const pageNumberList: number[] = setPageNumberList(props.pageNumber)
 
     return (
         <StyledPageNumber>
             <NumberButton className="arrow" value="<" />
-            {countNumberButton}
+            {pageNumberList.map(data => {
+                return (
+                    <NumberButton key={data} className="number" value={data} />
+                )
+            })}
             <NumberButton className="arrow" value=">" />
         </StyledPageNumber>
     )

@@ -29,6 +29,7 @@ interface IProps {
     title: string
     desc: string
     imgSrc: string
+    favorited: boolean
 }
 
 function Contents(props: IProps) {
@@ -38,7 +39,7 @@ function Contents(props: IProps) {
                 <ContentImage imgSrc={props.imgSrc} />
                 <ContentArticle title={props.title} desc={props.desc} />
             </Link>
-            <ContentButton />
+            <ContentButton favorited={props.favorited} />
         </StyledArticle>
     )
 }

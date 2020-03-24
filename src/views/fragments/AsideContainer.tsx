@@ -15,10 +15,14 @@ const StyledAsideContainer = styled.aside`
     box-shadow: 3px 3px 6px 0 #bdb9a6, -3px -3px 6px 0 #fffefa;
 `
 
-function AsideContainer() {
+interface IProps {
+    contents: any
+}
+
+function AsideContainer(props: IProps) {
     return (
         <StyledAsideContainer>
-            <Tags />
+            <Tags contents={props.contents} />
         </StyledAsideContainer>
     )
 }

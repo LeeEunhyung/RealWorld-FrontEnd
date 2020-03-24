@@ -1,9 +1,8 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 
 //import SectionContainer from '../fragments/SectionContainer'
 import UserInfo from '../fragments/UserInfo'
-import ContentsNavi from '../fragments/ContentsNavi'
 
 const StyledMain = styled.main`
     margin: 20px;
@@ -18,12 +17,8 @@ const StyledMain = styled.main`
 `
 
 function Mypage() {
-    // eslint-disable-next-line
-    const [contents, setContents] = useState('Feed')
-
     return (
         <div>
-            <ContentsNavi selectNaviMenu={setContents} />
             <StyledMain>
                 <UserInfo />
             </StyledMain>

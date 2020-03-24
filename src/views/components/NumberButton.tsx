@@ -21,7 +21,7 @@ const StyledButton = styled.input`
 `
 
 interface IProps {
-    value: string
+    value: string | number
     className: string
 }
 
@@ -31,6 +31,7 @@ function ContentButton(props: IProps) {
             className={props.className}
             type="button"
             value={props.value}
+            onClick={function() {}}
         />
     )
 }

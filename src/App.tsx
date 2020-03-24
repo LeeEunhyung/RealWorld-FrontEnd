@@ -2,12 +2,12 @@ import React from 'react'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import styled from 'styled-components'
 
-import Header from './fragments/Header'
-import Homepage from './pages/Homepage'
-import Loginpage from './pages/Loginpage'
-import Registerpage from './pages/Registerpage'
-import Mypage from './pages/Mypage'
-import ContentDetailPage from './pages/ContentDetailPage'
+import Header from './views/fragments/Header'
+import Homepage from './views/pages/Homepage'
+import Loginpage from './views/pages/Loginpage'
+import Registerpage from './views/pages/Registerpage'
+import Mypage from './views/pages/Mypage'
+import ContentDetailPage from './views/pages/ContentDetailPage'
 
 const StyledApp = styled.div`
     display: flex;
