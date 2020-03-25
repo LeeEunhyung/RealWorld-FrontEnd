@@ -3,9 +3,10 @@ import styled from 'styled-components'
 import { observer } from 'mobx-react'
 
 import ContentsNavi from '../fragments/ContentsNavi'
-import MainContainer from '../fragments/MainContainer'
 
 import ArticlesContext from '../../contexts/ArticlesContext'
+import FeedContainer from '../fragments/FeedContainer'
+import YourFeedContainer from '../fragments/YourFeedContainer'
 
 const StyledHome = styled.div`
     max-width: 1200px;
@@ -23,7 +24,9 @@ const Homepage = observer(() => {
                     articles.setContents()
                 }}
             />
-            <MainContainer />
+            {/*FeedContainer와 YourFeedContainer*/}
+            <FeedContainer />
+            <YourFeedContainer />
         </StyledHome>
     )
 })
