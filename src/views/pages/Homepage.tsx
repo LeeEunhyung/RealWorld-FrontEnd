@@ -5,7 +5,7 @@ import { observer } from 'mobx-react'
 import ContentsNavi from '../fragments/ContentsNavi'
 import MainContainer from '../fragments/MainContainer'
 
-import ArticleContext from '../../ArticleContext'
+import ArticlesContext from '../../contexts/ArticlesContext'
 
 const StyledHome = styled.div`
     max-width: 1200px;
@@ -14,13 +14,13 @@ const StyledHome = styled.div`
 `
 
 const Homepage = observer(() => {
-    const article = useContext(ArticleContext)
+    const articles = useContext(ArticlesContext)
     return (
         <StyledHome>
             <ContentsNavi
                 selectNaviMenu={function(_menu: string) {
-                    article.naviMenu = _menu
-                    article.setContents()
+                    articles.naviMenu = _menu
+                    articles.setContents()
                 }}
             />
             <MainContainer />

@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import styled from 'styled-components'
 import { observer } from 'mobx-react'
 
-import ArticleContext from '../../ArticleContext'
+import ArticlesContext from '../../contexts/ArticlesContext'
 
 const StyledTags = styled.section`
     margin: 1rem;
@@ -21,10 +21,10 @@ const StyledTags = styled.section`
 `
 
 const Tags = observer(() => {
-    const article = useContext(ArticleContext)
+    const articles = useContext(ArticlesContext)
     return (
         <StyledTags>
-            {article.contents.map((data: any) => {
+            {articles.contents.map((data: any) => {
                 return data.tagList.map((data: any) => {
                     return <input key={data} type="button" value={data} />
                 })

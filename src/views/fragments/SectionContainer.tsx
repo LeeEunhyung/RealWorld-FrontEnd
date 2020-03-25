@@ -5,7 +5,7 @@ import { observer } from 'mobx-react'
 import Contents from './Contents'
 import PageNumber from './PageNumber'
 
-import ArticleContext from '../../ArticleContext'
+import ArticlesContext from '../../contexts/ArticlesContext'
 
 const StyledSectionContainer = styled.div`
     max-width: 900px;
@@ -20,15 +20,15 @@ const StyledSectionContainer = styled.div`
 `
 
 const SectionContainer = observer(() => {
-    const article = useContext(ArticleContext)
+    const articles = useContext(ArticlesContext)
 
     return (
         <StyledSectionContainer>
             <section>
-                {article.contents.map((data, i) => {
+                {articles.contents.map((data, i) => {
                     if (
-                        i >= (article.selectedPage - 1) * 6 &&
-                        i < article.selectedPage * 6
+                        i >= (articles.selectedPage - 1) * 6 &&
+                        i < articles.selectedPage * 6
                     ) {
                         return (
                             <Contents

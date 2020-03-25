@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { observer } from 'mobx-react'
 
 import NumberButton from '../components/NumberButton'
-import ArticleContext from '../../ArticleContext'
+import ArticlesContext from '../../contexts/ArticlesContext'
 
 const StyledPageNumber = styled.div`
     max-width: 560px;
@@ -27,16 +27,16 @@ function setPageNumberList(pageNumber: number) {
 }
 
 const PageNumber = observer(() => {
-    const article = useContext(ArticleContext)
-    const pageNumberList: number[] = setPageNumberList(article.pageCount)
+    const articles = useContext(ArticlesContext)
+    const pageNumberList: number[] = setPageNumberList(articles.pageCount)
 
     const setClickedNumber = (clickedNumber: string | number) => {
         if (clickedNumber === '<') {
-            article.selectedPage = 1
+            articles.selectedPage = 1
         } else if (clickedNumber === '>') {
-            article.selectedPage = article.pageCount
+            articles.selectedPage = articles.pageCount
         } else {
-            article.selectedPage = Number(clickedNumber)
+            articles.selectedPage = Number(clickedNumber)
         }
     }
 
