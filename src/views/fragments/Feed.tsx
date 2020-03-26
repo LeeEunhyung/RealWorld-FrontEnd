@@ -3,11 +3,14 @@ import styled from 'styled-components'
 import ArticlesContext from '../../contexts/ArticlesContext'
 import Contents from './Contents'
 import { observer } from 'mobx-react'
+import PageNumber from './PageNumber'
 
 const StyledFeed = styled.section`
+    max-width: 900px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    justify-content: center;
 `
 
 const Feed = observer(() => {
@@ -32,6 +35,7 @@ const Feed = observer(() => {
                     return null
                 }
             })}
+            <PageNumber />
         </StyledFeed>
     )
 })

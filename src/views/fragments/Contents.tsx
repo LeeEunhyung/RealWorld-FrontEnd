@@ -35,7 +35,7 @@ interface IProps {
 function Contents(props: IProps) {
     return (
         <StyledArticle>
-            <Link to="/contentdetail">
+            <Link to="/">
                 <ContentImage imgSrc={props.imgSrc} />
                 <ContentArticle title={props.title} desc={props.desc} />
             </Link>

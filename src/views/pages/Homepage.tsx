@@ -14,6 +14,14 @@ const StyledHome = styled.div`
     flex-direction: column;
 `
 
+const setMainContainer = (naviMenu: string) => {
+    if (naviMenu === 'Feed') {
+        return <FeedContainer />
+    } else if (naviMenu === 'Your Feed') {
+        return <YourFeedContainer />
+    }
+}
+
 const Homepage = observer(() => {
     const articles = useContext(ArticlesContext)
     return (
@@ -21,12 +29,10 @@ const Homepage = observer(() => {
             <ContentsNavi
                 selectNaviMenu={function(_menu: string) {
                     articles.naviMenu = _menu
-                    articles.setContents()
                 }}
             />
             {/*FeedContainer와 YourFeedContainer*/}
-            <FeedContainer />
-            <YourFeedContainer />
+            {setMainContainer(articles.naviMenu)}
         </StyledHome>
     )
 })

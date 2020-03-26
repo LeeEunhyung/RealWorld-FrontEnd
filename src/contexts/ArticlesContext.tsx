@@ -1,26 +1,43 @@
-import { observable, action } from 'mobx'
+import { observable } from 'mobx'
 import { createContext } from 'react'
-import data from '../data/data.json'
+import axios from 'axios'
 
 class Articles {
-    public articles: any[]
-    @observable public contents: any[]
-    @observable public userName: string
+    @observable public contents: any[] = []
     @observable public naviMenu: string = 'Feed'
     @observable public selectedPage: number = 1
-    @observable public pageCount: number
+    @observable public pageCount: number = 1
 
-    constructor(data: any, user: string) {
-        this.articles = data.articles
-        this.contents = data.articles
-        this.userName = user
-        this.pageCount =
-            this.contents.length % 6 === 0
-                ? this.contents.length / 6
-                : Math.floor(this.contents.length / 6) + 1
+    constructor() {
+        this.getArticles()
     }
 
-    @action public setContents() {
+    public getArticles = async () => {
+        await axios
+            .get(
+                `https://conduit.productionready.io/api/articles?offset=:this.selectedPage?limit=6`,
+            )
+            .then(response => {
+                this.contents = response.data.articles
+                this.pageCount =
+                    this.contents.length % 6 === 0
+                        ? this.contents.length / 6
+                        : Math.floor(this.contents.length / 6) + 1
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    }
+
+    // @computed get setContents() {
+    //     if (this.naviMenu === 'Your Feed') {
+    //         this.contents = mydata.articles
+    //     }
+
+    //     return this.contents
+    // }
+
+    /*@action public setContents() {
         if (this.naviMenu === 'Feed') {
             this.contents = this.articles
         } else if (this.naviMenu === 'Your Feed') {
@@ -38,9 +55,17 @@ class Articles {
             this.contents.length % 6 === 0
                 ? this.contents.length / 6
                 : Math.floor(this.contents.length / 6) + 1
-    }
+    }*/
 }
 
-const ArticlesContext = createContext(new Articles(data, 'cat'))
+// const data = axios
+//     .request({
+//         method: 'GET',
+//         url: `https://conduit.productionready.io/api/articles`,
+//         params: { msg: 'hi' },
+//     })
+//     .then(response => response.data.articles)
+
+const ArticlesContext = createContext(new Articles())
 
 export default ArticlesContext

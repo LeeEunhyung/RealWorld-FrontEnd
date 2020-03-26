@@ -7,7 +7,6 @@ import Homepage from './views/pages/Homepage'
 import Loginpage from './views/pages/Loginpage'
 import Registerpage from './views/pages/Registerpage'
 import Mypage from './views/pages/Mypage'
-import ContentDetailPage from './views/pages/ContentDetailPage'
 
 const StyledApp = styled.div`
     display: flex;
@@ -24,7 +23,6 @@ function App() {
                 <Route path="/login" component={Loginpage} />
                 <Route path="/register" component={Registerpage} />
                 <Route path="/mypage" component={Mypage} />
-                <Route path="/contentdetail" component={ContentDetailPage} />
             </Router>
         </StyledApp>
     )

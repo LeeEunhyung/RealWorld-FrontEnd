@@ -22,6 +22,7 @@ const StyledTags = styled.section`
 
 const Tags = observer(() => {
     const articles = useContext(ArticlesContext)
+    console.log(articles)
     return (
         <StyledTags>
             {articles.contents.map((data: any) => {
