@@ -17,23 +17,16 @@ const YourFeed = observer(() => {
     const articles = useContext(ArticlesContext)
     return (
         <StyledYourFeed>
-            {articles.contents.map((data, i) => {
-                if (
-                    i >= (articles.selectedPage - 1) * 6 &&
-                    i < articles.selectedPage * 6
-                ) {
-                    return (
-                        <Contents
-                            key={data.slug}
-                            title={data.title}
-                            desc={data.description}
-                            imgSrc={data.author.image}
-                            favorited={data.favorited}
-                        />
-                    )
-                } else {
-                    return null
-                }
+            {articles.contents.map(data => {
+                return (
+                    <Contents
+                        key={data.slug}
+                        title={data.title}
+                        desc={data.description}
+                        imgSrc={data.author.image}
+                        favorited={data.favorited}
+                    />
+                )
             })}
             <PageNumber />
         </StyledYourFeed>

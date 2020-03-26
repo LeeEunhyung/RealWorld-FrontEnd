@@ -7,6 +7,7 @@ import ContentsNavi from '../fragments/ContentsNavi'
 import ArticlesContext from '../../contexts/ArticlesContext'
 import FeedContainer from '../fragments/FeedContainer'
 import YourFeedContainer from '../fragments/YourFeedContainer'
+import UserContext from '../../contexts/UserContext'
 
 const StyledHome = styled.div`
     max-width: 1200px;
@@ -24,14 +25,16 @@ const setMainContainer = (naviMenu: string) => {
 
 const Homepage = observer(() => {
     const articles = useContext(ArticlesContext)
+    const user = useContext(UserContext)
+    user.setUserInfo()
     return (
         <StyledHome>
             <ContentsNavi
                 selectNaviMenu={function(_menu: string) {
                     articles.naviMenu = _menu
+                    articles.getArticles()
                 }}
             />
-            {/*FeedContainer와 YourFeedContainer*/}
             {setMainContainer(articles.naviMenu)}
         </StyledHome>
     )

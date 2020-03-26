@@ -12,17 +12,19 @@ class Articles {
         this.getArticles()
     }
 
-    public getArticles = async () => {
-        await axios
-            .get(
-                `https://conduit.productionready.io/api/articles?offset=:this.selectedPage?limit=6`,
-            )
+    public getArticles = () => {
+        const _offset = (this.selectedPage - 1) * 6 + 1
+        const url =
+            this.naviMenu === 'Feed'
+                ? `https://conduit.productionready.io/api/articles?offset=${_offset}&limit=6`
+                : `https://conduit.productionready.io/api/articles?offset=${_offset}&limit=6&author=jake`
+        axios({ url: url, method: 'GET' })
             .then(response => {
                 this.contents = response.data.articles
                 this.pageCount =
-                    this.contents.length % 6 === 0
-                        ? this.contents.length / 6
-                        : Math.floor(this.contents.length / 6) + 1
+                    response.data.articlesCount % 6 === 0
+                        ? response.data.articlesCount / 6
+                        : Math.floor(response.data.articlesCount / 6) + 1
             })
             .catch(err => {
                 console.log(err)

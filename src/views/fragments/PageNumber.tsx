@@ -38,6 +38,7 @@ const PageNumber = observer(() => {
         } else {
             articles.selectedPage = Number(clickedNumber)
         }
+        articles.getArticles()
     }
 
     return (
