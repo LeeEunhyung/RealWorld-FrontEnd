@@ -1,6 +1,8 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import axios from 'axios'
 import styled from 'styled-components'
+import { observer } from 'mobx-react'
+import UserContext from '../../contexts/UserContext'
 
 const StyledForm = styled.form`
     width: 90%;
@@ -46,7 +48,8 @@ const StyledForm = styled.form`
     }
 `
 
-function LoginForm() {
+const LoginForm = observer(() => {
+    const user = useContext(UserContext)
     let inputEmail: string = ''
     let inputPassword: string = ''
     return (
@@ -79,20 +82,25 @@ function LoginForm() {
                                 password: inputPassword,
                             },
                         },
-                    }).then(function(response) {
-                        console.log(response.data)
-                        window.location.href = '/'
                     })
-                    /*.then(function() {
+                        .then(function(response) {
+                            localStorage.setItem(
+                                'token',
+                                response.data.user.token,
+                            )
                             axios({
                                 url: `https://conduit.productionready.io/api/user`,
                                 method: 'GET',
                                 headers: {
-                                    Authorization: 'Token jwt.token.here',
+                                    Authorization: `Token ${localStorage.getItem(
+                                        'token',
+                                    )}`,
                                 },
                             })
                                 .then(function(response) {
-                                    alert(response.data)
+                                    console.log(response.data)
+                                    user.userInfo = response.data.user
+                                    user.isLogin = true
                                 })
                                 .catch(function(err) {
                                     alert(err)
@@ -100,11 +108,11 @@ function LoginForm() {
                         })
                         .catch(function() {
                             alert('email or password is invalid.')
-                        })*/
+                        })
                 }}
             />
         </StyledForm>
     )
-}
+})
 
 export default LoginForm

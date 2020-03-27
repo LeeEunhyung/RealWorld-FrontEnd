@@ -1,6 +1,8 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
+import { observer } from 'mobx-react'
+import UserContext from '../../contexts/UserContext'
 
 const StyledNavi = styled.ul`
     margin-right: 1.5rem;
@@ -40,23 +42,38 @@ const StyledNaviList = styled.li`
     }
 `
 
-function Navi() {
-    return (
-        <StyledNavi>
-            <StyledNaviList>
-                <Link to="/">New story</Link>
-            </StyledNaviList>
-            <StyledNaviList>
-                <Link to="/login">Sign in</Link>
-            </StyledNaviList>
-            <StyledNaviList>
-                <Link to="/register">Sign up</Link>
-            </StyledNaviList>
-            <StyledNaviList className="mypage">
-                <Link to="/mypage">My page</Link>
-            </StyledNaviList>
-        </StyledNavi>
-    )
+const setNavi = (isLogin: boolean) => {
+    if (isLogin) {
+        return (
+            <StyledNavi>
+                <StyledNaviList>
+                    <Link to="/">New story</Link>
+                </StyledNaviList>
+                <StyledNaviList className="mypage">
+                    <Link to="/profile/:username">My page</Link>
+                </StyledNaviList>
+            </StyledNavi>
+        )
+    } else {
+        return (
+            <StyledNavi>
+                <StyledNaviList>
+                    <Link to="/">New story</Link>
+                </StyledNaviList>
+                <StyledNaviList>
+                    <Link to="/login">Sign in</Link>
+                </StyledNaviList>
+                <StyledNaviList>
+                    <Link to="/register">Sign up</Link>
+                </StyledNaviList>
+            </StyledNavi>
+        )
+    }
 }
+
+const Navi = observer(() => {
+    const user = useContext(UserContext)
+    return setNavi(user.isLogin)
+})
 
 export default Navi

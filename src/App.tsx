@@ -22,7 +22,7 @@ function App() {
                 <Route exact path="/" component={Homepage} />
                 <Route path="/login" component={Loginpage} />
                 <Route path="/register" component={Registerpage} />
-                <Route path="/mypage" component={Mypage} />
+                <Route path="/profile/:username" component={Mypage} />
             </Router>
         </StyledApp>
     )

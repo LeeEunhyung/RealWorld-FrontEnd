@@ -1,5 +1,7 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
+import { observer } from 'mobx-react'
+import UserContext from '../../contexts/UserContext'
 
 const StyledUserInfo = styled.div`
     margin: 20px;
@@ -38,18 +40,23 @@ const StyledUserInfo = styled.div`
     }
 `
 
-function UserInfo() {
+function setImage(image: string) {
+    if (image === null)
+        return 'https://static.productionready.io/images/smiley-cyrus.jpg'
+    else return image
+}
+
+const UserInfo = observer(() => {
+    const user = useContext(UserContext)
+    user.userInfo.image = setImage(user.userInfo.image)
     return (
         <StyledUserInfo>
-            <img
-                src="https://cdn.mensagenscomamor.com/content/images/m000498499.jpg?v=1&w=300&h=300"
-                alt="profile"
-            />
-            <h1>LeeEunhyung</h1>
-            <p>Hello World!</p>
-            <input type="button" value="+ Follow LeeEunhyung" />
+            <img src={user.userInfo.image} alt={user.userInfo.image} />
+            <h1>{user.userInfo.username}</h1>
+            <p>{user.userInfo.bio}</p>
+            <input type="button" value={`+ Follow ${user.userInfo.username}`} />
         </StyledUserInfo>
     )
-}
+})
 
 export default UserInfo

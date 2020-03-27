@@ -1,23 +1,12 @@
 import { createContext } from 'react'
 import { observable } from 'mobx'
-import axios from 'axios'
 
 class User {
-    constructor() {
-        this.setUserInfo()
-    }
+    @observable isLogin: boolean
+    @observable userInfo: any
 
-    public setUserInfo = () => {
-        axios({
-            url: `https://conduit.productionready.io/api/user`,
-            method: 'GET',
-        })
-            .then(function(response) {
-                console.log(response.data)
-            })
-            .catch(function(err) {
-                console.log(err)
-            })
+    constructor() {
+        this.isLogin = false
     }
 }
 
