@@ -1,8 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import Title from '../components/Title'
-import Navi from './Navi'
+import { Title } from '../components/Title'
+import { Navi } from './Navi'
 
 const StyledHeader = styled.header`
     width: 100%;
@@ -18,7 +18,7 @@ const StyledHeader = styled.header`
     box-shadow: 3px 3px 6px 0 #bdb9a6, -3px -3px 6px 0 #fffefa;
 `
 
-function Header() {
+export function Header() {
     return (
         <StyledHeader>
             <Title title="Conduit" />
@@ -26,5 +26,3 @@ function Header() {
         </StyledHeader>
     )
 }
-
-export default Header

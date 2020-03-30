@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import styled from 'styled-components'
 import { observer } from 'mobx-react'
-import UserContext from '../../contexts/UserContext'
+import { UserContext } from '../../contexts/UserContext'
 
 const StyledUserInfo = styled.div`
     margin: 20px;
@@ -46,7 +46,7 @@ function setImage(image: string) {
     else return image
 }
 
-const UserInfo = observer(() => {
+export const UserInfo = observer(() => {
     const user = useContext(UserContext)
     user.userInfo.image = setImage(user.userInfo.image)
     return (
@@ -58,5 +58,3 @@ const UserInfo = observer(() => {
         </StyledUserInfo>
     )
 })
-
-export default UserInfo

@@ -18,8 +18,6 @@ interface IProps {
     title: string
 }
 
-function Title(props: IProps) {
+export function Title(props: IProps) {
     return <StyledTitle>{props.title}</StyledTitle>
 }
-
-export default Title

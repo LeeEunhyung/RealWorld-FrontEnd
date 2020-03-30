@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import { observer } from 'mobx-react'
-import UserContext from '../../contexts/UserContext'
+import { UserContext } from '../../contexts/UserContext'
 
 const StyledNavi = styled.ul`
     margin-right: 1.5rem;
@@ -71,9 +71,7 @@ const setNavi = (isLogin: boolean) => {
     }
 }
 
-const Navi = observer(() => {
+export const Navi = observer(() => {
     const user = useContext(UserContext)
     return setNavi(user.isLogin)
 })
-
-export default Navi

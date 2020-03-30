@@ -2,11 +2,11 @@ import React, { useContext } from 'react'
 import styled from 'styled-components'
 import { observer } from 'mobx-react'
 
-import ContentsNavi from '../fragments/ContentsNavi'
+import { ContentsNavi } from '../fragments/ContentsNavi'
 
-import ArticlesContext from '../../contexts/ArticlesContext'
-import FeedContainer from '../fragments/FeedContainer'
-import YourFeedContainer from '../fragments/YourFeedContainer'
+import { ArticlesContext } from '../../contexts/ArticlesContext'
+import { FeedContainer } from '../fragments/FeedContainer'
+import { YourFeedContainer } from '../fragments/YourFeedContainer'
 
 const StyledHome = styled.div`
     max-width: 1200px;
@@ -22,7 +22,7 @@ const setMainContainer = (naviMenu: string) => {
     }
 }
 
-const Homepage = observer(() => {
+export const Homepage = observer(() => {
     const articles = useContext(ArticlesContext)
     return (
         <StyledHome>
@@ -36,5 +36,3 @@ const Homepage = observer(() => {
         </StyledHome>
     )
 })
-
-export default Homepage

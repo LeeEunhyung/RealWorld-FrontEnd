@@ -37,7 +37,7 @@ interface IProps {
     desc: string
 }
 
-function ContentArticle(props: IProps) {
+export function ContentArticle(props: IProps) {
     return (
         <StyledArticle>
             <StyledTitle>{props.title}</StyledTitle>
@@ -45,5 +45,3 @@ function ContentArticle(props: IProps) {
         </StyledArticle>
     )
 }
-
-export default ContentArticle

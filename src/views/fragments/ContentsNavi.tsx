@@ -35,7 +35,7 @@ interface IProps {
     selectNaviMenu: (_menu: string) => void
 }
 
-function ContentsNavi(props: IProps) {
+export function ContentsNavi(props: IProps) {
     return (
         <StyledNav>
             <StyledList
@@ -55,5 +55,3 @@ function ContentsNavi(props: IProps) {
         </StyledNav>
     )
 }
-
-export default ContentsNavi

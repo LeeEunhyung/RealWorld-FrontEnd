@@ -2,10 +2,10 @@ import React, { useContext } from 'react'
 import styled from 'styled-components'
 import { observer } from 'mobx-react'
 
-import Contents from './Contents'
-import PageNumber from './PageNumber'
+import { Contents } from './Contents'
+import { PageNumber } from './PageNumber'
 
-import ArticlesContext from '../../contexts/ArticlesContext'
+import { ArticlesContext } from '../../contexts/ArticlesContext'
 
 const StyledSectionContainer = styled.div`
     max-width: 900px;
@@ -19,7 +19,7 @@ const StyledSectionContainer = styled.div`
     }
 `
 
-const SectionContainer = observer(() => {
+export const SectionContainer = observer(() => {
     const articles = useContext(ArticlesContext)
 
     return (
@@ -48,5 +48,3 @@ const SectionContainer = observer(() => {
         </StyledSectionContainer>
     )
 })
-
-export default SectionContainer

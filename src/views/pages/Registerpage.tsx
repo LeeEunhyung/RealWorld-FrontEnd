@@ -1,9 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import Title from '../components/Title'
+import { Title } from '../components/Title'
 import { Link } from 'react-router-dom'
-import RegisterForm from '../fragments/RegisterForm'
+import { RegisterForm } from '../fragments/RegisterForm'
 
 const StyledSignup = styled.div`
     margin: 20px;
@@ -44,7 +44,7 @@ const StyledLink = styled.li`
     }
 `
 
-function Registserpage() {
+export function Registerpage() {
     return (
         <StyledSignup>
             <Title title="Sign Up" />
@@ -55,5 +55,3 @@ function Registserpage() {
         </StyledSignup>
     )
 }
-
-export default Registserpage

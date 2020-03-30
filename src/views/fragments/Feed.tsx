@@ -1,9 +1,9 @@
 import React, { useContext } from 'react'
 import styled from 'styled-components'
-import ArticlesContext from '../../contexts/ArticlesContext'
-import Contents from './Contents'
+import { ArticlesContext } from '../../contexts/ArticlesContext'
+import { Contents } from './Contents'
 import { observer } from 'mobx-react'
-import PageNumber from './PageNumber'
+import { PageNumber } from './PageNumber'
 
 const StyledFeed = styled.section`
     max-width: 900px;
@@ -13,7 +13,7 @@ const StyledFeed = styled.section`
     justify-content: center;
 `
 
-const Feed = observer(() => {
+export const Feed = observer(() => {
     const articles = useContext(ArticlesContext)
     return (
         <StyledFeed>
@@ -32,5 +32,3 @@ const Feed = observer(() => {
         </StyledFeed>
     )
 })
-
-export default Feed

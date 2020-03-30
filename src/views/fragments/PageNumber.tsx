@@ -2,8 +2,8 @@ import React, { useContext } from 'react'
 import styled from 'styled-components'
 import { observer } from 'mobx-react'
 
-import NumberButton from '../components/NumberButton'
-import ArticlesContext from '../../contexts/ArticlesContext'
+import { NumberButton } from '../components/NumberButton'
+import { ArticlesContext } from '../../contexts/ArticlesContext'
 
 const StyledPageNumber = styled.div`
     max-width: 560px;
@@ -26,7 +26,7 @@ function setPageNumberList(pageNumber: number) {
     return list
 }
 
-const PageNumber = observer(() => {
+export const PageNumber = observer(() => {
     const articles = useContext(ArticlesContext)
     const pageNumberList: number[] = setPageNumberList(articles.pageCount)
 
@@ -66,5 +66,3 @@ const PageNumber = observer(() => {
         </StyledPageNumber>
     )
 })
-
-export default PageNumber

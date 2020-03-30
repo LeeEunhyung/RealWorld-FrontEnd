@@ -1,8 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import SectionContainer from './SectionContainer'
-import AsideContainer from './AsideContainer'
+import { SectionContainer } from './SectionContainer'
+import { AsideContainer } from './AsideContainer'
 
 const StyledMainContainer = styled.div`
     max-width: 1200px;
@@ -12,7 +12,7 @@ const StyledMainContainer = styled.div`
     flex-wrap: wrap;
 `
 
-function MainContainer() {
+export function MainContainer() {
     return (
         <StyledMainContainer>
             <SectionContainer />
@@ -20,5 +20,3 @@ function MainContainer() {
         </StyledMainContainer>
     )
 }
-
-export default MainContainer

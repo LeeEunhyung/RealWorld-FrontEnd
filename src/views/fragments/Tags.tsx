@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import styled from 'styled-components'
 import { observer } from 'mobx-react'
 
-import ArticlesContext from '../../contexts/ArticlesContext'
+import { ArticlesContext } from '../../contexts/ArticlesContext'
 
 const StyledTags = styled.section`
     margin: 1rem;
@@ -20,7 +20,7 @@ const StyledTags = styled.section`
     }
 `
 
-const Tags = observer(() => {
+export const Tags = observer(() => {
     const articles = useContext(ArticlesContext)
     return (
         <StyledTags>
@@ -32,5 +32,3 @@ const Tags = observer(() => {
         </StyledTags>
     )
 })
-
-export default Tags

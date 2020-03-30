@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import axios from 'axios'
 import styled from 'styled-components'
 import { observer } from 'mobx-react'
-import UserContext from '../../contexts/UserContext'
+import { UserContext } from '../../contexts/UserContext'
 
 const StyledForm = styled.form`
     width: 90%;
@@ -48,7 +48,7 @@ const StyledForm = styled.form`
     }
 `
 
-const LoginForm = observer(() => {
+export const LoginForm = observer(() => {
     const user = useContext(UserContext)
     let inputEmail: string = ''
     let inputPassword: string = ''
@@ -114,5 +114,3 @@ const LoginForm = observer(() => {
         </StyledForm>
     )
 })
-
-export default LoginForm

@@ -1,9 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
-import ContentArticle from '../components/ContentArticle'
-import ContentImage from '../components/ContentImage'
-import ContentButton from '../components/ContentButton'
+import { ContentArticle } from '../components/ContentArticle'
+import { ContentImage } from '../components/ContentImage'
+import { ContentButton } from '../components/ContentButton'
 
 const StyledArticle = styled.article`
     background-color: #ffffff;
@@ -32,7 +32,7 @@ interface IProps {
     favorited: boolean
 }
 
-function Contents(props: IProps) {
+export function Contents(props: IProps) {
     return (
         <StyledArticle>
             <Link to="/">
@@ -43,5 +43,3 @@ function Contents(props: IProps) {
         </StyledArticle>
     )
 }
-
-export default Contents

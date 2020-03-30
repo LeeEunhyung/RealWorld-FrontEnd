@@ -31,7 +31,7 @@ interface IProps {
     setClickedNumber: (clickedNumber: number | string) => void
 }
 
-function NumberButton(props: IProps) {
+export function NumberButton(props: IProps) {
     return (
         <StyledButton
             className={props.className}
@@ -43,5 +43,3 @@ function NumberButton(props: IProps) {
         />
     )
 }
-
-export default NumberButton

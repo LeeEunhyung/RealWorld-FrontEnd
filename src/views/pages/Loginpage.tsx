@@ -1,9 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import Title from '../components/Title'
+import { Title } from '../components/Title'
 import { Link } from 'react-router-dom'
-import LoginForm from '../fragments/LoginForm'
+import { LoginForm } from '../fragments/LoginForm'
 
 const StyledSignin = styled.div`
     margin: 20px;
@@ -44,7 +44,7 @@ const StyledLink = styled.li`
     }
 `
 
-function Loginpage() {
+export function Loginpage() {
     return (
         <StyledSignin>
             <Title title="Sign In" />
@@ -55,5 +55,3 @@ function Loginpage() {
         </StyledSignin>
     )
 }
-
-export default Loginpage

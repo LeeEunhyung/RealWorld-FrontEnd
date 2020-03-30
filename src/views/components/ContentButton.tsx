@@ -28,7 +28,7 @@ interface IProps {
     favorited: boolean
 }
 
-function ContentButton(props: IProps) {
+export function ContentButton(props: IProps) {
     return (
         <StyledButton
             className={String(props.favorited)}
@@ -37,5 +37,3 @@ function ContentButton(props: IProps) {
         />
     )
 }
-
-export default ContentButton

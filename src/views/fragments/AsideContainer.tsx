@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import Tags from './Tags'
+import { Tags } from './Tags'
 
 const StyledAsideContainer = styled.aside`
     margin: 5px 15px 5px;
@@ -15,12 +15,10 @@ const StyledAsideContainer = styled.aside`
     box-shadow: 3px 3px 6px 0 #bdb9a6, -3px -3px 6px 0 #fffefa;
 `
 
-function AsideContainer() {
+export function AsideContainer() {
     return (
         <StyledAsideContainer>
             <Tags />
         </StyledAsideContainer>
     )
 }
-
-export default AsideContainer

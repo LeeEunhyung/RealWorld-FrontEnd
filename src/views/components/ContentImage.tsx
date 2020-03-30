@@ -18,12 +18,10 @@ interface IProps {
     imgSrc: string
 }
 
-function ContentImage(props: IProps) {
+export function ContentImage(props: IProps) {
     return (
         <StyledImage>
             <img src={props.imgSrc} alt={props.imgSrc} />
         </StyledImage>
     )
 }
-
-export default ContentImage

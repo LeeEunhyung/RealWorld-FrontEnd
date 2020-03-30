@@ -1,8 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import Feed from './Feed'
-import AsideContainer from './AsideContainer'
+import { Feed } from './Feed'
+import { AsideContainer } from './AsideContainer'
 
 const StyledFeedContainer = styled.div`
     max-width: 1200px;
@@ -12,7 +12,7 @@ const StyledFeedContainer = styled.div`
     flex-wrap: wrap;
 `
 
-function FeedContainer() {
+export function FeedContainer() {
     return (
         <StyledFeedContainer>
             <Feed />
@@ -20,5 +20,3 @@ function FeedContainer() {
         </StyledFeedContainer>
     )
 }
-
-export default FeedContainer

@@ -46,7 +46,7 @@ const StyledForm = styled.form`
     }
 `
 
-function LoginForm() {
+export function RegisterForm() {
     let inputUsername: string = ''
     let inputEmail: string = ''
     let inputPassword: string = ''
@@ -105,5 +105,3 @@ function LoginForm() {
         </StyledForm>
     )
 }
-
-export default LoginForm

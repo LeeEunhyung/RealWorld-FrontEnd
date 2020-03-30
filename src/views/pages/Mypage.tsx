@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import UserInfo from '../fragments/UserInfo'
+import { UserInfo } from '../fragments/UserInfo'
 
 const StyledMain = styled.main`
     margin: 20px;
@@ -15,7 +15,7 @@ const StyledMain = styled.main`
     flex-wrap: wrap;
 `
 
-function Mypage() {
+export function Mypage() {
     return (
         <div>
             <StyledMain>
@@ -24,5 +24,3 @@ function Mypage() {
         </div>
     )
 }
-
-export default Mypage
