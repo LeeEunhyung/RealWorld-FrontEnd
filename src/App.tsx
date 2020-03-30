@@ -3,10 +3,10 @@ import { BrowserRouter as Router, Route } from 'react-router-dom'
 import styled from 'styled-components'
 
 import { Header } from './views/fragments/Header'
-import { HomePage } from './views/pages/Homepage'
-import { LoginPage } from './views/pages/Loginpage'
-import { RegisterPage } from './views/pages/Registerpage'
-import { MyPage } from './views/pages/Mypage'
+import { HomePage } from './views/pages/HomePage'
+import { LoginPage } from './views/pages/LoginPage'
+import { RegisterPage } from './views/pages/RegisterPage'
+import { MyPage } from './views/pages/MyPage'
 
 const StyledApp = styled.div`
     display: flex;
