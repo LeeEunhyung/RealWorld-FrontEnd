@@ -1,29 +1,17 @@
 import { observable, action } from 'mobx'
-import axios from 'axios'
+import { ArticlesApis } from '../../apis/ArticlesApis'
 
 export class YourFeeds {
     @observable public contents: any[] = []
     @observable public selectedPage: number = 1
     @observable public pageCount: number = 1
 
-    constructor() {
-        this.getArticles()
-    }
-
     @action public getArticles = async () => {
         const _offset = (this.selectedPage - 1) * 6 + 1
-        await axios({
-            //url: `https://conduit.productionready.io/api/articles?offset=${_offset}&limit=6&author=jake`,
-            url: `https://conduit.productionready.io/api/articles?offset=${_offset}&limit=6&author=jake`,
-            method: 'GET',
+        await ArticlesApis.getYourFeeds(_offset).then(response => {
+            this.contents = response.data.articles
+            this.setPageCount(response.data.articlesCount)
         })
-            .then(response => {
-                this.contents = response.data.articles
-                this.setPageCount(response.data.articlesCount)
-            })
-            .catch(err => {
-                console.log(err)
-            })
     }
 
     @action public setPageCount = (articlesCount: number) => {

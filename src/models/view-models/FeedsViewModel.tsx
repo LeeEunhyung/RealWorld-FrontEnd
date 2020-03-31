@@ -7,21 +7,13 @@ export class Feeds {
     @observable public pageCount: number = 1
     @observable public articlesCount: number = 0
 
-    constructor() {
-        this.getArticles()
-    }
-
     @action public getArticles = async () => {
         const _offset = (this.selectedPage - 1) * 6 + 1
-        await ArticlesApis.getArticles(_offset)
-            .then(response => {
-                this.contents = response.data.articles
-                this.articlesCount = response.data.articlesCount
-                this.setPageCount()
-            })
-            .catch(err => {
-                console.log(err)
-            })
+        await ArticlesApis.getFeeds(_offset).then(response => {
+            this.contents = response.data.articles
+            this.articlesCount = response.data.articlesCount
+            this.setPageCount()
+        })
     }
 
     @action public setPageCount = () => {

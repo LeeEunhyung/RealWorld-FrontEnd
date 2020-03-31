@@ -38,6 +38,7 @@ export const NumberButton = observer((props: IProps) => {
     const user = useContext(UserContext)
     const feeds = useContext(FeedsContext)
     const yourFeeds = useContext(YourFeedsContext)
+
     return (
         <StyledButton
             className={props.className}
@@ -47,7 +48,6 @@ export const NumberButton = observer((props: IProps) => {
                 if (user.selectedNaviMenu === 'Feed') {
                     feeds.setClickedNumber(e.target.value)
                 } else {
-                    console.log('yourfeed')
                     yourFeeds.setClickedNumber(e.target.value)
                 }
             }}

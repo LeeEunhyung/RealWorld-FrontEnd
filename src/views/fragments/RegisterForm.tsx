@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import { UserApis } from '../../apis/UserApis'
 import { observer } from 'mobx-react'
 import { UserContext } from '../../contexts/UserContext'
+import { useHistory } from 'react-router-dom'
 
 const StyledForm = styled.form`
     width: 90%;
@@ -51,54 +52,52 @@ const StyledForm = styled.form`
 
 export const RegisterForm = observer(() => {
     const user = useContext(UserContext)
-    let inputUserName: string = ''
-    let inputEmail: string = ''
-    let inputPassword: string = ''
+    let userName: string = ''
+    let email: string = ''
+    let password: string = ''
+    let history = useHistory()
     return (
         <StyledForm>
             <input
                 type="text"
                 placeholder="Username"
                 onChange={function(e) {
-                    inputUserName = e.target.value
+                    userName = e.target.value
                 }}
             />
             <input
                 type="text"
                 placeholder="Email"
                 onChange={function(e) {
-                    inputEmail = e.target.value
+                    email = e.target.value
                 }}
             />
             <input
                 type="password"
                 placeholder="Password"
                 onChange={function(e) {
-                    inputPassword = e.target.value
+                    password = e.target.value
                 }}
             />
             <input
                 type="button"
                 value="Sign up"
                 onClick={async () => {
-                    await UserApis.checkRegister(
-                        inputUserName,
-                        inputEmail,
-                        inputPassword,
-                    )
+                    await UserApis.checkRegister(userName, email, password)
                         .then(function(response) {
                             localStorage.setItem(
                                 'token',
                                 response.data.user.token,
                             )
-                            window.location.href = '/'
                         })
-                        .catch(function(err) {
-                            console.log(err)
+                        .catch(function(errors) {
+                            alert(errors)
                         })
+                    if (localStorage.getItem('token') === null) return
+
                     await UserApis.getUserInfo().then(function(response) {
-                        user.userInfo = response.data.user
-                        user.setIsLogin()
+                        user.setUserInfo(response.data.user)
+                        history.push('/home')
                     })
                 }}
             />

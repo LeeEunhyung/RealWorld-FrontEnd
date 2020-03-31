@@ -9,6 +9,11 @@ export class User {
         this.setIsLogin()
     }
 
+    @action public setUserInfo(data: any) {
+        this.userInfo = data
+        this.setIsLogin()
+    }
+
     @action public setIsLogin() {
         this.isLogin = localStorage.getItem('token') === null ? false : true
     }

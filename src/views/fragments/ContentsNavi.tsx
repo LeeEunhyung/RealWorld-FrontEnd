@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
+import { observer } from 'mobx-react'
+import { UserContext } from '../../contexts/UserContext'
 
-const StyledNav = styled.nav`
+const StyledNavi = styled.nav`
     height: 60px;
     max-width: 1200px;
     margin: 1rem 0 1rem;
@@ -33,15 +35,30 @@ const StyledList = styled.li`
     cursor: pointer;
 `
 
-export function ContentsNavi() {
-    return (
-        <StyledNav>
-            <StyledList>
-                <Link to="/home">Feed</Link>
-            </StyledList>
-            <StyledList>
-                <Link to="/home/your-feed">Your Feed</Link>
-            </StyledList>
-        </StyledNav>
-    )
+function setContentsNavi(isLogin: boolean) {
+    if (isLogin) {
+        return (
+            <StyledNavi>
+                <StyledList>
+                    <Link to="/home">Feed</Link>
+                </StyledList>
+                <StyledList>
+                    <Link to="/home/your-feed">Your Feed</Link>
+                </StyledList>
+            </StyledNavi>
+        )
+    } else {
+        return (
+            <StyledNavi>
+                <StyledList>
+                    <Link to="/home">Feed</Link>
+                </StyledList>
+            </StyledNavi>
+        )
+    }
 }
+
+export const ContentsNavi = observer(() => {
+    const user = useContext(UserContext)
+    return setContentsNavi(user.isLogin)
+})

@@ -4,6 +4,7 @@ import { observer } from 'mobx-react'
 import { UserContext } from '../../contexts/UserContext'
 
 import { UserApis } from '../../apis/UserApis'
+import { useHistory } from 'react-router-dom'
 
 const StyledForm = styled.form`
     width: 90%;
@@ -53,6 +54,7 @@ export const LoginForm = observer(() => {
     const user = useContext(UserContext)
     let inputEmail: string = ''
     let inputPassword: string = ''
+    let history = useHistory()
     return (
         <StyledForm>
             <input
@@ -79,20 +81,16 @@ export const LoginForm = observer(() => {
                                 'token',
                                 response.data.user.token,
                             )
-                            window.location.href = '/home'
                         })
                         .catch(function(err) {
                             alert(err)
                         })
+                    if (localStorage.getItem('token') === null) return
 
-                    await UserApis.getUserInfo()
-                        .then(function(response) {
-                            user.userInfo = response.data.user
-                            user.setIsLogin()
-                        })
-                        .catch(function(err) {
-                            alert(err)
-                        })
+                    await UserApis.getUserInfo().then(function(response) {
+                        user.setUserInfo(response.data.user)
+                        history.push('/home')
+                    })
                 }}
             />
         </StyledForm>

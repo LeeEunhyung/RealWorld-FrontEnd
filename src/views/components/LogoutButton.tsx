@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import styled from 'styled-components'
 import { UserContext } from '../../contexts/UserContext'
 import { observer } from 'mobx-react'
+import { useHistory } from 'react-router-dom'
 
 const StyledButton = styled.input`
     background-color: #ff4501;
@@ -13,6 +14,7 @@ const StyledButton = styled.input`
 
 export const LogoutButton = observer(() => {
     const user = useContext(UserContext)
+    let history = useHistory()
     return (
         <StyledButton
             type="button"
@@ -20,6 +22,7 @@ export const LogoutButton = observer(() => {
             onClick={() => {
                 localStorage.removeItem('token')
                 user.setIsLogin()
+                history.push('/home')
             }}
         />
     )

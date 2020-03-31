@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import styled from 'styled-components'
 import { YourFeedsContext } from '../../contexts/YourFeedsContext'
 import { Contents } from './Contents'
@@ -16,8 +16,13 @@ const StyledYourFeed = styled.section`
 
 export const YourFeed = observer(() => {
     const user = useContext(UserContext)
-    user.selectedNaviMenu = 'Your Feed'
     const yourFeeds = useContext(YourFeedsContext)
+
+    useEffect(() => {
+        user.selectedNaviMenu = 'Your Feed'
+        yourFeeds.getArticles()
+    }, [])
+
     return (
         <StyledYourFeed>
             {yourFeeds.contents.map(data => {
