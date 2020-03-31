@@ -5,10 +5,6 @@ export class User {
     @observable selectedNaviMenu: string = 'Feed'
     @observable userInfo: any
 
-    constructor() {
-        this.setIsLogin()
-    }
-
     @action public setUserInfo(data: any) {
         this.userInfo = data
         this.setIsLogin()

@@ -35,7 +35,7 @@ interface IProps {
 export function Contents(props: IProps) {
     return (
         <StyledArticle>
-            <Link to="/">
+            <Link to="/home">
                 <ContentImage imgSrc={props.imgSrc} />
                 <ContentArticle title={props.title} desc={props.desc} />
             </Link>

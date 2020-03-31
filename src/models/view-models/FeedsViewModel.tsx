@@ -5,23 +5,16 @@ export class Feeds {
     @observable public contents: any[] = []
     @observable public selectedPage: number = 1
     @observable public pageCount: number = 1
-    @observable public articlesCount: number = 0
 
     @action public getArticles = async () => {
         const _offset = (this.selectedPage - 1) * 6 + 1
         await ArticlesApis.getFeeds(_offset).then(response => {
             this.contents = response.data.articles
-            this.articlesCount = response.data.articlesCount
-            this.setPageCount()
+            this.pageCount =
+                response.data.articlesCount % 6 === 0
+                    ? response.data.articlesCount / 6
+                    : Math.floor(response.data.articlesCount / 6) + 1
         })
-    }
-
-    @action public setPageCount = () => {
-        if (this.articlesCount % 6 === 0) {
-            this.pageCount = this.articlesCount / 6
-        } else {
-            this.pageCount = Math.floor(this.articlesCount / 6) + 1
-        }
     }
 
     @action public setClickedNumber = (clickedNumber: string | number) => {

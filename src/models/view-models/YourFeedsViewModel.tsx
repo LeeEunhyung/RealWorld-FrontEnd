@@ -8,18 +8,14 @@ export class YourFeeds {
 
     @action public getArticles = async () => {
         const _offset = (this.selectedPage - 1) * 6 + 1
+
         await ArticlesApis.getYourFeeds(_offset).then(response => {
             this.contents = response.data.articles
-            this.setPageCount(response.data.articlesCount)
+            this.pageCount =
+                response.data.articlesCount % 6 === 0
+                    ? response.data.articlesCount / 6
+                    : Math.floor(response.data.articlesCount / 6) + 1
         })
-    }
-
-    @action public setPageCount = (articlesCount: number) => {
-        if (articlesCount % 6 === 0) {
-            this.pageCount = articlesCount / 6
-        } else {
-            this.pageCount = Math.floor(articlesCount / 6) + 1
-        }
     }
 
     @action public setClickedNumber = (clickedNumber: string | number) => {

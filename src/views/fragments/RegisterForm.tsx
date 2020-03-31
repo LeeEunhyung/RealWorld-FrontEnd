@@ -91,7 +91,7 @@ export const RegisterForm = observer(() => {
                             )
                         })
                         .catch(function(errors) {
-                            alert(errors)
+                            alert(errors.response.body)
                         })
                     if (localStorage.getItem('token') === null) return
 

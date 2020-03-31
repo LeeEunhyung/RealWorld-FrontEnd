@@ -83,7 +83,7 @@ export const LoginForm = observer(() => {
                             )
                         })
                         .catch(function(err) {
-                            alert(err)
+                            alert(err.response.body)
                         })
                     if (localStorage.getItem('token') === null) return
 
