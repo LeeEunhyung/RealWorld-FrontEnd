@@ -1,5 +1,9 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
+import { observer } from 'mobx-react'
+import { FeedsContext } from '../../contexts/FeedsContext'
+import { UserContext } from '../../contexts/UserContext'
+import { YourFeedsContext } from '../../contexts/YourFeedsContext'
 
 const StyledButton = styled.input`
     width: 40px;
@@ -28,18 +32,25 @@ const StyledButton = styled.input`
 interface IProps {
     value: string | number
     className: string
-    setClickedNumber: (clickedNumber: number | string) => void
 }
 
-export function NumberButton(props: IProps) {
+export const NumberButton = observer((props: IProps) => {
+    const user = useContext(UserContext)
+    const feeds = useContext(FeedsContext)
+    const yourFeeds = useContext(YourFeedsContext)
     return (
         <StyledButton
             className={props.className}
             type="button"
             value={props.value}
             onClick={function(e: any) {
-                props.setClickedNumber(e.target.value)
+                if (user.selectedNaviMenu === 'Feed') {
+                    feeds.setClickedNumber(e.target.value)
+                } else {
+                    console.log('yourfeed')
+                    yourFeeds.setClickedNumber(e.target.value)
+                }
             }}
         />
     )
-}
+})

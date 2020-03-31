@@ -4,9 +4,9 @@ import { observer } from 'mobx-react'
 
 import { ContentsNavi } from '../fragments/ContentsNavi'
 
-import { ArticlesContext } from '../../contexts/ArticlesContext'
 import { FeedContainer } from '../fragments/FeedContainer'
 import { YourFeedContainer } from '../fragments/YourFeedContainer'
+import { Switch, Route } from 'react-router-dom'
 
 const StyledHome = styled.div`
     max-width: 1200px;
@@ -14,25 +14,18 @@ const StyledHome = styled.div`
     flex-direction: column;
 `
 
-const setMainContainer = (naviMenu: string) => {
-    if (naviMenu === 'Feed') {
-        return <FeedContainer />
-    } else if (naviMenu === 'Your Feed') {
-        return <YourFeedContainer />
-    }
-}
-
-export const HomePage = observer(() => {
-    const articles = useContext(ArticlesContext)
+export function HomePage() {
     return (
         <StyledHome>
-            <ContentsNavi
-                selectNaviMenu={function(_menu: string) {
-                    articles.naviMenu = _menu
-                    articles.getArticles()
-                }}
-            />
-            {setMainContainer(articles.naviMenu)}
+            <ContentsNavi />
+            <Switch>
+                <Route exact path="/home" component={FeedContainer} />
+                <Route
+                    exact
+                    path="/home/your-feed"
+                    component={YourFeedContainer}
+                />
+            </Switch>
         </StyledHome>
     )
-})
+}

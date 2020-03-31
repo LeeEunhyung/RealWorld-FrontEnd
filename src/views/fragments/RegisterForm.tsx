@@ -1,6 +1,9 @@
-import React from 'react'
-import axios from 'axios'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
+
+import { UserApis } from '../../apis/UserApis'
+import { observer } from 'mobx-react'
+import { UserContext } from '../../contexts/UserContext'
 
 const StyledForm = styled.form`
     width: 90%;
@@ -46,8 +49,9 @@ const StyledForm = styled.form`
     }
 `
 
-export function RegisterForm() {
-    let inputUsername: string = ''
+export const RegisterForm = observer(() => {
+    const user = useContext(UserContext)
+    let inputUserName: string = ''
     let inputEmail: string = ''
     let inputPassword: string = ''
     return (
@@ -56,7 +60,7 @@ export function RegisterForm() {
                 type="text"
                 placeholder="Username"
                 onChange={function(e) {
-                    inputUsername = e.target.value
+                    inputUserName = e.target.value
                 }}
             />
             <input
@@ -76,32 +80,28 @@ export function RegisterForm() {
             <input
                 type="button"
                 value="Sign up"
-                onClick={function() {
-                    axios({
-                        url: 'https://conduit.productionready.io/api/users',
-                        method: 'POST',
-                        data: {
-                            user: {
-                                username: inputUsername,
-                                email: inputEmail,
-                                password: inputPassword,
-                            },
-                        },
-                    })
+                onClick={async () => {
+                    await UserApis.checkRegister(
+                        inputUserName,
+                        inputEmail,
+                        inputPassword,
+                    )
                         .then(function(response) {
                             localStorage.setItem(
-                                'username',
-                                response.data.user.username,
+                                'token',
+                                response.data.user.token,
                             )
                             window.location.href = '/'
                         })
-                        .catch(function() {
-                            alert(
-                                'username or email or password does not match the format.',
-                            )
+                        .catch(function(err) {
+                            console.log(err)
                         })
+                    await UserApis.getUserInfo().then(function(response) {
+                        user.userInfo = response.data.user
+                        user.setIsLogin()
+                    })
                 }}
             />
         </StyledForm>
     )
-}
+})

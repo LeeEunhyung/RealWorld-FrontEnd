@@ -3,7 +3,9 @@ import styled from 'styled-components'
 import { observer } from 'mobx-react'
 
 import { NumberButton } from '../components/NumberButton'
-import { ArticlesContext } from '../../contexts/ArticlesContext'
+import { FeedsContext } from '../../contexts/FeedsContext'
+import { YourFeedsContext } from '../../contexts/YourFeedsContext'
+import { UserContext } from '../../contexts/UserContext'
 
 const StyledPageNumber = styled.div`
     max-width: 560px;
@@ -27,42 +29,22 @@ function setPageNumberList(pageNumber: number) {
 }
 
 export const PageNumber = observer(() => {
-    const articles = useContext(ArticlesContext)
-    const pageNumberList: number[] = setPageNumberList(articles.pageCount)
-
-    const setClickedNumber = (clickedNumber: string | number) => {
-        if (clickedNumber === '<') {
-            articles.selectedPage = 1
-        } else if (clickedNumber === '>') {
-            articles.selectedPage = articles.pageCount
-        } else {
-            articles.selectedPage = Number(clickedNumber)
-        }
-        articles.getArticles()
-    }
+    const user = useContext(UserContext)
+    const feeds = useContext(FeedsContext)
+    const yourFeeds = useContext(YourFeedsContext)
+    const _pageCount =
+        user.selectedNaviMenu === 'Feed' ? feeds.pageCount : yourFeeds.pageCount
+    const pageNumberList: number[] = setPageNumberList(_pageCount)
 
     return (
         <StyledPageNumber>
-            <NumberButton
-                setClickedNumber={setClickedNumber}
-                className="arrow"
-                value="<"
-            />
+            <NumberButton className="arrow" value="<" />
             {pageNumberList.map(data => {
                 return (
-                    <NumberButton
-                        setClickedNumber={setClickedNumber}
-                        key={data}
-                        className="number"
-                        value={data}
-                    />
+                    <NumberButton key={data} className="number" value={data} />
                 )
             })}
-            <NumberButton
-                setClickedNumber={setClickedNumber}
-                className="arrow"
-                value=">"
-            />
+            <NumberButton className="arrow" value=">" />
         </StyledPageNumber>
     )
 })

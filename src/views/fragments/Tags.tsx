@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import styled from 'styled-components'
 import { observer } from 'mobx-react'
 
-import { ArticlesContext } from '../../contexts/ArticlesContext'
+import { FeedsContext } from '../../contexts/FeedsContext'
 
 const StyledTags = styled.section`
     margin: 1rem;
@@ -21,7 +21,7 @@ const StyledTags = styled.section`
 `
 
 export const Tags = observer(() => {
-    const articles = useContext(ArticlesContext)
+    const articles = useContext(FeedsContext)
     return (
         <StyledTags>
             {articles.contents.map((data: any) => {

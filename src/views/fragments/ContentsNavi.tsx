@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
 const StyledNav = styled.nav`
     height: 60px;
@@ -14,6 +15,7 @@ const StyledNav = styled.nav`
         border-bottom: 6px solid #c8c8c8;
     }
 `
+
 const StyledList = styled.li`
     list-style: none;
     border: none;
@@ -31,26 +33,14 @@ const StyledList = styled.li`
     cursor: pointer;
 `
 
-interface IProps {
-    selectNaviMenu: (_menu: string) => void
-}
-
-export function ContentsNavi(props: IProps) {
+export function ContentsNavi() {
     return (
         <StyledNav>
-            <StyledList
-                onClick={function() {
-                    props.selectNaviMenu('Feed')
-                }}
-            >
-                Feed
+            <StyledList>
+                <Link to="/home">Feed</Link>
             </StyledList>
-            <StyledList
-                onClick={function(e) {
-                    props.selectNaviMenu('Your Feed')
-                }}
-            >
-                Your Feed
+            <StyledList>
+                <Link to="/home/your-feed">Your Feed</Link>
             </StyledList>
         </StyledNav>
     )

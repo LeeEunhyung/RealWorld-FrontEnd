@@ -1,8 +1,9 @@
 import React, { useContext } from 'react'
-import axios from 'axios'
 import styled from 'styled-components'
 import { observer } from 'mobx-react'
 import { UserContext } from '../../contexts/UserContext'
+
+import { UserApis } from '../../apis/UserApis'
 
 const StyledForm = styled.form`
     width: 90%;
@@ -71,43 +72,26 @@ export const LoginForm = observer(() => {
             <input
                 type="button"
                 value="Sign in"
-                onClick={function() {
-                    axios({
-                        url:
-                            'https://conduit.productionready.io/api/users/login',
-                        method: 'POST',
-                        data: {
-                            user: {
-                                email: inputEmail,
-                                password: inputPassword,
-                            },
-                        },
-                    })
+                onClick={async () => {
+                    await UserApis.checkLogin(inputEmail, inputPassword)
                         .then(function(response) {
                             localStorage.setItem(
                                 'token',
                                 response.data.user.token,
                             )
-                            axios({
-                                url: `https://conduit.productionready.io/api/user`,
-                                method: 'GET',
-                                headers: {
-                                    Authorization: `Token ${localStorage.getItem(
-                                        'token',
-                                    )}`,
-                                },
-                            })
-                                .then(function(response) {
-                                    console.log(response.data)
-                                    user.userInfo = response.data.user
-                                    user.isLogin = true
-                                })
-                                .catch(function(err) {
-                                    alert(err)
-                                })
+                            window.location.href = '/home'
                         })
-                        .catch(function() {
-                            alert('email or password is invalid.')
+                        .catch(function(err) {
+                            alert(err)
+                        })
+
+                    await UserApis.getUserInfo()
+                        .then(function(response) {
+                            user.userInfo = response.data.user
+                            user.setIsLogin()
+                        })
+                        .catch(function(err) {
+                            alert(err)
                         })
                 }}
             />

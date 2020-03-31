@@ -1,9 +1,10 @@
 import React, { useContext } from 'react'
 import styled from 'styled-components'
-import { ArticlesContext } from '../../contexts/ArticlesContext'
+import { YourFeedsContext } from '../../contexts/YourFeedsContext'
 import { Contents } from './Contents'
 import { observer } from 'mobx-react'
 import { PageNumber } from './PageNumber'
+import { UserContext } from '../../contexts/UserContext'
 
 const StyledYourFeed = styled.section`
     max-width: 900px;
@@ -14,10 +15,12 @@ const StyledYourFeed = styled.section`
 `
 
 export const YourFeed = observer(() => {
-    const articles = useContext(ArticlesContext)
+    const user = useContext(UserContext)
+    user.selectedNaviMenu = 'Your Feed'
+    const yourFeeds = useContext(YourFeedsContext)
     return (
         <StyledYourFeed>
-            {articles.contents.map(data => {
+            {yourFeeds.contents.map(data => {
                 return (
                     <Contents
                         key={data.slug}

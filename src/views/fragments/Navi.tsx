@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import { observer } from 'mobx-react'
 import { UserContext } from '../../contexts/UserContext'
+import { LogoutButton } from '../components/LogoutButton'
 
 const StyledNavi = styled.ul`
     margin-right: 1.5rem;
@@ -10,7 +11,7 @@ const StyledNavi = styled.ul`
     justify-content: space-between;
     align-items: center;
 `
-// 스타일 바꾸기, 클릭한 메뉴 선택 유지, My page는 사진으로
+
 const StyledNaviList = styled.li`
     min-height: 25px;
     list-style: none;
@@ -46,11 +47,14 @@ const setNavi = (isLogin: boolean) => {
     if (isLogin) {
         return (
             <StyledNavi>
-                <StyledNaviList>
-                    <Link to="/">New story</Link>
-                </StyledNaviList>
                 <StyledNaviList className="mypage">
                     <Link to="/profile/:username">My page</Link>
+                </StyledNaviList>
+                <StyledNaviList>
+                    <Link to="/home">New story</Link>
+                </StyledNaviList>
+                <StyledNaviList>
+                    <LogoutButton />
                 </StyledNaviList>
             </StyledNavi>
         )
@@ -58,7 +62,7 @@ const setNavi = (isLogin: boolean) => {
         return (
             <StyledNavi>
                 <StyledNaviList>
-                    <Link to="/">New story</Link>
+                    <Link to="/home">New story</Link>
                 </StyledNaviList>
                 <StyledNaviList>
                     <Link to="/login">Sign in</Link>
@@ -73,5 +77,6 @@ const setNavi = (isLogin: boolean) => {
 
 export const Navi = observer(() => {
     const user = useContext(UserContext)
+    user.setIsLogin()
     return setNavi(user.isLogin)
 })
