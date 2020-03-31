@@ -19,7 +19,7 @@ export const Feed = observer(() => {
     const feeds = useContext(FeedsContext)
 
     useEffect(() => {
-        user.selectedNaviMenu = 'Feed'
+        user.setFeed()
         feeds.getArticles()
     }, [])
 

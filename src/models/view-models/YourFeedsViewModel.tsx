@@ -1,5 +1,7 @@
-import { observable, action } from 'mobx'
+import { observable, action, configure } from 'mobx'
 import { ArticlesApis } from '../../apis/ArticlesApis'
+
+configure({ enforceActions: 'observed' })
 
 export class YourFeeds {
     @observable public contents: any[] = []
@@ -8,14 +10,17 @@ export class YourFeeds {
 
     @action public getArticles = async () => {
         const _offset = (this.selectedPage - 1) * 6 + 1
-
         await ArticlesApis.getYourFeeds(_offset).then(response => {
-            this.contents = response.data.articles
-            this.pageCount =
-                response.data.articlesCount % 6 === 0
-                    ? response.data.articlesCount / 6
-                    : Math.floor(response.data.articlesCount / 6) + 1
+            this.setArticles(response.data)
         })
+    }
+
+    @action public setArticles(data: any) {
+        this.contents = data.articles
+        this.pageCount =
+            data.articlesCount % 6 === 0
+                ? data.articlesCount / 6
+                : Math.floor(data.articlesCount / 6) + 1
     }
 
     @action public setClickedNumber = (clickedNumber: string | number) => {

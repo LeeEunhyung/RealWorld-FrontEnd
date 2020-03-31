@@ -40,15 +40,8 @@ const StyledUserInfo = styled.div`
     }
 `
 
-function setImage(image: string) {
-    if (image === null)
-        return 'https://static.productionready.io/images/smiley-cyrus.jpg'
-    else return image
-}
-
 export const UserInfo = observer(() => {
     const user = useContext(UserContext)
-    user.userInfo.image = setImage(user.userInfo.image)
     return (
         <StyledUserInfo>
             <img src={user.userInfo.image} alt={user.userInfo.image} />
