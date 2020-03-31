@@ -4,6 +4,6 @@ import App from './App'
 
 test('renders elements', () => {
     const { getAllByText } = render(<App />)
-    const element = getAllByText(/dragon/i)
+    const element = getAllByText(/Conduit/i)
     expect(element).not.toBeNull()
 })
