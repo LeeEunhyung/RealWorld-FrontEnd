@@ -16,9 +16,9 @@ export class User {
             const res = yield UserApis.checkRegister(username, email, password)
             localStorage.setItem('token', res.data.user.token)
             this.isLogin = true
-            this.setUserInfo()
+            this.getUserInfo()
         } catch (e) {
-            console.error(e.message)
+            alert(e.message)
         }
     }
 
@@ -27,22 +27,30 @@ export class User {
             const res = yield UserApis.checkLogin(email, password)
             localStorage.setItem('token', res.data.user.token)
             this.isLogin = true
-            this.setUserInfo()
+            this.getUserInfo()
         } catch (e) {
-            console.error(e.message)
+            alert(e.message)
         }
     }
 
-    @asyncAction public *setUserInfo() {
+    @asyncAction public *getUserInfo() {
         try {
             const res = yield UserApis.getUserInfo()
-            this.userInfo = res.data
+            this.userInfo = res.data.user
             this.userInfo.image =
                 this.userInfo.image === null
                     ? 'https://static.productionready.io/images/smiley-cyrus.jpg'
                     : this.userInfo.imamge
         } catch (e) {
             console.error(e.message)
+        }
+    }
+
+    @action public setIsLogin() {
+        if (localStorage.getItem('token') === null) {
+            this.isLogin = false
+        } else {
+            this.isLogin = true
         }
     }
 
@@ -55,6 +63,7 @@ export class User {
     }
 
     @action public setLogout() {
+        localStorage.removeItem('token')
         this.isLogin = false
     }
 }

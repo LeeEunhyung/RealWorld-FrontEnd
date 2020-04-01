@@ -14,6 +14,13 @@ const StyledYourFeed = styled.section`
     justify-content: center;
 `
 
+const StyledNotice = styled.div`
+    width: 300px;
+    height: 302px;
+    font-weight: bolder;
+    text-align: center;
+`
+
 export const YourFeed = observer(() => {
     const user = useContext(UserContext)
     const yourFeeds = useContext(YourFeedsContext)
@@ -25,6 +32,12 @@ export const YourFeed = observer(() => {
 
     return (
         <StyledYourFeed>
+            {yourFeeds.dataState === 'loading' && (
+                <StyledNotice>Loading...</StyledNotice>
+            )}
+            {yourFeeds.dataState === 'none' && (
+                <StyledNotice>It&apos;s empty!</StyledNotice>
+            )}
             {yourFeeds.contents.map(data => {
                 return (
                     <Contents
@@ -36,7 +49,7 @@ export const YourFeed = observer(() => {
                     />
                 )
             })}
-            <PageNumber />
+            {yourFeeds.dataState === 'done' && <PageNumber />}
         </StyledYourFeed>
     )
 })

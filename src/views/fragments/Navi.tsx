@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import { observer } from 'mobx-react'
@@ -45,6 +45,7 @@ const StyledNaviList = styled.li`
 
 export const Navi = observer(() => {
     const user = useContext(UserContext)
+    user.setIsLogin()
     return (
         <StyledNavi>
             {user.isLogin && (

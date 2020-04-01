@@ -6,12 +6,15 @@ export class YourFeeds {
     @observable public contents: any[] = []
     @observable public selectedPage: number = 1
     @observable public pageCount: number = 1
+    @observable public dataState: string = 'loading'
 
     @asyncAction public *getArticles() {
-        const _offset = (this.selectedPage - 1) * 6 + 1
+        this.contents = []
+        this.dataState = 'loading'
         try {
-            const res = yield ArticlesApis.getYourFeeds(_offset)
-            this.setArticles(res)
+            const offset = (this.selectedPage - 1) * 6 + 1
+            const res = yield ArticlesApis.getYourFeeds(offset)
+            this.setArticles(res.data)
         } catch (e) {
             console.error(e.message)
         }
@@ -23,6 +26,7 @@ export class YourFeeds {
             data.articlesCount % 6 === 0
                 ? data.articlesCount / 6
                 : Math.floor(data.articlesCount / 6) + 1
+        this.dataState = this.contents.length === 0 ? 'none' : 'done'
     }
 
     @action public setClickedNumber = (clickedNumber: string | number) => {
