@@ -1,7 +1,6 @@
 import { observable, action } from 'mobx'
 import { ArticlesApis } from '../../apis/ArticlesApis'
 import { asyncAction } from 'mobx-utils'
-import { useHistory } from 'react-router-dom'
 
 export class Feeds {
     @observable public contents: any[] = []

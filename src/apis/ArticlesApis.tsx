@@ -26,4 +26,8 @@ export class ArticlesApis {
             },
         })
     }
+
+    static getTags() {
+        return httpClient.get('/tags')
+    }
 }
