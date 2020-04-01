@@ -1,10 +1,8 @@
 import React, { useContext } from 'react'
+import { useHistory } from 'react-router-dom'
 import styled from 'styled-components'
 import { observer } from 'mobx-react'
 import { UserContext } from '../../contexts/UserContext'
-
-import { UserApis } from '../../apis/UserApis'
-import { useHistory } from 'react-router-dom'
 
 const StyledForm = styled.form`
     width: 90%;
@@ -52,8 +50,8 @@ const StyledForm = styled.form`
 
 export const LoginForm = observer(() => {
     const user = useContext(UserContext)
-    let inputEmail: string = ''
-    let inputPassword: string = ''
+    let email: string = ''
+    let password: string = ''
     let history = useHistory()
     return (
         <StyledForm>
@@ -61,36 +59,22 @@ export const LoginForm = observer(() => {
                 type="text"
                 placeholder="Email"
                 onChange={function(e) {
-                    inputEmail = e.target.value
+                    email = e.target.value
                 }}
             />
             <input
                 type="password"
                 placeholder="Password"
                 onChange={function(e) {
-                    inputPassword = e.target.value
+                    password = e.target.value
                 }}
             />
             <input
                 type="button"
                 value="Sign in"
-                onClick={async () => {
-                    await UserApis.checkLogin(inputEmail, inputPassword)
-                        .then(function(response) {
-                            localStorage.setItem(
-                                'token',
-                                response.data.user.token,
-                            )
-                        })
-                        .catch(function(err) {
-                            alert(err.response.body)
-                        })
-                    if (localStorage.getItem('token') === null) return
-
-                    await UserApis.getUserInfo().then(function(response) {
-                        user.setUserInfo(response.data.user)
-                        history.push('/home')
-                    })
+                onClick={() => {
+                    user.checkLogin(email, password)
+                    history.push('/home')
                 }}
             />
         </StyledForm>

@@ -1,10 +1,9 @@
 import React, { useContext } from 'react'
+import { useHistory } from 'react-router-dom'
 import styled from 'styled-components'
 
-import { UserApis } from '../../apis/UserApis'
 import { observer } from 'mobx-react'
 import { UserContext } from '../../contexts/UserContext'
-import { useHistory } from 'react-router-dom'
 
 const StyledForm = styled.form`
     width: 90%;
@@ -52,7 +51,7 @@ const StyledForm = styled.form`
 
 export const RegisterForm = observer(() => {
     const user = useContext(UserContext)
-    let userName: string = ''
+    let username: string = ''
     let email: string = ''
     let password: string = ''
     let history = useHistory()
@@ -62,7 +61,7 @@ export const RegisterForm = observer(() => {
                 type="text"
                 placeholder="Username"
                 onChange={function(e) {
-                    userName = e.target.value
+                    username = e.target.value
                 }}
             />
             <input
@@ -82,23 +81,9 @@ export const RegisterForm = observer(() => {
             <input
                 type="button"
                 value="Sign up"
-                onClick={async () => {
-                    await UserApis.checkRegister(userName, email, password)
-                        .then(function(response) {
-                            localStorage.setItem(
-                                'token',
-                                response.data.user.token,
-                            )
-                        })
-                        .catch(function(errors) {
-                            alert(errors.response.body)
-                        })
-                    if (localStorage.getItem('token') === null) return
-
-                    await UserApis.getUserInfo().then(function(response) {
-                        user.setUserInfo(response.data.user)
-                        history.push('/home')
-                    })
+                onClick={() => {
+                    user.checkRegister(username, email, password)
+                    history.push('/home')
                 }}
             />
         </StyledForm>

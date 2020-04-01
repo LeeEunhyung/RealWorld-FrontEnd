@@ -21,7 +21,7 @@ export const LogoutButton = observer(() => {
             value="Logout"
             onClick={() => {
                 localStorage.removeItem('token')
-                user.setIsLogin()
+                user.setLogout()
                 history.push('/home')
             }}
         />
