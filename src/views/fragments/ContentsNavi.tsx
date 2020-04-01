@@ -35,30 +35,16 @@ const StyledList = styled.li`
     cursor: pointer;
 `
 
-function setContentsNavi(isLogin: boolean) {
-    if (isLogin) {
-        return (
-            <StyledNavi>
-                <StyledList>
-                    <Link to="/home">Feed</Link>
-                </StyledList>
-                <StyledList>
-                    <Link to="/home/your-feed">Your Feed</Link>
-                </StyledList>
-            </StyledNavi>
-        )
-    } else {
-        return (
-            <StyledNavi>
-                <StyledList>
-                    <Link to="/home">Feed</Link>
-                </StyledList>
-            </StyledNavi>
-        )
-    }
-}
-
 export const ContentsNavi = observer(() => {
     const user = useContext(UserContext)
-    return setContentsNavi(user.isLogin)
+    return (
+        <StyledNavi>
+            <StyledList>
+                <Link to="/home">Feed</Link>
+            </StyledList>
+            <StyledList>
+                {user.isLogin && <Link to="/home/your-feed">Your Feed</Link>}
+            </StyledList>
+        </StyledNavi>
+    )
 })

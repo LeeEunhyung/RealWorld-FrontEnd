@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import { observer } from 'mobx-react'
@@ -43,40 +43,39 @@ const StyledNaviList = styled.li`
     }
 `
 
-const setNavi = (isLogin: boolean) => {
-    if (isLogin) {
-        return (
-            <StyledNavi>
+export const Navi = observer(() => {
+    const user = useContext(UserContext)
+
+    useEffect(function() {
+        console.log('navi')
+        user.setIsLogin()
+    })
+
+    return (
+        <StyledNavi>
+            {user.isLogin && (
                 <StyledNaviList className="mypage">
                     <Link to="/profile/:username">My page</Link>
                 </StyledNaviList>
-                <StyledNaviList>
-                    <Link to="/home">New story</Link>
-                </StyledNaviList>
-                <StyledNaviList>
-                    <LogoutButton />
-                </StyledNaviList>
-            </StyledNavi>
-        )
-    } else {
-        return (
-            <StyledNavi>
-                <StyledNaviList>
-                    <Link to="/home">New story</Link>
-                </StyledNaviList>
+            )}
+            <StyledNaviList>
+                <Link to="/home">New story</Link>
+            </StyledNaviList>
+            {!user.isLogin && (
                 <StyledNaviList>
                     <Link to="/login">Sign in</Link>
                 </StyledNaviList>
+            )}
+            {!user.isLogin && (
                 <StyledNaviList>
                     <Link to="/register">Sign up</Link>
                 </StyledNaviList>
-            </StyledNavi>
-        )
-    }
-}
-
-export const Navi = observer(() => {
-    const user = useContext(UserContext)
-    user.setIsLogin()
-    return setNavi(user.isLogin)
+            )}
+            {user.isLogin && (
+                <StyledNaviList>
+                    <LogoutButton />
+                </StyledNaviList>
+            )}
+        </StyledNavi>
+    )
 })
