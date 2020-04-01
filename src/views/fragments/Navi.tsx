@@ -45,12 +45,6 @@ const StyledNaviList = styled.li`
 
 export const Navi = observer(() => {
     const user = useContext(UserContext)
-
-    useEffect(function() {
-        console.log('navi')
-        user.setIsLogin()
-    })
-
     return (
         <StyledNavi>
             {user.isLogin && (

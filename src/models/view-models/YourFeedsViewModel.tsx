@@ -10,9 +10,13 @@ export class YourFeeds {
 
     @action public getArticles = async () => {
         const _offset = (this.selectedPage - 1) * 6 + 1
-        await ArticlesApis.getYourFeeds(_offset).then(response => {
-            this.setArticles(response.data)
-        })
+        await ArticlesApis.getYourFeeds(_offset)
+            .then(response => {
+                this.setArticles(response.data)
+            })
+            .catch(err => {
+                console.log(err)
+            })
     }
 
     @action public setArticles(data: any) {

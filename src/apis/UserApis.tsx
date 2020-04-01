@@ -1,41 +1,32 @@
 import axios from 'axios'
 
+export const httpClient = axios.create({
+    baseURL: 'https://conduit.productionready.io/api',
+    url: '/api',
+})
+
 export class UserApis {
-    static checkLogin(inputEmail: string, inputPassword: string) {
-        return axios({
-            url: 'https://conduit.productionready.io/api/users/login',
-            method: 'POST',
-            data: {
-                user: {
-                    email: inputEmail,
-                    password: inputPassword,
-                },
+    static checkLogin(email: string, password: string) {
+        return httpClient.post('/users/login', {
+            user: {
+                email,
+                password,
             },
         })
     }
 
-    static checkRegister(
-        inputUserName: string,
-        inputEmail: string,
-        inputPassword: string,
-    ) {
-        return axios({
-            url: 'https://conduit.productionready.io/api/users',
-            method: 'POST',
-            data: {
-                user: {
-                    username: inputUserName,
-                    email: inputEmail,
-                    password: inputPassword,
-                },
+    static checkRegister(username: string, email: string, password: string) {
+        return httpClient.post('/users', {
+            user: {
+                username,
+                email,
+                password,
             },
         })
     }
 
     static getUserInfo() {
-        return axios({
-            url: `https://conduit.productionready.io/api/user`,
-            method: 'GET',
+        return httpClient.get('/user', {
             headers: {
                 Authorization: `Token ${localStorage.getItem('token')}`,
             },
