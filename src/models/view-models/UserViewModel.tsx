@@ -5,6 +5,8 @@ import { UserApis } from '../../apis/UserApis'
 export class User {
     @observable isLogin: boolean = false
     @observable selectedNaviMenu: string = 'Feed'
+    @observable isFeedSelected: string = 'yes'
+    @observable isYourFeedSelected: string = 'no'
     @observable userInfo: any
 
     @asyncAction public *checkRegister(
@@ -56,10 +58,14 @@ export class User {
 
     @action public setFeed() {
         this.selectedNaviMenu = 'Feed'
+        this.isFeedSelected = 'yes'
+        this.isYourFeedSelected = 'no'
     }
 
     @action public setYourFeed() {
         this.selectedNaviMenu = 'Your Feed'
+        this.isYourFeedSelected = 'yes'
+        this.isFeedSelected = 'no'
     }
 
     @action public setLogout() {

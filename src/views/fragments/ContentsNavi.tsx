@@ -10,10 +10,10 @@ const StyledNavi = styled.nav`
     margin: 1rem 0 1rem;
     display: flex;
     flex-direction: row;
-    .Selected {
+    .yes {
         border-bottom: 6px solid #ff4501;
     }
-    .Unselected {
+    .no {
         border-bottom: 6px solid #c8c8c8;
     }
 `
@@ -28,22 +28,25 @@ const StyledList = styled.li`
     line-height: 3rem;
     width: 184px;
     height: 60px;
-    display: block;
     color: #000000;
     text-decoration: none;
     border-bottom: 6px solid #c8c8c8;
     cursor: pointer;
+    a {
+        text-decoration: none;
+        color: #000000;
+    }
 `
 
 export const ContentsNavi = observer(() => {
     const user = useContext(UserContext)
     return (
         <StyledNavi>
-            <StyledList>
+            <StyledList className={user.isFeedSelected}>
                 <Link to="/home">Feed</Link>
             </StyledList>
             {user.isLogin && (
-                <StyledList>
+                <StyledList className={user.isYourFeedSelected}>
                     <Link to="/home/your-feed">Your Feed</Link>
                 </StyledList>
             )}
