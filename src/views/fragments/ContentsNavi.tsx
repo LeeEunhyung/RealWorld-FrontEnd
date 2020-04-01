@@ -42,9 +42,11 @@ export const ContentsNavi = observer(() => {
             <StyledList>
                 <Link to="/home">Feed</Link>
             </StyledList>
-            <StyledList>
-                {user.isLogin && <Link to="/home/your-feed">Your Feed</Link>}
-            </StyledList>
+            {user.isLogin && (
+                <StyledList>
+                    <Link to="/home/your-feed">Your Feed</Link>
+                </StyledList>
+            )}
         </StyledNavi>
     )
 })

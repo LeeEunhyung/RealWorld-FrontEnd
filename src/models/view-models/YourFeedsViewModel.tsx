@@ -1,22 +1,20 @@
-import { observable, action, configure } from 'mobx'
+import { observable, action } from 'mobx'
 import { ArticlesApis } from '../../apis/ArticlesApis'
-
-configure({ enforceActions: 'observed' })
+import { asyncAction } from 'mobx-utils'
 
 export class YourFeeds {
     @observable public contents: any[] = []
     @observable public selectedPage: number = 1
     @observable public pageCount: number = 1
 
-    @action public getArticles = async () => {
+    @asyncAction public *getArticles() {
         const _offset = (this.selectedPage - 1) * 6 + 1
-        await ArticlesApis.getYourFeeds(_offset)
-            .then(response => {
-                this.setArticles(response.data)
-            })
-            .catch(err => {
-                console.log(err)
-            })
+        try {
+            const res = yield ArticlesApis.getYourFeeds(_offset)
+            this.setArticles(res)
+        } catch (e) {
+            console.error(e.message)
+        }
     }
 
     @action public setArticles(data: any) {

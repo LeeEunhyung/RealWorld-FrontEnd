@@ -1,8 +1,6 @@
-import { observable, action, configure } from 'mobx'
+import { observable, action } from 'mobx'
 import { asyncAction } from 'mobx-utils'
 import { UserApis } from '../../apis/UserApis'
-
-configure({ enforceActions: 'observed' })
 
 export class User {
     @observable isLogin: boolean = false

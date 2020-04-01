@@ -7,6 +7,9 @@ import { HomePage } from './views/pages/HomePage'
 import { LoginPage } from './views/pages/LoginPage'
 import { RegisterPage } from './views/pages/RegisterPage'
 import { MyPage } from './views/pages/MyPage'
+import { configure } from 'mobx'
+
+configure({ enforceActions: 'observed' })
 
 const StyledApp = styled.div`
     display: flex;
