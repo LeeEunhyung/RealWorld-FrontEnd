@@ -32,11 +32,14 @@ export const YourFeed = observer(() => {
 
     return (
         <StyledYourFeed>
-            {yourFeeds.dataState === 'loading' && (
+            {yourFeeds.state === 'loading' && (
                 <StyledNotice>Loading...</StyledNotice>
             )}
-            {yourFeeds.dataState === 'none' && (
+            {yourFeeds.state === 'none' && (
                 <StyledNotice>It&apos;s empty!</StyledNotice>
+            )}
+            {yourFeeds.state === 'error' && (
+                <StyledNotice>Error x_x</StyledNotice>
             )}
             {yourFeeds.contents.map(data => {
                 return (
@@ -49,7 +52,7 @@ export const YourFeed = observer(() => {
                     />
                 )
             })}
-            {yourFeeds.dataState === 'done' && <PageNumber />}
+            {yourFeeds.state === 'done' && <PageNumber />}
         </StyledYourFeed>
     )
 })
