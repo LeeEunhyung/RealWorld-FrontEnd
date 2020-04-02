@@ -4,10 +4,12 @@ import { UserApis } from '../../apis/UserApis'
 
 export class User {
     @observable isLogin: boolean = false
-    @observable selectedNaviMenu: string = 'Feed'
     @observable isFeedSelected: string = 'yes'
     @observable isYourFeedSelected: string = 'no'
+
+    @observable selectedNaviMenu: string = 'Feed'
     @observable userInfo: any
+
     @observable loginError: string = ''
     @observable registerError: string = ''
 
@@ -47,6 +49,7 @@ export class User {
                 this.userInfo.image === null
                     ? 'https://static.productionready.io/images/smiley-cyrus.jpg'
                     : this.userInfo.imamge
+            window.location.href = '/home'
         } catch (e) {
             console.log(e.message)
         }

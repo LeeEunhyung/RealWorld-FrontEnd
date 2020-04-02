@@ -28,6 +28,7 @@ export const YourFeed = observer(() => {
     useEffect(() => {
         user.setYourFeed()
         yourFeeds.getArticles()
+        // eslint-disable-next-line
     }, [])
 
     return (

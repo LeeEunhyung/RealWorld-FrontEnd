@@ -1,5 +1,4 @@
 import React, { useContext } from 'react'
-import { useHistory } from 'react-router-dom'
 import styled from 'styled-components'
 
 import { observer } from 'mobx-react'
@@ -55,7 +54,7 @@ export const RegisterForm = observer(() => {
     let username: string = ''
     let email: string = ''
     let password: string = ''
-    let history = useHistory()
+    user.setErrorMessage()
     return (
         <StyledForm>
             <ErrorMessage />

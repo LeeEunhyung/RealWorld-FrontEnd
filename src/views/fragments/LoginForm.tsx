@@ -1,5 +1,4 @@
 import React, { useContext } from 'react'
-import { useHistory } from 'react-router-dom'
 import styled from 'styled-components'
 import { observer } from 'mobx-react'
 import { UserContext } from '../../contexts/UserContext'
@@ -53,7 +52,7 @@ export const LoginForm = observer(() => {
     const user = useContext(UserContext)
     let email: string = ''
     let password: string = ''
-    let history = useHistory()
+    user.setErrorMessage()
     return (
         <StyledForm>
             <ErrorMessage />

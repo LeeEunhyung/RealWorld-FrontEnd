@@ -25,6 +25,7 @@ export const Tags = observer(() => {
 
     useEffect(function() {
         articles.getTags()
+        // eslint-disable-next-line
     }, [])
 
     return (
