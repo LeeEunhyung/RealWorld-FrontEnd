@@ -45,11 +45,9 @@ export const ContentsNavi = observer(() => {
             <StyledList className={user.isFeedSelected}>
                 <Link to="/home">Feed</Link>
             </StyledList>
-            {user.isLogin && (
-                <StyledList className={user.isYourFeedSelected}>
-                    <Link to="/home/your-feed">Your Feed</Link>
-                </StyledList>
-            )}
+            <StyledList className={user.isYourFeedSelected}>
+                <Link to="/home/your-feed">Your Feed</Link>
+            </StyledList>
         </StyledNavi>
     )
 })

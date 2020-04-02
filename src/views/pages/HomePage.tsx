@@ -6,6 +6,7 @@ import { ContentsNavi } from '../fragments/ContentsNavi'
 import { FeedContainer } from '../fragments/FeedContainer'
 import { YourFeedContainer } from '../fragments/YourFeedContainer'
 import { Switch, Route } from 'react-router-dom'
+import { PrivateRoute } from '../components/PrivateRoute'
 
 const StyledHome = styled.div`
     max-width: 1200px;
@@ -19,7 +20,7 @@ export function HomePage() {
             <ContentsNavi />
             <Switch>
                 <Route exact path="/home" component={FeedContainer} />
-                <Route
+                <PrivateRoute
                     exact
                     path="/home/your-feed"
                     component={YourFeedContainer}

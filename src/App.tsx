@@ -8,6 +8,7 @@ import { LoginPage } from './views/pages/LoginPage'
 import { RegisterPage } from './views/pages/RegisterPage'
 import { MyPage } from './views/pages/MyPage'
 import { configure } from 'mobx'
+import { PrivateRoute } from './views/components/PrivateRoute'
 
 configure({ enforceActions: 'observed' })
 
@@ -26,7 +27,10 @@ function App() {
                     <Route path="/home" component={HomePage} />
                     <Route path="/login" component={LoginPage} />
                     <Route path="/register" component={RegisterPage} />
-                    <Route path="/profile/:username" component={MyPage} />
+                    <PrivateRoute
+                        path="/profile/:username"
+                        component={MyPage}
+                    />
                 </Switch>
             </Router>
         </StyledApp>
