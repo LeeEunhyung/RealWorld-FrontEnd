@@ -8,6 +8,8 @@ export class User {
     @observable isFeedSelected: string = 'yes'
     @observable isYourFeedSelected: string = 'no'
     @observable userInfo: any
+    @observable loginError: string = ''
+    @observable registerError: string = ''
 
     @asyncAction public *checkRegister(
         username: string,
@@ -20,7 +22,8 @@ export class User {
             this.isLogin = true
             this.getUserInfo()
         } catch (e) {
-            alert(e.message)
+            this.registerError = JSON.stringify(e.response.data.errors)
+            this.registerError = this.replaceErrorMessage(this.registerError)
         }
     }
 
@@ -31,7 +34,8 @@ export class User {
             this.isLogin = true
             this.getUserInfo()
         } catch (e) {
-            alert(e.message)
+            this.loginError = JSON.stringify(e.response.data.errors)
+            this.loginError = this.replaceErrorMessage(this.loginError)
         }
     }
 
@@ -44,8 +48,23 @@ export class User {
                     ? 'https://static.productionready.io/images/smiley-cyrus.jpg'
                     : this.userInfo.imamge
         } catch (e) {
-            console.error(e.message)
+            console.log(e.message)
         }
+    }
+
+    @action public replaceErrorMessage(errorMessage: string) {
+        errorMessage = errorMessage
+            .replace(/[~!@#$%^&*()_+|<>?{}"]/g, '')
+            .replace(/\[/g, '')
+            .replace(/\]/g, '')
+            .replace(/:/g, ' ')
+
+        return errorMessage
+    }
+
+    @action public setErrorMessage() {
+        this.loginError = ''
+        this.registerError = ''
     }
 
     @action public setIsLogin() {

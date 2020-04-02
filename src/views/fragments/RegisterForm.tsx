@@ -4,6 +4,7 @@ import styled from 'styled-components'
 
 import { observer } from 'mobx-react'
 import { UserContext } from '../../contexts/UserContext'
+import { ErrorMessage } from './ErrorMessage'
 
 const StyledForm = styled.form`
     width: 90%;
@@ -57,6 +58,7 @@ export const RegisterForm = observer(() => {
     let history = useHistory()
     return (
         <StyledForm>
+            <ErrorMessage />
             <input
                 type="text"
                 placeholder="Username"
@@ -83,7 +85,6 @@ export const RegisterForm = observer(() => {
                 value="Sign up"
                 onClick={() => {
                     user.checkRegister(username, email, password)
-                    history.push('/home')
                 }}
             />
         </StyledForm>

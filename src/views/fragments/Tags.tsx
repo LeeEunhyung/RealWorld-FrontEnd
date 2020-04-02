@@ -30,7 +30,6 @@ export const Tags = observer(() => {
     return (
         <StyledTags>
             {articles.tagsList.map(data => {
-                console.log(data)
                 return <input key={data} type="button" value={data} />
             })}
         </StyledTags>

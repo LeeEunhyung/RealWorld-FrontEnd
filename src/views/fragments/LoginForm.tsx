@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom'
 import styled from 'styled-components'
 import { observer } from 'mobx-react'
 import { UserContext } from '../../contexts/UserContext'
+import { ErrorMessage } from './ErrorMessage'
 
 const StyledForm = styled.form`
     width: 90%;
@@ -55,6 +56,7 @@ export const LoginForm = observer(() => {
     let history = useHistory()
     return (
         <StyledForm>
+            <ErrorMessage />
             <input
                 type="text"
                 placeholder="Email"
@@ -74,7 +76,6 @@ export const LoginForm = observer(() => {
                 value="Sign in"
                 onClick={() => {
                     user.checkLogin(email, password)
-                    history.push('/home')
                 }}
             />
         </StyledForm>

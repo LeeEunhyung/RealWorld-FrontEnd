@@ -17,7 +17,8 @@ const StyledSignin = styled.div`
     border-radius: 30px;
     box-shadow: 3px 3px 6px 0 #bdb9a6, -3px -3px 6px 0 #fffefa;
     font-family: 'Source Sans Pro', sans-serif;
-    background-image: url(https://live.staticflickr.com/7340/12389517865_a835a9cc5e_b.jpg);
+    background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+        url(https://live.staticflickr.com/7340/12389517865_a835a9cc5e_b.jpg);
     background-size: 900px;
     background-position: center center;
     & h1 {
