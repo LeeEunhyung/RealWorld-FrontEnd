@@ -46,9 +46,9 @@ export const NumberButton = observer((props: IProps) => {
             value={props.value}
             onClick={function(e: any) {
                 if (user.selectedNaviMenu === 'Feed') {
-                    feeds.setClickedNumber(e.target.value)
+                    feeds.setSelectedPage(e.target.value)
                 } else {
-                    yourFeeds.setClickedNumber(e.target.value)
+                    yourFeeds.setSelectedPage(e.target.value)
                 }
             }}
         />

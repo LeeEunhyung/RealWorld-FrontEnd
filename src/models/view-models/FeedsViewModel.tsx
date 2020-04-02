@@ -30,14 +30,18 @@ export class Feeds {
         this.state = this.contents.length === 0 ? 'none' : 'done'
     }
 
-    @action public setClickedNumber = (clickedNumber: string | number) => {
-        if (clickedNumber === '<') {
+    @action public setSelectedPage = (selectedPage: string | number) => {
+        if (selectedPage === '<') {
             this.selectedPage = 1
-        } else if (clickedNumber === '>') {
+        } else if (selectedPage === '>') {
             this.selectedPage = this.pageCount
         } else {
-            this.selectedPage = Number(clickedNumber)
+            this.selectedPage = Number(selectedPage)
         }
         this.getArticles()
+    }
+
+    @action public resetSelectedPage() {
+        this.selectedPage = 1
     }
 }

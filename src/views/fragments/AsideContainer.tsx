@@ -7,8 +7,8 @@ const StyledAsideContainer = styled.aside`
     margin: 5px 15px 5px;
     flex-grow: 1;
     flex-basis: 1px;
-    width: 280px;
     max-width: 900px;
+    min-width: 270px;
     height: fit-content;
     background-color: #ffffff;
     border-radius: 30px;

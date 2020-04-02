@@ -6,24 +6,39 @@ import { observer } from 'mobx-react'
 import { PageNumber } from './PageNumber'
 import { UserContext } from '../../contexts/UserContext'
 
+const StyledContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+`
+
 const StyledFeed = styled.section`
     max-width: 900px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-around;
 `
 
 const StyledNotice = styled.div`
-    width: 300px;
     height: 302px;
     font-weight: bolder;
     text-align: center;
+    @media (min-width: 900px) {
+        width: 900px;
+    }
+    @media (max-width: 900px) and (min-width: 600px) {
+        width: 600px;
+    }
+    @media (max-width: 600px) {
+        width: 300px;
+    }
 `
 
 export const Feed = observer(() => {
     const user = useContext(UserContext)
     const feeds = useContext(FeedsContext)
+    feeds.resetSelectedPage()
 
     useEffect(() => {
         user.setFeed()
@@ -32,28 +47,30 @@ export const Feed = observer(() => {
     }, [])
 
     return (
-        <StyledFeed>
-            {feeds.state === 'loading' && (
-                <StyledNotice>Loading...</StyledNotice>
-            )}
-            {feeds.state === 'none' && (
-                <StyledNotice>It&apos;s empty!</StyledNotice>
-            )}
-            {feeds.state === 'error' && (
-                <StyledNotice>Error X___X</StyledNotice>
-            )}
-            {feeds.contents.map(data => {
-                return (
-                    <Contents
-                        key={data.slug}
-                        title={data.title}
-                        desc={data.description}
-                        imgSrc={data.author.image}
-                        favorited={data.favorited}
-                    />
-                )
-            })}
+        <StyledContainer>
+            <StyledFeed>
+                {feeds.state === 'loading' && (
+                    <StyledNotice>Loading...</StyledNotice>
+                )}
+                {feeds.state === 'none' && (
+                    <StyledNotice>It&apos;s empty!</StyledNotice>
+                )}
+                {feeds.state === 'error' && (
+                    <StyledNotice>Error X___X</StyledNotice>
+                )}
+                {feeds.contents.map(data => {
+                    return (
+                        <Contents
+                            key={data.slug}
+                            title={data.title}
+                            desc={data.description}
+                            imgSrc={data.author.image}
+                            favorited={data.favorited}
+                        />
+                    )
+                })}
+            </StyledFeed>
             {feeds.state === 'done' && <PageNumber />}
-        </StyledFeed>
+        </StyledContainer>
     )
 })

@@ -9,13 +9,13 @@ import { UserContext } from '../../contexts/UserContext'
 
 const StyledPageNumber = styled.div`
     max-width: 560px;
-    height: 48px;
     background-color: #ffffff;
     box-shadow: 3px 3px 6px 0 #bdb9a6, -3px -3px 6px 0 #fffefa;
     border-radius: 24.9px;
     display: flex;
     align-items: center;
     margin: 10px;
+    flex-wrap: wrap;
 `
 
 function setPageNumberList(pageNumber: number) {

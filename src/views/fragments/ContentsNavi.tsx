@@ -7,6 +7,7 @@ import { UserContext } from '../../contexts/UserContext'
 const StyledNavi = styled.nav`
     height: 60px;
     max-width: 1200px;
+    width: 100%;
     margin: 1rem 0 1rem;
     display: flex;
     flex-direction: row;
