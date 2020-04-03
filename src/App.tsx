@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import styled from 'styled-components'
 
 import { Header } from './views/fragments/Header'
@@ -21,18 +21,15 @@ const StyledApp = styled.div`
 function App() {
     return (
         <StyledApp>
-            <Router>
+            <BrowserRouter>
                 <Header />
                 <Switch>
-                    <Route path="/home" component={HomePage} />
                     <Route path="/login" component={LoginPage} />
                     <Route path="/register" component={RegisterPage} />
-                    <PrivateRoute
-                        path="/profile/:username"
-                        component={MyPage}
-                    />
+                    <PrivateRoute path="/profile" component={MyPage} />
+                    <Route path="/" component={HomePage} />
                 </Switch>
-            </Router>
+            </BrowserRouter>
         </StyledApp>
     )
 }

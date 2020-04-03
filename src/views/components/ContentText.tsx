@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const StyledArticle = styled.article`
+const StyledText = styled.article`
     width: 290px;
     height: 120px;
     display: flex;
@@ -37,11 +37,11 @@ interface IProps {
     desc: string
 }
 
-export function ContentArticle(props: IProps) {
+export function ContentText(props: IProps) {
     return (
-        <StyledArticle>
+        <StyledText>
             <StyledTitle>{props.title}</StyledTitle>
             <StyledDesc>{props.desc}</StyledDesc>
-        </StyledArticle>
+        </StyledText>
     )
 }

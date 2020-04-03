@@ -87,7 +87,7 @@ export const RegisterForm = observer(() => {
                 onClick={() => {
                     user.checkRegister(username, email, password)
                     localStorage.getItem('token')
-                        ? history.push('/home')
+                        ? history.push('/')
                         : history.push('/register')
                 }}
             />

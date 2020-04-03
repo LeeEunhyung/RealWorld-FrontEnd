@@ -78,7 +78,7 @@ export const LoginForm = observer(() => {
                 onClick={() => {
                     user.checkLogin(email, password)
                     localStorage.getItem('token')
-                        ? history.push('/home')
+                        ? history.push('/')
                         : history.push('/login')
                 }}
             />

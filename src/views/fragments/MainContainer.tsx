@@ -24,13 +24,9 @@ export const MainContainer = observer(() => {
     return (
         <StyledMainContainer>
             <Switch>
-                <Route exact path="/home" component={Feed} />
-                <PrivateRoute
-                    exact
-                    path="/home/your-feed"
-                    component={YourFeed}
-                />
-                <Route path={`/home/${user.selectedTag}`} component={TagFeed} />
+                <PrivateRoute path="/your-feed" component={YourFeed} />
+                <Route path={`/tag/${user.selectedTag}`} component={TagFeed} />
+                <Route path="/" component={Feed} />
             </Switch>
             <AsideContainer />
         </StyledMainContainer>

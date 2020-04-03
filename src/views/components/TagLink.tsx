@@ -28,7 +28,7 @@ export const TagsLink = observer((props: IProps) => {
     return (
         <StyledLink
             as={Link}
-            to={`/home/${props.value}`}
+            to={`/tag/${props.value}`}
             onClick={function() {
                 tagFeeds.setSelectedTag(props.value)
                 user.setTagFeed(props.value)

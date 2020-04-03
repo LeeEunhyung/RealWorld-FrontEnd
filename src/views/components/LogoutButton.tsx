@@ -21,7 +21,7 @@ export const LogoutButton = observer(() => {
             value="Logout"
             onClick={() => {
                 user.setLogout()
-                history.push('/home')
+                history.push('/')
             }}
         />
     )

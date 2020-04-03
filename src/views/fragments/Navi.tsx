@@ -50,11 +50,11 @@ export const Navi = observer(() => {
         <StyledNavi>
             {user.isLogin && (
                 <StyledNaviList className="mypage">
-                    <Link to="/profile/:username">My page</Link>
+                    <Link to="/profile">My page</Link>
                 </StyledNaviList>
             )}
             <StyledNaviList>
-                <Link to="/home">New story</Link>
+                <Link to="/">New story</Link>
             </StyledNaviList>
             {!user.isLogin && (
                 <StyledNaviList>

@@ -85,6 +85,7 @@ export class User {
         this.isFeedSelected = 'yes'
         this.isYourFeedSelected = 'no'
         this.isTagFeedSelected = 'no'
+        this.selectedTag = ''
     }
 
     @action public setYourFeed() {
@@ -92,6 +93,7 @@ export class User {
         this.isYourFeedSelected = 'yes'
         this.isFeedSelected = 'no'
         this.isTagFeedSelected = 'no'
+        this.selectedTag = ''
     }
 
     @action public setTagFeed(tag: string) {
@@ -104,7 +106,7 @@ export class User {
 
     @action public isSelectedTagEmpty() {
         if (this.selectedTag === '') {
-            window.location.href = '/home'
+            window.location.href = '/'
             return true
         } else {
             return false

@@ -1,13 +1,12 @@
 import axios from 'axios'
 
 export const httpClient = axios.create({
-    baseURL: 'https://conduit.productionready.io/api',
-    url: '/api',
+    baseURL: 'https://conduit.productionready.io/api/',
 })
 
 export class ArticlesApis {
     static getFeeds(offset: number) {
-        return httpClient.get('/articles', {
+        return httpClient.get('articles', {
             params: {
                 offset,
                 limit: 6,
@@ -16,7 +15,7 @@ export class ArticlesApis {
     }
 
     static getYourFeeds(offset: number) {
-        return httpClient.get('/articles/feed', {
+        return httpClient.get('articles/feed', {
             headers: {
                 Authorization: `Token ${localStorage.getItem('token')}`,
             },
@@ -28,11 +27,11 @@ export class ArticlesApis {
     }
 
     static getTags() {
-        return httpClient.get('/tags')
+        return httpClient.get('tags')
     }
 
     static getArticlesbyTag(offset: number, tag: string) {
-        return httpClient.get('/articles', {
+        return httpClient.get('articles', {
             params: {
                 offset,
                 limit: 6,
