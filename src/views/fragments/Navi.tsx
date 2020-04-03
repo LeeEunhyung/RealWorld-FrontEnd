@@ -1,7 +1,8 @@
 import React, { useContext } from 'react'
+import { observer } from 'mobx-react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
-import { observer } from 'mobx-react'
+
 import { UserContext } from '../../contexts/UserContext'
 import { LogoutButton } from '../components/LogoutButton'
 
