@@ -4,11 +4,11 @@ import styled from 'styled-components'
 import { Tags } from './Tags'
 
 const StyledAsideContainer = styled.aside`
-    margin: 5px 15px 5px;
+    margin: 5px 0 5px 15px;
     flex-grow: 1;
     flex-basis: 1px;
     max-width: 900px;
-    min-width: 270px;
+    min-width: 285px;
     height: fit-content;
     background-color: #ffffff;
     border-radius: 30px;

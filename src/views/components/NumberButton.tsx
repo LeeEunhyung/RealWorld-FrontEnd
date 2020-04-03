@@ -4,6 +4,7 @@ import { observer } from 'mobx-react'
 import { FeedsContext } from '../../contexts/FeedsContext'
 import { UserContext } from '../../contexts/UserContext'
 import { YourFeedsContext } from '../../contexts/YourFeedsContext'
+import { TagFeedsContext } from '../../contexts/TagFeedsContext'
 
 const StyledButton = styled.input`
     width: 40px;
@@ -38,6 +39,7 @@ export const NumberButton = observer((props: IProps) => {
     const user = useContext(UserContext)
     const feeds = useContext(FeedsContext)
     const yourFeeds = useContext(YourFeedsContext)
+    const tagFeeds = useContext(TagFeedsContext)
 
     return (
         <StyledButton
@@ -47,8 +49,10 @@ export const NumberButton = observer((props: IProps) => {
             onClick={function(e: any) {
                 if (user.selectedNaviMenu === 'Feed') {
                     feeds.setSelectedPage(e.target.value)
-                } else {
+                } else if (user.selectedNaviMenu === 'Your Feed') {
                     yourFeeds.setSelectedPage(e.target.value)
+                } else {
+                    tagFeeds.setSelectedPage(e.target.value)
                 }
             }}
         />

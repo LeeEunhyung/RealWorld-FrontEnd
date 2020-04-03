@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { observer } from 'mobx-react'
 import { UserContext } from '../../contexts/UserContext'
 import { ErrorMessage } from './ErrorMessage'
+import { useHistory } from 'react-router-dom'
 
 const StyledForm = styled.form`
     width: 90%;
@@ -49,6 +50,7 @@ const StyledForm = styled.form`
 `
 
 export const LoginForm = observer(() => {
+    let history = useHistory()
     const user = useContext(UserContext)
     let email: string = ''
     let password: string = ''
@@ -75,6 +77,9 @@ export const LoginForm = observer(() => {
                 value="Sign in"
                 onClick={() => {
                     user.checkLogin(email, password)
+                    localStorage.getItem('token')
+                        ? history.push('/home')
+                        : history.push('/login')
                 }}
             />
         </StyledForm>

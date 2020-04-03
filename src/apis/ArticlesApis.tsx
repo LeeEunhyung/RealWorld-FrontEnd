@@ -30,4 +30,14 @@ export class ArticlesApis {
     static getTags() {
         return httpClient.get('/tags')
     }
+
+    static getArticlesbyTag(offset: number, tag: string) {
+        return httpClient.get('/articles', {
+            params: {
+                offset,
+                limit: 6,
+                tag,
+            },
+        })
+    }
 }

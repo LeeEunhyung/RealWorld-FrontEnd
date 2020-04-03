@@ -41,6 +41,7 @@ const StyledList = styled.li`
 
 export const ContentsNavi = observer(() => {
     const user = useContext(UserContext)
+
     return (
         <StyledNavi>
             <StyledList className={user.isFeedSelected}>
@@ -49,6 +50,13 @@ export const ContentsNavi = observer(() => {
             <StyledList className={user.isYourFeedSelected}>
                 <Link to="/home/your-feed">Your Feed</Link>
             </StyledList>
+            {user.selectedNaviMenu === 'Tag Feed' && user.selectedTag && (
+                <StyledList className={user.isTagFeedSelected}>
+                    <Link to={`/home/${user.selectedTag}`}>
+                        # {user.selectedTag}
+                    </Link>
+                </StyledList>
+            )}
         </StyledNavi>
     )
 })

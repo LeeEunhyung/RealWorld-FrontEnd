@@ -6,8 +6,11 @@ export class User {
     @observable isLogin: boolean = false
     @observable isFeedSelected: string = 'yes'
     @observable isYourFeedSelected: string = 'no'
+    @observable isTagFeedSelected: string = 'no'
 
     @observable selectedNaviMenu: string = 'Feed'
+    @observable selectedTag: string = ''
+
     @observable userInfo: any
 
     @observable loginError: string = ''
@@ -49,7 +52,6 @@ export class User {
                 this.userInfo.image === null
                     ? 'https://static.productionready.io/images/smiley-cyrus.jpg'
                     : this.userInfo.imamge
-            window.location.href = '/home'
         } catch (e) {
             console.log(e.message)
         }
@@ -82,12 +84,31 @@ export class User {
         this.selectedNaviMenu = 'Feed'
         this.isFeedSelected = 'yes'
         this.isYourFeedSelected = 'no'
+        this.isTagFeedSelected = 'no'
     }
 
     @action public setYourFeed() {
         this.selectedNaviMenu = 'Your Feed'
         this.isYourFeedSelected = 'yes'
         this.isFeedSelected = 'no'
+        this.isTagFeedSelected = 'no'
+    }
+
+    @action public setTagFeed(tag: string) {
+        this.selectedNaviMenu = 'Tag Feed'
+        this.isYourFeedSelected = 'no'
+        this.isFeedSelected = 'no'
+        this.isTagFeedSelected = 'yes'
+        this.selectedTag = tag
+    }
+
+    @action public isSelectedTagEmpty() {
+        if (this.selectedTag === '') {
+            window.location.href = '/home'
+            return true
+        } else {
+            return false
+        }
     }
 
     @action public setLogout() {
