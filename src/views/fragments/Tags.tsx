@@ -14,10 +14,12 @@ const StyledTags = styled.section`
 export const Tags = observer(() => {
     const articles = useContext(ArticlesContext)
 
-    useEffect(function() {
-        articles.getTags()
-        // eslint-disable-next-line
-    }, [])
+    useEffect(
+        function() {
+            articles.getTags()
+        },
+        [articles],
+    )
 
     return (
         <StyledTags>

@@ -11,6 +11,7 @@ export class TagFeeds {
 
     @action setSelectedTag(tag: string) {
         this.selectedTag = tag
+        this.getArticlesByTag()
     }
 
     @asyncAction public *getArticlesByTag() {

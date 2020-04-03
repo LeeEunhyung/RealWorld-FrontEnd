@@ -42,6 +42,7 @@ const StyledUserInfo = styled.div`
 
 export const UserInfo = observer(() => {
     const user = useContext(UserContext)
+
     return (
         <StyledUserInfo>
             <img src={user.userInfo.image} alt={user.userInfo.image} />

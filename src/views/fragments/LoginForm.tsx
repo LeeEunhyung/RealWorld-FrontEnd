@@ -50,7 +50,7 @@ const StyledForm = styled.form`
 `
 
 export const LoginForm = observer(() => {
-    let history = useHistory()
+    const history = useHistory()
     const user = useContext(UserContext)
     let email: string = ''
     let password: string = ''
@@ -76,10 +76,9 @@ export const LoginForm = observer(() => {
                 type="button"
                 value="Sign in"
                 onClick={() => {
-                    user.checkLogin(email, password)
-                    localStorage.getItem('token')
-                        ? history.push('/')
-                        : history.push('/login')
+                    user.checkLogin(email, password, () => {
+                        history.push('/')
+                    })
                 }}
             />
         </StyledForm>

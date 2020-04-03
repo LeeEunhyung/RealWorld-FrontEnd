@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from 'react'
 import { observer } from 'mobx-react'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import styled from 'styled-components'
 
 import { UserContext } from '../../contexts/UserContext'
@@ -61,6 +61,7 @@ const StyledContent = styled.article`
 `
 
 export const TagFeed = observer(() => {
+    const history = useHistory()
     const user = useContext(UserContext)
     const tagFeeds = useContext(TagFeedsContext)
     tagFeeds.resetSelectedPage()
@@ -68,12 +69,11 @@ export const TagFeed = observer(() => {
     useEffect(() => {
         user.setTagFeed(tagFeeds.selectedTag)
         tagFeeds.getArticlesByTag()
-        // eslint-disable-next-line
-    }, [tagFeeds.selectedTag])
+    }, [user, tagFeeds])
 
-    console.log(user.isSelectedTagEmpty())
-
-    return user.isSelectedTagEmpty() ? null : (
+    return user.isSelectedTagEmpty(() => {
+        history.push('/')
+    }) ? null : (
         <StyledContainer>
             <StyledTagFeed>
                 {tagFeeds.state === 'loading' && (

@@ -68,8 +68,7 @@ export const Feed = observer(() => {
     useEffect(() => {
         user.setFeed()
         feeds.getArticles()
-        // eslint-disable-next-line
-    }, [])
+    }, [user, feeds])
 
     return (
         <StyledContainer>

@@ -51,7 +51,7 @@ const StyledForm = styled.form`
 `
 
 export const RegisterForm = observer(() => {
-    let history = useHistory()
+    const history = useHistory()
     const user = useContext(UserContext)
     let username: string = ''
     let email: string = ''
@@ -85,10 +85,9 @@ export const RegisterForm = observer(() => {
                 type="button"
                 value="Sign up"
                 onClick={() => {
-                    user.checkRegister(username, email, password)
-                    localStorage.getItem('token')
-                        ? history.push('/')
-                        : history.push('/register')
+                    user.checkRegister(username, email, password, () => {
+                        history.push('/')
+                    })
                 }}
             />
         </StyledForm>

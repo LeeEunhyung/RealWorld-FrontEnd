@@ -20,24 +20,31 @@ export class User {
         username: string,
         email: string,
         password: string,
+        callback: () => void,
     ) {
         try {
             const res = yield UserApis.checkRegister(username, email, password)
             localStorage.setItem('token', res.data.user.token)
             this.isLogin = true
             this.getUserInfo()
+            callback()
         } catch (e) {
             this.registerError = JSON.stringify(e.response.data.errors)
             this.registerError = this.replaceErrorMessage(this.registerError)
         }
     }
 
-    @asyncAction public *checkLogin(email: string, password: string) {
+    @asyncAction public *checkLogin(
+        email: string,
+        password: string,
+        callback: () => void,
+    ) {
         try {
             const res = yield UserApis.checkLogin(email, password)
             localStorage.setItem('token', res.data.user.token)
             this.isLogin = true
             this.getUserInfo()
+            callback()
         } catch (e) {
             this.loginError = JSON.stringify(e.response.data.errors)
             this.loginError = this.replaceErrorMessage(this.loginError)
@@ -104,9 +111,9 @@ export class User {
         this.selectedTag = tag
     }
 
-    @action public isSelectedTagEmpty() {
+    @action public isSelectedTagEmpty(callback: () => void) {
         if (this.selectedTag === '') {
-            window.location.href = '/'
+            callback()
             return true
         } else {
             return false
