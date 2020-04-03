@@ -84,10 +84,13 @@ export const RegisterForm = observer(() => {
             <input
                 type="button"
                 value="Sign up"
-                onClick={() => {
-                    user.checkRegister(username, email, password, () => {
-                        history.push('/')
-                    })
+                onClick={async () => {
+                    const result = await user.checkRegister(
+                        username,
+                        email,
+                        password,
+                    )
+                    if (result) history.push('/')
                 }}
             />
         </StyledForm>

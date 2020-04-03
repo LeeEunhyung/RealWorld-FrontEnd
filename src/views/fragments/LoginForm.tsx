@@ -75,10 +75,9 @@ export const LoginForm = observer(() => {
             <input
                 type="button"
                 value="Sign in"
-                onClick={() => {
-                    user.checkLogin(email, password, () => {
-                        history.push('/')
-                    })
+                onClick={async () => {
+                    const result = await user.checkLogin(email, password)
+                    if (result) history.push('/')
                 }}
             />
         </StyledForm>
