@@ -63,10 +63,10 @@ const StyledContent = styled.article`
 export const Feed = observer(() => {
     const user = useContext(UserContext)
     const feeds = useContext(FeedsContext)
-    feeds.resetSelectedPage()
 
     useEffect(() => {
         user.setFeed()
+        feeds.resetSelectedPage()
         feeds.getArticles()
     }, [user, feeds])
 
@@ -92,7 +92,10 @@ export const Feed = observer(() => {
                                     desc={data.desc}
                                 />
                             </Link>
-                            <ContentButton favorited={data.favorited} />
+                            <ContentButton
+                                slug={data.slug}
+                                favorited={data.favorited}
+                            />
                         </StyledContent>
                     )
                 })}

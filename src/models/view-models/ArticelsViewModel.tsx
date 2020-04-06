@@ -14,4 +14,22 @@ export class Articles {
             console.error(e.message)
         }
     }
+
+    @asyncAction public *postFavoriteArticle(slug: string) {
+        try {
+            const res = yield ArticlesApis.postFavoriteArticle(slug)
+            console.log(res)
+        } catch (e) {
+            console.error(e.message)
+        }
+    }
+
+    @asyncAction public *deleteFavoriteArticle(slug: string) {
+        try {
+            const res = yield ArticlesApis.deleteFavoriteArticle(slug)
+            console.log(res)
+        } catch (e) {
+            console.error(e.message)
+        }
+    }
 }

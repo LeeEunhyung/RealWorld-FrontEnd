@@ -4,9 +4,9 @@ import { UserApis } from '../../apis/UserApis'
 
 export class User {
     @observable isLogin: boolean = false
-    @observable isFeedSelected: string = 'yes'
-    @observable isYourFeedSelected: string = 'no'
-    @observable isTagFeedSelected: string = 'no'
+    @observable isFeedSelected: boolean = true
+    @observable isYourFeedSelected: boolean = false
+    @observable isTagFeedSelected: boolean = false
 
     @observable selectedNaviMenu: string = 'Feed'
     @observable selectedTag: string = ''
@@ -86,25 +86,25 @@ export class User {
 
     @action public setFeed() {
         this.selectedNaviMenu = 'Feed'
-        this.isFeedSelected = 'yes'
-        this.isYourFeedSelected = 'no'
-        this.isTagFeedSelected = 'no'
+        this.isFeedSelected = true
+        this.isYourFeedSelected = false
+        this.isTagFeedSelected = false
         this.selectedTag = ''
     }
 
     @action public setYourFeed() {
         this.selectedNaviMenu = 'Your Feed'
-        this.isYourFeedSelected = 'yes'
-        this.isFeedSelected = 'no'
-        this.isTagFeedSelected = 'no'
+        this.isFeedSelected = false
+        this.isYourFeedSelected = true
+        this.isTagFeedSelected = false
         this.selectedTag = ''
     }
 
     @action public setTagFeed(tag: string) {
         this.selectedNaviMenu = 'Tag Feed'
-        this.isYourFeedSelected = 'no'
-        this.isFeedSelected = 'no'
-        this.isTagFeedSelected = 'yes'
+        this.isYourFeedSelected = false
+        this.isFeedSelected = false
+        this.isTagFeedSelected = true
         this.selectedTag = tag
     }
 
@@ -120,5 +120,6 @@ export class User {
     @action public setLogout() {
         localStorage.removeItem('token')
         this.isLogin = false
+        this.setFeed()
     }
 }

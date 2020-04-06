@@ -11,10 +11,10 @@ const StyledNavi = styled.nav`
     margin: 1rem 0 1rem;
     display: flex;
     flex-direction: row;
-    .yes {
+    .true {
         border-bottom: 6px solid #ff4501;
     }
-    .no {
+    .false {
         border-bottom: 6px solid #c8c8c8;
     }
 `
@@ -44,14 +44,14 @@ export const ContentsNavi = observer(() => {
 
     return (
         <StyledNavi>
-            <StyledList className={user.isFeedSelected}>
+            <StyledList className={String(user.isFeedSelected)}>
                 <Link to="/">Feed</Link>
             </StyledList>
-            <StyledList className={user.isYourFeedSelected}>
+            <StyledList className={String(user.isYourFeedSelected)}>
                 <Link to="/your-feed">Your Feed</Link>
             </StyledList>
             {user.selectedNaviMenu === 'Tag Feed' && user.selectedTag && (
-                <StyledList className={user.isTagFeedSelected}>
+                <StyledList className={String(user.isTagFeedSelected)}>
                     <Link to={`/tag/${user.selectedTag}`}>
                         # {user.selectedTag}
                     </Link>

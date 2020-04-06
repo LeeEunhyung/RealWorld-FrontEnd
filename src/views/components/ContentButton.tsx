@@ -1,5 +1,7 @@
-import React from 'react'
+import React, { useContext, useState } from 'react'
 import styled from 'styled-components'
+import { observer } from 'mobx-react'
+import { ArticlesContext } from '../../contexts/ArticlesContext'
 
 const StyledButton = styled.input`
     align-self: flex-end;
@@ -25,15 +27,24 @@ const StyledButton = styled.input`
 `
 
 interface IProps {
+    slug: string
     favorited: boolean
 }
 
-export function ContentButton(props: IProps) {
+export const ContentButton = observer((props: IProps) => {
+    const [isClicked, setIsClicked] = useState(props.favorited)
+    const articles = useContext(ArticlesContext)
+
     return (
         <StyledButton
-            className={String(props.favorited)}
+            className={String(isClicked)}
             type="button"
             value="♡"
+            onClick={() => {
+                if (isClicked) articles.deleteFavoriteArticle(props.slug)
+                else articles.postFavoriteArticle(props.slug)
+                setIsClicked(!isClicked)
+            }}
         />
     )
-}
+})

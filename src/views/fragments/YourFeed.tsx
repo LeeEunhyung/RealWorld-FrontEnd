@@ -92,7 +92,10 @@ export const YourFeed = observer(() => {
                                     desc={data.desc}
                                 />
                             </Link>
-                            <ContentButton favorited={data.favorited} />
+                            <ContentButton
+                                slug={data.slug}
+                                favorited={data.favorited}
+                            />
                         </StyledContent>
                     )
                 })}

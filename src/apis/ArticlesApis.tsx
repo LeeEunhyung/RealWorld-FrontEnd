@@ -6,12 +6,24 @@ export const httpClient = axios.create({
 
 export class ArticlesApis {
     static getFeeds(offset: number) {
-        return httpClient.get('articles', {
-            params: {
-                offset,
-                limit: 6,
-            },
-        })
+        if (localStorage.getItem('token')) {
+            return httpClient.get('articles', {
+                headers: {
+                    Authorization: `Token ${localStorage.getItem('token')}`,
+                },
+                params: {
+                    offset,
+                    limit: 6,
+                },
+            })
+        } else {
+            return httpClient.get('articles', {
+                params: {
+                    offset,
+                    limit: 6,
+                },
+            })
+        }
     }
 
     static getYourFeeds(offset: number) {
@@ -36,6 +48,44 @@ export class ArticlesApis {
                 offset,
                 limit: 6,
                 tag,
+            },
+        })
+    }
+
+    static getFavoritedArticles(offset: number, favorited: string) {
+        return httpClient.get('articles', {
+            params: {
+                offset,
+                limit: 6,
+                favorited,
+            },
+        })
+    }
+
+    static getClickedArticle(slug: string) {
+        return httpClient.get(`articles/${slug}`)
+    }
+
+    static postFavoriteArticle(slug: string) {
+        return httpClient.post(`articles/${slug}/favorite`, null, {
+            headers: {
+                Authorization: `Token ${localStorage.getItem('token')}`,
+            },
+        })
+    }
+
+    static deleteFavoriteArticle(slug: string) {
+        return httpClient.delete(`articles/${slug}/favorite`, {
+            headers: {
+                Authorization: `Token ${localStorage.getItem('token')}`,
+            },
+        })
+    }
+
+    static getComments(slug: string) {
+        return httpClient.get(`articles/${slug}/comments`, {
+            headers: {
+                Authorization: `Token ${localStorage.getItem('token')}`,
             },
         })
     }
