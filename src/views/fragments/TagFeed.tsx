@@ -1,14 +1,12 @@
 import React, { useContext, useEffect } from 'react'
 import { observer } from 'mobx-react'
-import { Link, useHistory } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import styled from 'styled-components'
 
 import { UserContext } from '../../contexts/UserContext'
 import { TagFeedsContext } from '../../contexts/TagFeedsContext'
 
-import { ContentImage } from '../components/ContentImage'
-import { ContentText } from '../components/ContentText'
-import { ContentButton } from '../components/ContentButton'
+import { Contents } from './Contents'
 import { PageNumber } from './PageNumber'
 
 const StyledContainer = styled.div`
@@ -40,26 +38,6 @@ const StyledNotice = styled.div`
     }
 `
 
-const StyledContent = styled.article`
-    background-color: #ffffff;
-    width: 290px;
-    height: 302px;
-    border-radius: 30px;
-    box-shadow: 3px 3px 6px 0 #bdb9a6, -3px -3px 6px 0 #fffefa;
-    margin: 5px;
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    &:hover {
-        margin: 3px;
-        border: 2px dashed #ff4501;
-    }
-    a {
-        text-decoration: none;
-        color: black;
-    }
-`
-
 export const TagFeed = observer(() => {
     const history = useHistory()
     const user = useContext(UserContext)
@@ -86,21 +64,7 @@ export const TagFeed = observer(() => {
                     <StyledNotice>Error x_x</StyledNotice>
                 )}
                 {tagFeeds.contents.map(data => {
-                    return (
-                        <StyledContent key={data.slug}>
-                            <Link to={`/article/${data.slug}`}>
-                                <ContentImage imgSrc={data.author.image} />
-                                <ContentText
-                                    title={data.title}
-                                    desc={data.desc}
-                                />
-                            </Link>
-                            <ContentButton
-                                slug={data.slug}
-                                favorited={data.favorited}
-                            />
-                        </StyledContent>
-                    )
+                    return <Contents key={data.slug} data={data} />
                 })}
             </StyledTagFeed>
             {tagFeeds.state === 'done' && <PageNumber />}
