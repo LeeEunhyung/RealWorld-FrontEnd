@@ -43,13 +43,26 @@ export class ArticlesApis {
     }
 
     static getArticlesbyTag(offset: number, tag: string) {
-        return httpClient.get('articles', {
-            params: {
-                offset,
-                limit: 6,
-                tag,
-            },
-        })
+        if (localStorage.getItem('token')) {
+            return httpClient.get('articles', {
+                headers: {
+                    Authorization: `Token ${localStorage.getItem('token')}`,
+                },
+                params: {
+                    offset,
+                    limit: 6,
+                    tag,
+                },
+            })
+        } else {
+            return httpClient.get('articles', {
+                params: {
+                    offset,
+                    limit: 6,
+                    tag,
+                },
+            })
+        }
     }
 
     static getFavoritedArticles(offset: number, favorited: string) {

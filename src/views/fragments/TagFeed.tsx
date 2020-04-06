@@ -61,7 +61,7 @@ export const TagFeed = observer(() => {
                     <StyledNotice>It&apos;s empty!</StyledNotice>
                 )}
                 {tagFeeds.state === 'error' && (
-                    <StyledNotice>Error x_x</StyledNotice>
+                    <StyledNotice>Error X___X</StyledNotice>
                 )}
                 {tagFeeds.contents.map(data => {
                     return <Contents key={data.slug} data={data} />

@@ -57,7 +57,7 @@ export const YourFeed = observer(() => {
                     <StyledNotice>It&apos;s empty!</StyledNotice>
                 )}
                 {yourFeeds.state === 'error' && (
-                    <StyledNotice>Error x_x</StyledNotice>
+                    <StyledNotice>Error X___X</StyledNotice>
                 )}
                 {yourFeeds.contents.map(data => {
                     return <Contents key={data.slug} data={data} />
