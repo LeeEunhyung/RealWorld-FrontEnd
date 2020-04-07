@@ -17,8 +17,7 @@ export class Articles {
 
     @asyncAction public *postFavoriteArticle(slug: string) {
         try {
-            const res = yield ArticlesApis.postFavoriteArticle(slug)
-            console.log(res)
+            yield ArticlesApis.postFavoriteArticle(slug)
         } catch (e) {
             console.error(e.message)
         }
@@ -26,8 +25,7 @@ export class Articles {
 
     @asyncAction public *deleteFavoriteArticle(slug: string) {
         try {
-            const res = yield ArticlesApis.deleteFavoriteArticle(slug)
-            console.log(res)
+            yield ArticlesApis.deleteFavoriteArticle(slug)
         } catch (e) {
             console.error(e.message)
         }

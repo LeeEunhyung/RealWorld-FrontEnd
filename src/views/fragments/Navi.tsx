@@ -16,8 +16,7 @@ const StyledNavi = styled.ul`
 const StyledNaviList = styled.li`
     min-height: 25px;
     list-style: none;
-    background-color: rgba(0, 0, 0, 0);
-    color: rgb(155, 155, 155);
+    color: #ffffff;
     border: none;
     margin: 0.2rem;
     padding: 0.5rem;

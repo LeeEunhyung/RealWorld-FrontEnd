@@ -76,7 +76,15 @@ export class ArticlesApis {
     }
 
     static getClickedArticle(slug: string) {
-        return httpClient.get(`articles/${slug}`)
+        if (localStorage.getItem('token')) {
+            return httpClient.get(`articles/${slug}`, {
+                headers: {
+                    Authorization: `Token ${localStorage.getItem('token')}`,
+                },
+            })
+        } else {
+            return httpClient.get(`articles/${slug}`)
+        }
     }
 
     static postFavoriteArticle(slug: string) {

@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import styled from 'styled-components'
-
+import { observer } from 'mobx-react'
+import { UserContext } from '../../contexts/UserContext'
 import { UserInfo } from '../fragments/UserInfo'
 
 const StyledMain = styled.main`
@@ -15,12 +16,16 @@ const StyledMain = styled.main`
     flex-wrap: wrap;
 `
 
-export function MyPage() {
+export const MyPage = observer(() => {
+    const user = useContext(UserContext)
+
+    useEffect(() => {
+        user.getUserInfo()
+    }, [user])
+
     return (
-        <div>
-            <StyledMain>
-                <UserInfo />
-            </StyledMain>
-        </div>
+        <StyledMain>
+            <UserInfo />
+        </StyledMain>
     )
-}
+})
