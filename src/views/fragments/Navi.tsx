@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { observer } from 'mobx-react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
@@ -28,7 +28,7 @@ const StyledNaviList = styled.li`
         display: block;
         color: #ffffff;
         text-decoration: none;
-        font-size: 1.05rem;
+        font-size: 1rem;
     }
     &.mypage {
         width: 50px;
@@ -45,7 +45,11 @@ const StyledNaviList = styled.li`
 
 export const Navi = observer(() => {
     const user = useContext(UserContext)
-    user.setIsLogin()
+
+    useEffect(() => {
+        user.setIsLogin()
+    }, [user])
+
     return (
         <StyledNavi>
             {user.isLogin && (

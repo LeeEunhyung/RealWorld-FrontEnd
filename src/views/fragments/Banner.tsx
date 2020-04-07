@@ -39,7 +39,6 @@ const StyledTag = styled.p`
 
 export const Banner = observer(() => {
     const article = useContext(ArticleContext)
-    console.log(article.articleInfo)
     return (
         <StyledArticle>
             <StyledTitle>

@@ -14,6 +14,9 @@ const StyledAuthorInfo = styled.div`
     a {
         text-decoration: none;
         color: #000000;
+        &:hover {
+            text-decoration: underline;
+        }
     }
     span {
         display: block;
@@ -26,32 +29,36 @@ const StyledAuthorInfo = styled.div`
         height: 40px;
         border-radius: 70px;
     }
+    input {
+        margin: 4px;
+        height: 40px;
+        border-radius: 10px;
+        outline: none;
+    }
 `
 
 const StyledFollow = styled.input`
-    margin: 4px;
-    height: 40px;
     border: 1px solid #c8c8c8;
     color: #c8c8c8;
     background-color: rgba(0, 0, 0, 0);
-    border-radius: 10px;
+    &:hover {
+        color: #ffffff;
+        background-color: #c8c8c8;
+    }
 `
+
 const StyledFavorite = styled.input`
-    margin: 4px;
-    height: 40px;
     border: 1px solid #ff4501;
     color: #ff4501;
     background-color: rgba(0, 0, 0, 0);
-    border-radius: 10px;
+    &:hover {
+        color: #ffffff;
+        background-color: #ff4501;
+    }
 `
 
 export const AuthorInfo = observer(() => {
     const article = useContext(ArticleContext)
-
-    console.log(article.articleInfo.author.following)
-
-    console.log(article.articleInfo.favorited)
-
     return (
         <StyledAuthorInfo>
             <Link to="/">
@@ -66,22 +73,22 @@ export const AuthorInfo = observer(() => {
                     {String(article.articleInfo.createdAt).substr(0, 10)}
                 </span>
             </div>
-            <StyledFollow
-                type="button"
-                value={
-                    article.articleInfo.author.following
-                        ? `+ Unfollow ${article.articleInfo.author.username}`
-                        : `+ Follow ${article.articleInfo.author.username}`
-                }
-            />
-            <StyledFavorite
-                type="button"
-                value={
-                    article.articleInfo.favorited
-                        ? `♥ Unfavorite Article (${article.articleInfo.favoritesCount})`
-                        : `♥ Favorite Article (${article.articleInfo.favoritesCount})`
-                }
-            />
+            <div>
+                <StyledFollow
+                    type="button"
+                    value={article.followingValue}
+                    onClick={() => {
+                        console.log('click')
+                    }}
+                />
+                <StyledFavorite
+                    type="button"
+                    value={article.favoritedValue}
+                    onClick={() => {
+                        console.log('click')
+                    }}
+                />
+            </div>
         </StyledAuthorInfo>
     )
 })
