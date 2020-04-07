@@ -11,6 +11,11 @@ const StyledTags = styled.section`
     margin: 1rem;
 `
 
+const StyledNotice = styled.div`
+    font-weight: bolder;
+    text-align: center;
+`
+
 export const Tags = observer(() => {
     const articles = useContext(ArticlesContext)
 
@@ -22,10 +27,20 @@ export const Tags = observer(() => {
     )
 
     return (
-        <StyledTags>
-            {articles.tagsList.map(data => {
-                return <TagsLink key={data} value={data} />
-            })}
-        </StyledTags>
+        <>
+            {articles.state === 'loading' && (
+                <StyledNotice>Loading...</StyledNotice>
+            )}
+            {articles.state === 'done' && (
+                <StyledTags>
+                    {articles.tagsList.map(data => {
+                        return <TagsLink key={data} value={data} />
+                    })}
+                </StyledTags>
+            )}
+            {articles.state === 'error' && (
+                <StyledNotice>Error X___X</StyledNotice>
+            )}
+        </>
     )
 })

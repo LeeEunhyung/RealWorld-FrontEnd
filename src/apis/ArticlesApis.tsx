@@ -119,6 +119,22 @@ export class ArticlesApis {
         })
     }
 
+    static addComment(slug: string, body: string) {
+        return httpClient.post(
+            `articles/${slug}/comments`,
+            {
+                comment: {
+                    body,
+                },
+            },
+            {
+                headers: {
+                    Authorization: `Token ${localStorage.getItem('token')}`,
+                },
+            },
+        )
+    }
+
     static getComments(slug: string) {
         return httpClient.get(`articles/${slug}/comments`, {
             headers: {

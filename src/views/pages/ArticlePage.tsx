@@ -18,13 +18,30 @@ const StyledArticle = styled.div`
     flex-wrap: wrap;
 `
 
+const StyledNotice = styled.div`
+    margin-top: 3rem;
+    height: 302px;
+    font-weight: bolder;
+    text-align: center;
+`
+
 export const ArticlePage = observer(() => {
     const article = useContext(ArticleContext)
 
     return article.articleInfo === undefined ? null : (
-        <StyledArticle>
-            <Banner />
-            <ContentContainer />
-        </StyledArticle>
+        <>
+            {article.state === 'loading' && (
+                <StyledNotice>Loading...</StyledNotice>
+            )}
+            {article.state === 'done' && (
+                <StyledArticle>
+                    <Banner />
+                    <ContentContainer />
+                </StyledArticle>
+            )}
+            {article.state === 'error' && (
+                <StyledNotice>Error X___X</StyledNotice>
+            )}
+        </>
     )
 })

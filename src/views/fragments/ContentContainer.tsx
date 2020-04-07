@@ -1,8 +1,7 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import styled from 'styled-components'
-import { observer } from 'mobx-react'
-import { ArticleContext } from '../../contexts/ArticleContext'
-import { Comments } from './Comments'
+import { CommentForm } from './CommentForm'
+import { CommentsList } from './CommentsList'
 
 const StyledContentContainer = styled.div`
     max-width: 1200px;
@@ -10,14 +9,11 @@ const StyledContentContainer = styled.div`
     flex-direction: column;
 `
 
-export const ContentContainer = observer(() => {
-    const article = useContext(ArticleContext)
-
+export function ContentContainer() {
     return (
         <StyledContentContainer>
-            <div className="contentContainer">
-                <Comments />
-            </div>
+            <CommentForm />
+            <CommentsList />
         </StyledContentContainer>
     )
-})
+}
