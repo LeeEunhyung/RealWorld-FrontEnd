@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import styled from 'styled-components'
 import { Banner } from '../fragments/Banner'
 import { ContentContainer } from '../fragments/ContentContainer'
@@ -28,7 +28,11 @@ const StyledNotice = styled.div`
 export const ArticlePage = observer(() => {
     const article = useContext(ArticleContext)
 
-    return article.articleInfo === undefined ? null : (
+    useEffect(() => {
+        article.getClickedArticle(document.location.href.split('/article/')[1])
+    }, [article])
+
+    return (
         <>
             {article.state === 'loading' && (
                 <StyledNotice>Loading...</StyledNotice>

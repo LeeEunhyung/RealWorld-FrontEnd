@@ -31,14 +31,15 @@ const StyledNaviList = styled.li`
         font-size: 1rem;
     }
     &.mypage {
-        width: 50px;
-        height: 50px;
+        padding: 0;
+        width: 60px;
+        height: 60px;
         border-radius: 70px;
-        background-image: url(https://cdn.mensagenscomamor.com/content/images/m000498499.jpg?v=1&w=300&h=300);
-        background-size: 100%;
-        background-position: center center;
-        a {
-            color: rgba(0, 0, 0, 0);
+        background-color: rgba(0, 0, 0, 0);
+        img {
+            width: 60px;
+            height: 60px;
+            border-radius: 70px;
         }
     }
 `
@@ -47,14 +48,19 @@ export const Navi = observer(() => {
     const user = useContext(UserContext)
 
     useEffect(() => {
-        user.setIsLogin()
+        if (user.setIsLogin()) user.getUserInfo()
     }, [user])
 
     return (
         <StyledNavi>
-            {user.isLogin && (
+            {user.isLogin && user.state === 'done' && (
                 <StyledNaviList className="mypage">
-                    <Link to="/profile">My page</Link>
+                    <Link to="/profile">
+                        <img
+                            alt={user.userInfo.username}
+                            src={user.userInfo.image}
+                        />
+                    </Link>
                 </StyledNaviList>
             )}
             <StyledNaviList>

@@ -11,7 +11,7 @@ const StyledCommentsList = styled.div`
 `
 
 const StyledComment = styled.div`
-    margin: 2px;
+    padding: 16px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -29,7 +29,7 @@ const StyledComment = styled.div`
         color: #c8c8c8;
     }
     img {
-        margin: 0 8px 0 0;
+        margin: 0 0 0 8px;
         width: 40px;
         height: 40px;
         border-radius: 70px;
@@ -63,18 +63,20 @@ export const CommentsList = observer(() => {
                     <StyledComment key={data.id}>
                         <StyledBody>{data.body}</StyledBody>
                         <StyledAuthor>
-                            <Link to="/">
+                            <div>
+                                <Link to="/profile">
+                                    {data.author.username}
+                                </Link>
+                                <span>
+                                    {String(data.createdAt).substr(0, 10)}
+                                </span>
+                            </div>
+                            <Link to="/profile">
                                 <img
                                     src={data.author.image}
                                     alt={data.author.username}
                                 />
                             </Link>
-                            <div>
-                                <Link to="/">{data.author.username}</Link>
-                                <span>
-                                    {String(data.createdAt).substr(0, 10)}
-                                </span>
-                            </div>
                         </StyledAuthor>
                     </StyledComment>
                 )

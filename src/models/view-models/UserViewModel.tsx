@@ -16,6 +16,8 @@ export class User {
     @observable loginError: string = ''
     @observable registerError: string = ''
 
+    @observable state: string = 'loading'
+
     @asyncAction public *checkRegister(
         username: string,
         email: string,
@@ -49,15 +51,18 @@ export class User {
     }
 
     @asyncAction public *getUserInfo() {
+        this.state = 'loading'
         try {
             const res = yield UserApis.getUserInfo()
             this.userInfo = res.data.user
             this.userInfo.image =
                 this.userInfo.image === null
                     ? 'https://static.productionready.io/images/smiley-cyrus.jpg'
-                    : this.userInfo.imamge
+                    : this.userInfo.image
+            this.state = 'done'
         } catch (e) {
             console.log(e.message)
+            this.state = 'error'
         }
     }
 
@@ -82,6 +87,8 @@ export class User {
         } else {
             this.isLogin = true
         }
+
+        return this.isLogin
     }
 
     @action public setFeed() {

@@ -13,11 +13,14 @@ const StyledCommnetForm = styled.div`
 const StyledText = styled.textarea`
     width: 100%;
     border: 1px solid #c8c8c8;
-    border-radius: 1px;
+    border-radius: 15px 0 0 15px / 15px 0 0 15px;
     padding: 1rem;
+    resize: none;
 `
 
 const StyledButton = styled.input`
+    width: 200px;
+    border-radius: 0 15px 15px 0 / 0 15px 15px 0;
     border: none;
     background-color: #c8c8c8;
     color: #ffffff;

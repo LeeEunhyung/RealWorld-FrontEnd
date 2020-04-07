@@ -136,10 +136,14 @@ export class ArticlesApis {
     }
 
     static getComments(slug: string) {
-        return httpClient.get(`articles/${slug}/comments`, {
-            headers: {
-                Authorization: `Token ${localStorage.getItem('token')}`,
-            },
-        })
+        if (localStorage.getItem('token')) {
+            return httpClient.get(`articles/${slug}/comments`, {
+                headers: {
+                    Authorization: `Token ${localStorage.getItem('token')}`,
+                },
+            })
+        } else {
+            return httpClient.get(`articles/${slug}/comments`)
+        }
     }
 }

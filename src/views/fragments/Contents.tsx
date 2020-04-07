@@ -34,6 +34,7 @@ interface IProps {
 
 export const Contents = observer((props: IProps) => {
     const article = useContext(ArticleContext)
+
     return (
         <StyledContent>
             <Link

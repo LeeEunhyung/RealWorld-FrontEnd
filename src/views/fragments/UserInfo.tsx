@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import styled from 'styled-components'
 import { observer } from 'mobx-react'
 import { UserContext } from '../../contexts/UserContext'
@@ -40,15 +40,36 @@ const StyledUserInfo = styled.div`
     }
 `
 
+const StyledNotice = styled.div`
+    margin-top: 3rem;
+    font-weight: bolder;
+    text-align: center;
+`
+
 export const UserInfo = observer(() => {
     const user = useContext(UserContext)
 
+    useEffect(() => {
+        user.getUserInfo()
+    }, [user])
+
     return (
-        <StyledUserInfo>
-            <img src={user.userInfo.image} alt={user.userInfo.image} />
-            <h1>{user.userInfo.username}</h1>
-            <p>{user.userInfo.bio}</p>
-            <input type="button" value={`+ Follow ${user.userInfo.username}`} />
-        </StyledUserInfo>
+        <>
+            {user.state === 'loading' && (
+                <StyledNotice>Loading...</StyledNotice>
+            )}
+            {user.state === 'done' && (
+                <StyledUserInfo>
+                    <img src={user.userInfo.image} alt={user.userInfo.image} />
+                    <h1>{user.userInfo.username}</h1>
+                    <p>{user.userInfo.bio}</p>
+                    <input
+                        type="button"
+                        value={`+ Follow ${user.userInfo.username}`}
+                    />
+                </StyledUserInfo>
+            )}
+            {user.state === 'error' && <StyledNotice>Error X___X</StyledNotice>}
+        </>
     )
 })

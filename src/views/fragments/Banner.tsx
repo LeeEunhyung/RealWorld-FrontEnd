@@ -17,6 +17,7 @@ const StyledTitle = styled.div`
 `
 
 const StyledDesc = styled.div`
+    min-height: 100px;
     margin: 4px;
     display: flex;
     flex-direction: column;

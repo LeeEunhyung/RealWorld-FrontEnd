@@ -63,14 +63,14 @@ export const AuthorInfo = observer(() => {
     const article = useContext(ArticleContext)
     return (
         <StyledAuthorInfo>
-            <Link to="/">
+            <Link to="/profile">
                 <img
                     src={article.articleInfo.author.image}
                     alt={article.articleInfo.author.username}
                 />
             </Link>
             <div>
-                <Link to="/">{article.articleInfo.author.username}</Link>
+                <Link to="/profile">{article.articleInfo.author.username}</Link>
                 <span>
                     {String(article.articleInfo.createdAt).substr(0, 10)}
                 </span>
