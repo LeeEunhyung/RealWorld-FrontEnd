@@ -87,6 +87,22 @@ export class ArticlesApis {
         }
     }
 
+    static followAuthor(username: string) {
+        return httpClient.post(`profiles/${username}/follow`, null, {
+            headers: {
+                Authorization: `Token ${localStorage.getItem('token')}`,
+            },
+        })
+    }
+
+    static unFollowAuthor(username: string) {
+        return httpClient.delete(`profiles/${username}/follow`, {
+            headers: {
+                Authorization: `Token ${localStorage.getItem('token')}`,
+            },
+        })
+    }
+
     static postFavoriteArticle(slug: string) {
         return httpClient.post(`articles/${slug}/favorite`, null, {
             headers: {

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import styled from 'styled-components'
 import { observer } from 'mobx-react'
 import { ArticleContext } from '../../contexts/ArticleContext'
@@ -41,6 +41,7 @@ const StyledFollow = styled.input`
     border: 1px solid #c8c8c8;
     color: #c8c8c8;
     background-color: rgba(0, 0, 0, 0);
+    &.true,
     &:hover {
         color: #ffffff;
         background-color: #c8c8c8;
@@ -51,6 +52,7 @@ const StyledFavorite = styled.input`
     border: 1px solid #ff4501;
     color: #ff4501;
     background-color: rgba(0, 0, 0, 0);
+    &.true,
     &:hover {
         color: #ffffff;
         background-color: #ff4501;
@@ -75,17 +77,27 @@ export const AuthorInfo = observer(() => {
             </div>
             <div>
                 <StyledFollow
+                    className={String(article.articleInfo.author.following)}
                     type="button"
                     value={article.followingValue}
                     onClick={() => {
-                        console.log('click')
+                        if (article.articleInfo.author.following) {
+                            article.unFollowAuthor()
+                        } else {
+                            article.followAuthor()
+                        }
                     }}
                 />
                 <StyledFavorite
+                    className={String(article.articleInfo.favorited)}
                     type="button"
                     value={article.favoritedValue}
                     onClick={() => {
-                        console.log('click')
+                        if (article.articleInfo.favorited) {
+                            article.deleteFavoriteArticle()
+                        } else {
+                            article.postFavoriteArticle()
+                        }
                     }}
                 />
             </div>
