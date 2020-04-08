@@ -4,6 +4,8 @@ import { observer } from 'mobx-react'
 
 import { ArticlesContext } from '../../contexts/ArticlesContext'
 import { TagsLink } from '../components/TagLink'
+import { TagFeedsContext } from '../../contexts/TagFeedsContext'
+import { UserContext } from '../../contexts/UserContext'
 
 const StyledTags = styled.section`
     display: flex;
@@ -18,6 +20,8 @@ const StyledNotice = styled.div`
 
 export const Tags = observer(() => {
     const articles = useContext(ArticlesContext)
+    const tagFeeds = useContext(TagFeedsContext)
+    const user = useContext(UserContext)
 
     useEffect(
         function() {
@@ -34,7 +38,16 @@ export const Tags = observer(() => {
             {articles.state === 'done' && (
                 <StyledTags>
                     {articles.tagsList.map(data => {
-                        return <TagsLink key={data} value={data} />
+                        return (
+                            <TagsLink
+                                key={data}
+                                value={data}
+                                onClick={() => {
+                                    tagFeeds.setSelectedTag(data)
+                                    user.setTagFeed(data)
+                                }}
+                            />
+                        )
                     })}
                 </StyledTags>
             )}

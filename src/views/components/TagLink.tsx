@@ -1,10 +1,6 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import styled from 'styled-components'
-import { observer } from 'mobx-react'
-
-import { TagFeedsContext } from '../../contexts/TagFeedsContext'
 import { Link } from 'react-router-dom'
-import { UserContext } from '../../contexts/UserContext'
 
 const StyledLink = styled.a`
     flex-wrap: wrap;
@@ -20,21 +16,17 @@ const StyledLink = styled.a`
 
 interface IProps {
     value: string
+    onClick: () => void
 }
 
-export const TagsLink = observer((props: IProps) => {
-    const tagFeeds = useContext(TagFeedsContext)
-    const user = useContext(UserContext)
+export function TagsLink(props: IProps) {
     return (
         <StyledLink
             as={Link}
             to={`/tag/${props.value}`}
-            onClick={function() {
-                tagFeeds.setSelectedTag(props.value)
-                user.setTagFeed(props.value)
-            }}
+            onClick={props.onClick}
         >
             {props.value}
         </StyledLink>
     )
-})
+}

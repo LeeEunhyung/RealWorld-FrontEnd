@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import styled from 'styled-components'
 import { observer } from 'mobx-react'
 import { ArticleContext } from '../../contexts/ArticleContext'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 
 const StyledAuthorInfo = styled.div`
     margin: 8px;
@@ -60,6 +60,7 @@ const StyledFavorite = styled.input`
 `
 
 export const AuthorInfo = observer(() => {
+    const history = useHistory()
     const article = useContext(ArticleContext)
     return (
         <StyledAuthorInfo>
@@ -81,10 +82,12 @@ export const AuthorInfo = observer(() => {
                     type="button"
                     value={article.followingValue}
                     onClick={() => {
-                        if (article.articleInfo.author.following) {
-                            article.unFollowAuthor()
+                        if (localStorage.getItem('token')) {
+                            article.articleInfo.author.following
+                                ? article.unFollowAuthor()
+                                : article.followAuthor()
                         } else {
-                            article.followAuthor()
+                            history.push('/login')
                         }
                     }}
                 />
@@ -93,10 +96,12 @@ export const AuthorInfo = observer(() => {
                     type="button"
                     value={article.favoritedValue}
                     onClick={() => {
-                        if (article.articleInfo.favorited) {
-                            article.deleteFavoriteArticle()
+                        if (localStorage.getItem('token')) {
+                            article.articleInfo.favorited
+                                ? article.deleteFavoriteArticle()
+                                : article.postFavoriteArticle()
                         } else {
-                            article.postFavoriteArticle()
+                            history.push('/login')
                         }
                     }}
                 />
