@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 import { UserContext } from '../../contexts/UserContext'
-import { LogoutButton } from '../components/LogoutButton'
+import { LogoutButton } from './LogoutButton'
 
 const StyledNavi = styled.ul`
     margin-right: 1.5rem;
