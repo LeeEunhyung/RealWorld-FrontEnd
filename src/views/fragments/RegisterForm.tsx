@@ -56,7 +56,7 @@ export const RegisterForm = observer(() => {
     let username: string = ''
     let email: string = ''
     let password: string = ''
-    user.setErrorMessage()
+    user.resetErrorMessage()
     return (
         <StyledForm>
             <ErrorMessage />

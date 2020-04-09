@@ -12,26 +12,30 @@ export const ErrorMessage = observer(() => {
     const user = useContext(UserContext)
     return (
         <StyledErrorMessage>
-            {user.registerError.split(',').map(msg => {
-                if (msg === '') return null
-                else
-                    return (
-                        <span key={msg}>
-                            - {msg}
-                            <br />
-                        </span>
-                    )
-            })}
-            {user.loginError.split(',').map(msg => {
-                if (msg === '') return null
-                else
-                    return (
-                        <span key={msg}>
-                            - {msg}
-                            <br />
-                        </span>
-                    )
-            })}
+            {user.errorMessage.username && (
+                <span>
+                    {`- username ${user.errorMessage.username}.`}
+                    <br />
+                </span>
+            )}
+            {user.errorMessage.email && (
+                <span>
+                    {`- email ${user.errorMessage.email}.`}
+                    <br />
+                </span>
+            )}
+            {user.errorMessage.password && (
+                <span>
+                    {`- password ${user.errorMessage.password}.`}
+                    <br />
+                </span>
+            )}
+            {user.errorMessage['email or password'] && (
+                <span>
+                    {`- email or password ${user.errorMessage['email or password']}.`}
+                    <br />
+                </span>
+            )}
         </StyledErrorMessage>
     )
 })

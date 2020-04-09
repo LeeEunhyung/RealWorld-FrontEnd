@@ -6,8 +6,7 @@ export class User {
     @observable isLogin: boolean = false
     @observable userInfo: any
 
-    @observable loginError: string = ''
-    @observable registerError: string = ''
+    @observable errorMessage: any = {}
 
     @observable state: string = 'loading'
 
@@ -26,8 +25,7 @@ export class User {
             this.isLogin = true
             this.getUserInfo()
         } catch (e) {
-            this.registerError = JSON.stringify(e.response.data.errors)
-            this.registerError = this.replaceErrorMessage(this.registerError)
+            this.errorMessage = e.response.data.errors
         }
 
         return this.isLogin
@@ -40,8 +38,8 @@ export class User {
             this.isLogin = true
             this.getUserInfo()
         } catch (e) {
-            this.loginError = JSON.stringify(e.response.data.errors)
-            this.loginError = this.replaceErrorMessage(this.loginError)
+            this.errorMessage = e.response.data.errors
+            console.log(this.errorMessage)
         }
 
         return this.isLogin
@@ -62,19 +60,8 @@ export class User {
         }
     }
 
-    @action public replaceErrorMessage(errorMessage: string) {
-        errorMessage = errorMessage
-            .replace(/[~!@#$%^&*()_+|<>?{}"]/g, '')
-            .replace(/\[/g, '')
-            .replace(/\]/g, '')
-            .replace(/:/g, ' ')
-
-        return errorMessage
-    }
-
-    @action public setErrorMessage() {
-        this.loginError = ''
-        this.registerError = ''
+    @action public resetErrorMessage() {
+        this.errorMessage = {}
     }
 
     @action public setIsLogin() {

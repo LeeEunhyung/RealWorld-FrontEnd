@@ -54,7 +54,7 @@ export const LoginForm = observer(() => {
     const user = useContext(UserContext)
     let email: string = ''
     let password: string = ''
-    user.setErrorMessage()
+    user.resetErrorMessage()
     return (
         <StyledForm>
             <ErrorMessage />
