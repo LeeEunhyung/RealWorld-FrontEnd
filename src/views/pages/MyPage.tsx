@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { UserInfo } from '../fragments/UserInfo'
+import { LogoutButton } from '../fragments/LogoutButton'
 
 const StyledMain = styled.main`
     margin: 20px;
@@ -15,6 +16,7 @@ export function MyPage() {
     return (
         <StyledMain>
             <UserInfo />
+            <LogoutButton />
         </StyledMain>
     )
 }

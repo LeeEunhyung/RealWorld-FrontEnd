@@ -18,7 +18,7 @@ export const Feed = observer(() => {
     const articles = useContext(ArticlesContext)
 
     useEffect(() => {
-        articles.getArticles()
+        articles.setSelectedMenu('Feed')
     }, [articles])
 
     return (

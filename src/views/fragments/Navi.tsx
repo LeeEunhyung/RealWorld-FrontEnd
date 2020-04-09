@@ -4,8 +4,6 @@ import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 import { UserContext } from '../../contexts/UserContext'
-import { LogoutButton } from './LogoutButton'
-import { ArticlesContext } from '../../contexts/ArticlesContext'
 
 const StyledNavi = styled.ul`
     margin-right: 1.5rem;
@@ -47,7 +45,6 @@ const StyledNaviList = styled.li`
 
 export const Navi = observer(() => {
     const user = useContext(UserContext)
-    const articles = useContext(ArticlesContext)
 
     useEffect(() => {
         if (user.setIsLogin()) user.getUserInfo()
@@ -55,6 +52,29 @@ export const Navi = observer(() => {
 
     return (
         <StyledNavi>
+            <StyledNaviList>
+                <Link to="/">Home</Link>
+            </StyledNaviList>
+            {user.isLogin && (
+                <>
+                    <StyledNaviList>
+                        <Link to="/editor">New Story</Link>
+                    </StyledNaviList>
+                    <StyledNaviList>
+                        <Link to="/settings">Settings</Link>
+                    </StyledNaviList>
+                </>
+            )}
+            {!user.isLogin && (
+                <>
+                    <StyledNaviList>
+                        <Link to="/login">Sign in</Link>
+                    </StyledNaviList>
+                    <StyledNaviList>
+                        <Link to="/register">Sign up</Link>
+                    </StyledNaviList>
+                </>
+            )}
             {user.isLogin && user.state === 'done' && (
                 <StyledNaviList className="mypage">
                     <Link to="/profile">
@@ -63,31 +83,6 @@ export const Navi = observer(() => {
                             src={user.userInfo.image}
                         />
                     </Link>
-                </StyledNaviList>
-            )}
-            <StyledNaviList>
-                <Link
-                    to="/"
-                    onClick={() => {
-                        articles.setSelectedMenu('Feed')
-                    }}
-                >
-                    New story
-                </Link>
-            </StyledNaviList>
-            {!user.isLogin && (
-                <StyledNaviList>
-                    <Link to="/login">Sign in</Link>
-                </StyledNaviList>
-            )}
-            {!user.isLogin && (
-                <StyledNaviList>
-                    <Link to="/register">Sign up</Link>
-                </StyledNaviList>
-            )}
-            {user.isLogin && (
-                <StyledNaviList>
-                    <LogoutButton />
                 </StyledNaviList>
             )}
         </StyledNavi>

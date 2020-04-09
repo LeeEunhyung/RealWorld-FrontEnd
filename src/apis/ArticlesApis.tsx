@@ -13,43 +13,8 @@ export class ArticlesApis {
         }
     }
 
-    static getYourFeeds(offset: number) {
-        return httpClient.get('articles/feed', {
-            headers: {
-                Authorization: `Token ${localStorage.getItem('token')}`,
-            },
-            params: {
-                offset,
-                limit: 6,
-            },
-        })
-    }
-
     static getTags() {
         return httpClient.get('tags')
-    }
-
-    static getArticlesbyTag(offset: number, tag: string) {
-        if (localStorage.getItem('token')) {
-            return httpClient.get('articles', {
-                headers: {
-                    Authorization: `Token ${localStorage.getItem('token')}`,
-                },
-                params: {
-                    offset,
-                    limit: 6,
-                    tag,
-                },
-            })
-        } else {
-            return httpClient.get('articles', {
-                params: {
-                    offset,
-                    limit: 6,
-                    tag,
-                },
-            })
-        }
     }
 
     static getClickedArticle(slug: string) {

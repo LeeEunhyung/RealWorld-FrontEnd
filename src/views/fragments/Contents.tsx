@@ -4,7 +4,7 @@ import styled from 'styled-components'
 
 import { ContentImage } from '../components/ContentImage'
 import { ContentText } from '../components/ContentText'
-import { ContentButton } from '../components/ContentButton'
+import { FavoriteButton } from './FavoriteButton'
 import { observer } from 'mobx-react'
 import { ArticleContext } from '../../contexts/ArticleContext'
 
@@ -46,7 +46,7 @@ export const Contents = observer((props: IProps) => {
                 <ContentImage imgSrc={props.data.author.image} />
                 <ContentText title={props.data.title} desc={props.data.desc} />
             </Link>
-            <ContentButton
+            <FavoriteButton
                 slug={props.data.slug}
                 favorited={props.data.favorited}
             />

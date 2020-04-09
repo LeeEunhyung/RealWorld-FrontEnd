@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
 import { observer } from 'mobx-react'
 
@@ -18,10 +18,6 @@ const StyledPageNumber = styled.div`
 
 export const PageNumber = observer(() => {
     const articles = useContext(ArticlesContext)
-
-    useEffect(() => {
-        articles.setPageNumberList()
-    }, [articles])
 
     return (
         <StyledPageNumber>

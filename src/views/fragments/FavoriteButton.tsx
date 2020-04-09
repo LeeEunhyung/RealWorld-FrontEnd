@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react'
 import styled from 'styled-components'
 import { observer } from 'mobx-react'
-import { ArticlesContext } from '../../contexts/ArticlesContext'
+import { ArticleContext } from '../../contexts/ArticleContext'
 import { useHistory } from 'react-router-dom'
 
 const StyledButton = styled.input`
@@ -32,10 +32,10 @@ interface IProps {
     favorited: boolean
 }
 
-export const ContentButton = observer((props: IProps) => {
+export const FavoriteButton = observer((props: IProps) => {
     const history = useHistory()
     const [isClicked, setIsClicked] = useState(props.favorited)
-    const articles = useContext(ArticlesContext)
+    const article = useContext(ArticleContext)
 
     return (
         <StyledButton
@@ -46,8 +46,8 @@ export const ContentButton = observer((props: IProps) => {
                 if (localStorage.getItem('token') === null) {
                     history.push('/login')
                 } else {
-                    if (isClicked) articles.turnOffFavoriteButton(props.slug)
-                    else articles.turnOnFavoriteButton(props.slug)
+                    if (isClicked) article.turnOffFavoriteButton(props.slug)
+                    else article.turnOnFavoriteButton(props.slug)
                     setIsClicked(!isClicked)
                 }
             }}

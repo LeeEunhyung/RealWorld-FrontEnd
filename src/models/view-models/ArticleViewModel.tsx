@@ -43,22 +43,22 @@ export class Article {
         }
     }
 
-    @asyncAction public *turnOnFavoriteButton() {
+    @asyncAction public *turnOnFavoriteButton(
+        slug: string = this.articleInfo.slug,
+    ) {
         try {
-            const res = yield ArticlesApis.turnOnFavoriteButton(
-                this.articleInfo.slug,
-            )
+            const res = yield ArticlesApis.turnOnFavoriteButton(slug)
             this.setArticleInfo(res.data.article)
         } catch (e) {
             console.error(e.message)
         }
     }
 
-    @asyncAction public *turnOffFavoriteButton() {
+    @asyncAction public *turnOffFavoriteButton(
+        slug: string = this.articleInfo.slug,
+    ) {
         try {
-            const res = yield ArticlesApis.turnOffFavoriteButton(
-                this.articleInfo.slug,
-            )
+            const res = yield ArticlesApis.turnOffFavoriteButton(slug)
             this.setArticleInfo(res.data.article)
         } catch (e) {
             console.error(e.message)

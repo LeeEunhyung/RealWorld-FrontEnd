@@ -11,16 +11,9 @@ export class User {
 
     @observable state: string = 'loading'
 
-
-
     @observable isFeedSelected: boolean = true
     @observable isYourFeedSelected: boolean = false
     @observable isTagFeedSelected: boolean = false
-
-    @observable selectedNaviMenu: string = 'Feed'
-    @observable selectedTag: string = ''
-
-    
 
     @asyncAction public *checkRegister(
         username: string,
@@ -94,42 +87,8 @@ export class User {
         return this.isLogin
     }
 
-    @action public setFeed() {
-        this.selectedNaviMenu = 'Feed'
-        this.isFeedSelected = true
-        this.isYourFeedSelected = false
-        this.isTagFeedSelected = false
-        this.selectedTag = ''
-    }
-
-    @action public setYourFeed() {
-        this.selectedNaviMenu = 'Your Feed'
-        this.isFeedSelected = false
-        this.isYourFeedSelected = true
-        this.isTagFeedSelected = false
-        this.selectedTag = ''
-    }
-
-    @action public setTagFeed(tag: string) {
-        this.selectedNaviMenu = 'Tag Feed'
-        this.isYourFeedSelected = false
-        this.isFeedSelected = false
-        this.isTagFeedSelected = true
-        this.selectedTag = tag
-    }
-
-    @action public isSelectedTagEmpty(callback: () => void) {
-        if (this.selectedTag === '') {
-            callback()
-            return true
-        } else {
-            return false
-        }
-    }
-
     @action public setLogout() {
         localStorage.removeItem('token')
         this.isLogin = false
-        this.setFeed()
     }
 }

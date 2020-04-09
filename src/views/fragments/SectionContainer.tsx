@@ -10,15 +10,19 @@ import { Route, Switch } from 'react-router-dom'
 import { Feed } from './Feed'
 import { TagFeed } from './TagFeed'
 import { YourFeed } from './YourFeed'
+import { LoadingSpinner } from './LoadingSpinner'
 
 const StyledSectionContainer = styled.div`
+    min-height: 624px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-between;
 `
 
 const StyledNotice = styled.div`
-    height: 302px;
+    display: flex;
+    justify-content: center;
     font-weight: bolder;
     text-align: center;
     @media (min-width: 900px) {
@@ -37,15 +41,6 @@ export const SectionContainer = observer(() => {
 
     return (
         <StyledSectionContainer>
-            {articles.state === 'loading' && (
-                <StyledNotice>Loading...</StyledNotice>
-            )}
-            {articles.state === 'none' && (
-                <StyledNotice>It&apos;s empty!</StyledNotice>
-            )}
-            {articles.state === 'error' && (
-                <StyledNotice>Error X___X</StyledNotice>
-            )}
             <Switch>
                 <PrivateRoute path="/your-feed" component={YourFeed} />
                 <Route
@@ -54,7 +49,18 @@ export const SectionContainer = observer(() => {
                 />
                 <Route path="/" component={Feed} />
             </Switch>
-            {articles.state === 'done' && <PageNumber />}
+            {articles.state === 'loading' && (
+                <StyledNotice>
+                    <LoadingSpinner />
+                </StyledNotice>
+            )}
+            {articles.state === 'none' && (
+                <StyledNotice>It&apos;s empty!</StyledNotice>
+            )}
+            {articles.state === 'error' && (
+                <StyledNotice>Error X___X</StyledNotice>
+            )}
+            <PageNumber />
         </StyledSectionContainer>
     )
 })

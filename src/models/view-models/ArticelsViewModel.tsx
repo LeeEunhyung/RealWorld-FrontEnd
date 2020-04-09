@@ -15,33 +15,17 @@ export class Articles {
 
     @asyncAction public *getArticles() {
         this.state = 'loading'
-        this.articlesList = []
         const config = this.setConfig()
         try {
             const res = yield ArticlesApis.getArticles(
                 this.selectedMenu,
                 config,
             )
+            this.articlesList = []
             this.setArticles(res.data)
         } catch (e) {
             console.error(e.message)
             this.state = 'error'
-        }
-    }
-
-    @asyncAction public *turnOnFavoriteButton(slug: string) {
-        try {
-            yield ArticlesApis.turnOnFavoriteButton(slug)
-        } catch (e) {
-            console.error(e.message)
-        }
-    }
-
-    @asyncAction public *turnOffFavoriteButton(slug: string) {
-        try {
-            yield ArticlesApis.turnOffFavoriteButton(slug)
-        } catch (e) {
-            console.error(e.message)
         }
     }
 
@@ -92,7 +76,6 @@ export class Articles {
     }
 
     @action public setPageNumberList() {
-        this.pageNumberList = []
         let i = 0
         let count = 1
 
@@ -103,18 +86,16 @@ export class Articles {
         this.pageNumberList[i] = '>'
     }
 
-    @action public resetSelectedPage() {
-        this.selectedPage = 1
-    }
-
     @action public setSelectedMenu(value: string) {
+        this.articlesList = []
+        this.pageNumberList = []
         this.selectedPage = 1
         this.selectedMenu = value.includes('Feed') ? value : 'Tag Feed'
         if (this.selectedMenu === 'Tag Feed') {
             this.selectedTag = value
-            this.getArticles()
         } else {
             this.selectedTag = ''
         }
+        this.getArticles()
     }
 }

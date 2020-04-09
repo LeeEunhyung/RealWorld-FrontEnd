@@ -23,7 +23,7 @@ export const LogoutButton = observer(() => {
             value="Logout"
             onClick={() => {
                 user.setLogout()
-                articles.getArticles()
+                articles.setSelectedMenu('Feed')
                 history.push('/')
             }}
         />
