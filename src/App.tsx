@@ -10,7 +10,7 @@ import { RegisterPage } from './views/pages/RegisterPage'
 import { ArticlePage } from './views/pages/ArticlePage'
 import { MyPage } from './views/pages/MyPage'
 
-import { PrivateRoute } from './views/components/PrivateRoute'
+import { PrivateRoute } from './views/fragments/PrivateRoute'
 
 configure({ enforceActions: 'observed' })
 

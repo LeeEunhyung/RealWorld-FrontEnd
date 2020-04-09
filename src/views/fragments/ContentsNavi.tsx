@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import { observer } from 'mobx-react'
-import { UserContext } from '../../contexts/UserContext'
+import { ArticlesContext } from '../../contexts/ArticlesContext'
 
 const StyledNavi = styled.nav`
     height: 60px;
@@ -11,12 +11,6 @@ const StyledNavi = styled.nav`
     margin: 1rem 0 1rem;
     display: flex;
     flex-direction: row;
-    .true {
-        border-bottom: 6px solid #ff4501;
-    }
-    .false {
-        border-bottom: 6px solid #c8c8c8;
-    }
 `
 
 const StyledList = styled.li`
@@ -40,20 +34,34 @@ const StyledList = styled.li`
 `
 
 export const ContentsNavi = observer(() => {
-    const user = useContext(UserContext)
+    const articles = useContext(ArticlesContext)
 
     return (
         <StyledNavi>
-            <StyledList className={String(user.isFeedSelected)}>
-                <Link to="/">Feed</Link>
+            <StyledList>
+                <Link
+                    to="/"
+                    onClick={() => {
+                        articles.setSelectedMenu('Feed')
+                    }}
+                >
+                    Feed
+                </Link>
             </StyledList>
-            <StyledList className={String(user.isYourFeedSelected)}>
-                <Link to="/your-feed">Your Feed</Link>
+            <StyledList>
+                <Link
+                    to="/your-feed"
+                    onClick={() => {
+                        articles.setSelectedMenu('Your Feed')
+                    }}
+                >
+                    Your Feed
+                </Link>
             </StyledList>
-            {user.selectedNaviMenu === 'Tag Feed' && user.selectedTag && (
-                <StyledList className={String(user.isTagFeedSelected)}>
-                    <Link to={`/tag/${user.selectedTag}`}>
-                        # {user.selectedTag}
+            {articles.selectedTag && (
+                <StyledList>
+                    <Link to={`/tag/${articles.selectedTag}`}>
+                        # {articles.selectedTag}
                     </Link>
                 </StyledList>
             )}

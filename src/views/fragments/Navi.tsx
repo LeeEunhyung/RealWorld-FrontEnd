@@ -5,6 +5,7 @@ import styled from 'styled-components'
 
 import { UserContext } from '../../contexts/UserContext'
 import { LogoutButton } from './LogoutButton'
+import { ArticlesContext } from '../../contexts/ArticlesContext'
 
 const StyledNavi = styled.ul`
     margin-right: 1.5rem;
@@ -46,6 +47,7 @@ const StyledNaviList = styled.li`
 
 export const Navi = observer(() => {
     const user = useContext(UserContext)
+    const articles = useContext(ArticlesContext)
 
     useEffect(() => {
         if (user.setIsLogin()) user.getUserInfo()
@@ -64,7 +66,14 @@ export const Navi = observer(() => {
                 </StyledNaviList>
             )}
             <StyledNaviList>
-                <Link to="/">New story</Link>
+                <Link
+                    to="/"
+                    onClick={() => {
+                        articles.setSelectedMenu('Feed')
+                    }}
+                >
+                    New story
+                </Link>
             </StyledNaviList>
             {!user.isLogin && (
                 <StyledNaviList>

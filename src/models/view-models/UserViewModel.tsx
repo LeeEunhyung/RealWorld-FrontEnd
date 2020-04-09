@@ -4,6 +4,15 @@ import { UserApis } from '../../apis/UserApis'
 
 export class User {
     @observable isLogin: boolean = false
+    @observable userInfo: any
+
+    @observable loginError: string = ''
+    @observable registerError: string = ''
+
+    @observable state: string = 'loading'
+
+
+
     @observable isFeedSelected: boolean = true
     @observable isYourFeedSelected: boolean = false
     @observable isTagFeedSelected: boolean = false
@@ -11,12 +20,7 @@ export class User {
     @observable selectedNaviMenu: string = 'Feed'
     @observable selectedTag: string = ''
 
-    @observable userInfo: any
-
-    @observable loginError: string = ''
-    @observable registerError: string = ''
-
-    @observable state: string = 'loading'
+    
 
     @asyncAction public *checkRegister(
         username: string,
@@ -56,9 +60,8 @@ export class User {
             const res = yield UserApis.getUserInfo()
             this.userInfo = res.data.user
             this.userInfo.image =
-                this.userInfo.image === null
-                    ? 'https://static.productionready.io/images/smiley-cyrus.jpg'
-                    : this.userInfo.image
+                'https://static.productionready.io/images/smiley-cyrus.jpg' ??
+                this.userInfo.image
             this.state = 'done'
         } catch (e) {
             console.log(e.message)

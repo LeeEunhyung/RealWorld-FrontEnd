@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { UserContext } from '../../contexts/UserContext'
 import { observer } from 'mobx-react'
 import { useHistory } from 'react-router-dom'
-import { FeedsContext } from '../../contexts/FeedsContext'
+import { ArticlesContext } from '../../contexts/ArticlesContext'
 
 const StyledButton = styled.input`
     background-color: #ff4501;
@@ -15,7 +15,7 @@ const StyledButton = styled.input`
 
 export const LogoutButton = observer(() => {
     const user = useContext(UserContext)
-    const feeds = useContext(FeedsContext)
+    const articles = useContext(ArticlesContext)
     let history = useHistory()
     return (
         <StyledButton
@@ -23,7 +23,7 @@ export const LogoutButton = observer(() => {
             value="Logout"
             onClick={() => {
                 user.setLogout()
-                feeds.getArticles()
+                articles.getArticles()
                 history.push('/')
             }}
         />

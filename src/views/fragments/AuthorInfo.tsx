@@ -98,8 +98,8 @@ export const AuthorInfo = observer(() => {
                     onClick={() => {
                         if (localStorage.getItem('token')) {
                             article.articleInfo.favorited
-                                ? article.deleteFavoriteArticle()
-                                : article.postFavoriteArticle()
+                                ? article.turnOffFavoriteButton()
+                                : article.turnOnFavoriteButton()
                         } else {
                             history.push('/login')
                         }

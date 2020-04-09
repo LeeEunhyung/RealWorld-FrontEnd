@@ -46,8 +46,8 @@ export const ContentButton = observer((props: IProps) => {
                 if (localStorage.getItem('token') === null) {
                     history.push('/login')
                 } else {
-                    if (isClicked) articles.deleteFavoriteArticle(props.slug)
-                    else articles.postFavoriteArticle(props.slug)
+                    if (isClicked) articles.turnOffFavoriteButton(props.slug)
+                    else articles.turnOnFavoriteButton(props.slug)
                     setIsClicked(!isClicked)
                 }
             }}

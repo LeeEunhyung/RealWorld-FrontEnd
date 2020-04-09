@@ -43,9 +43,9 @@ export class Article {
         }
     }
 
-    @asyncAction public *postFavoriteArticle() {
+    @asyncAction public *turnOnFavoriteButton() {
         try {
-            const res = yield ArticlesApis.postFavoriteArticle(
+            const res = yield ArticlesApis.turnOnFavoriteButton(
                 this.articleInfo.slug,
             )
             this.setArticleInfo(res.data.article)
@@ -54,9 +54,9 @@ export class Article {
         }
     }
 
-    @asyncAction public *deleteFavoriteArticle() {
+    @asyncAction public *turnOffFavoriteButton() {
         try {
-            const res = yield ArticlesApis.deleteFavoriteArticle(
+            const res = yield ArticlesApis.turnOffFavoriteButton(
                 this.articleInfo.slug,
             )
             this.setArticleInfo(res.data.article)

@@ -4,8 +4,7 @@ import { observer } from 'mobx-react'
 
 import { ArticlesContext } from '../../contexts/ArticlesContext'
 import { TagsLink } from '../components/TagLink'
-import { TagFeedsContext } from '../../contexts/TagFeedsContext'
-import { UserContext } from '../../contexts/UserContext'
+import { TagsContext } from '../../contexts/TagsContext'
 
 const StyledTags = styled.section`
     display: flex;
@@ -13,47 +12,27 @@ const StyledTags = styled.section`
     margin: 1rem;
 `
 
-const StyledNotice = styled.div`
-    font-weight: bolder;
-    text-align: center;
-`
-
 export const Tags = observer(() => {
+    const tags = useContext(TagsContext)
     const articles = useContext(ArticlesContext)
-    const tagFeeds = useContext(TagFeedsContext)
-    const user = useContext(UserContext)
 
-    useEffect(
-        function() {
-            articles.getTags()
-        },
-        [articles],
-    )
+    useEffect(() => {
+        tags.getTags()
+    }, [tags])
 
     return (
-        <>
-            {articles.state === 'loading' && (
-                <StyledNotice>Loading...</StyledNotice>
-            )}
-            {articles.state === 'done' && (
-                <StyledTags>
-                    {articles.tagsList.map(data => {
-                        return (
-                            <TagsLink
-                                key={data}
-                                value={data}
-                                onClick={() => {
-                                    tagFeeds.setSelectedTag(data)
-                                    user.setTagFeed(data)
-                                }}
-                            />
-                        )
-                    })}
-                </StyledTags>
-            )}
-            {articles.state === 'error' && (
-                <StyledNotice>Error X___X</StyledNotice>
-            )}
-        </>
+        <StyledTags>
+            {tags.tagsList.map(data => {
+                return (
+                    <TagsLink
+                        key={data}
+                        value={data}
+                        onClick={() => {
+                            articles.setSelectedMenu(data)
+                        }}
+                    />
+                )
+            })}
+        </StyledTags>
     )
 })

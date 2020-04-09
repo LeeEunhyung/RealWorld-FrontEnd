@@ -1,37 +1,120 @@
-import { observable } from 'mobx'
+import { observable, action } from 'mobx'
 import { ArticlesApis } from '../../apis/ArticlesApis'
 import { asyncAction } from 'mobx-utils'
 
 export class Articles {
-    @observable public tagsList: string[] = []
-    @observable state: string = 'loading'
+    @observable public state: string = 'loading'
 
-    @asyncAction public *getTags() {
+    @observable public articlesList: any[] = []
+    @observable public pageNumberList: any[] = []
+
+    @observable public selectedMenu: string = 'Feed'
+    @observable public selectedTag: string = ''
+    @observable public selectedPage: number = 1
+    @observable public pageCount: number = 1
+
+    @asyncAction public *getArticles() {
         this.state = 'loading'
+        this.articlesList = []
+        const config = this.setConfig()
         try {
-            this.tagsList = []
-            const res = yield ArticlesApis.getTags()
-            this.tagsList = res.data.tags
-            this.state = 'done'
+            const res = yield ArticlesApis.getArticles(
+                this.selectedMenu,
+                config,
+            )
+            this.setArticles(res.data)
         } catch (e) {
             console.error(e.message)
             this.state = 'error'
         }
     }
 
-    @asyncAction public *postFavoriteArticle(slug: string) {
+    @asyncAction public *turnOnFavoriteButton(slug: string) {
         try {
-            yield ArticlesApis.postFavoriteArticle(slug)
+            yield ArticlesApis.turnOnFavoriteButton(slug)
         } catch (e) {
             console.error(e.message)
         }
     }
 
-    @asyncAction public *deleteFavoriteArticle(slug: string) {
+    @asyncAction public *turnOffFavoriteButton(slug: string) {
         try {
-            yield ArticlesApis.deleteFavoriteArticle(slug)
+            yield ArticlesApis.turnOffFavoriteButton(slug)
         } catch (e) {
             console.error(e.message)
+        }
+    }
+
+    @action public setArticles(data: any) {
+        this.articlesList = data.articles
+        this.pageCount =
+            data.articlesCount % 6 === 0
+                ? data.articlesCount / 6
+                : Math.floor(data.articlesCount / 6) + 1
+        this.setPageNumberList()
+        this.state = this.articlesList.length === 0 ? 'none' : 'done'
+    }
+
+    @action public setConfig() {
+        const config: any = {}
+
+        if (this.selectedMenu === 'Tag Feed') {
+            config.params = {
+                offset: (this.selectedPage - 1) * 6 + 1,
+                limit: 6,
+                tag: this.selectedTag,
+            }
+        } else {
+            config.params = {
+                offset: (this.selectedPage - 1) * 6 + 1,
+                limit: 6,
+            }
+        }
+
+        if (localStorage.getItem('token')) {
+            config.headers = {
+                Authorization: `Token ${localStorage.getItem('token')}`,
+            }
+        }
+
+        return config
+    }
+
+    @action public setSelectedPage = (selectedPage: string | number) => {
+        if (selectedPage === '<') {
+            this.selectedPage = 1
+        } else if (selectedPage === '>') {
+            this.selectedPage = this.pageCount
+        } else {
+            this.selectedPage = Number(selectedPage)
+        }
+        this.getArticles()
+    }
+
+    @action public setPageNumberList() {
+        this.pageNumberList = []
+        let i = 0
+        let count = 1
+
+        this.pageNumberList[i++] = '<'
+        while (i < this.pageCount + 1) {
+            this.pageNumberList[i++] = count++
+        }
+        this.pageNumberList[i] = '>'
+    }
+
+    @action public resetSelectedPage() {
+        this.selectedPage = 1
+    }
+
+    @action public setSelectedMenu(value: string) {
+        this.selectedPage = 1
+        this.selectedMenu = value.includes('Feed') ? value : 'Tag Feed'
+        if (this.selectedMenu === 'Tag Feed') {
+            this.selectedTag = value
+            this.getArticles()
+        } else {
+            this.selectedTag = ''
         }
     }
 }

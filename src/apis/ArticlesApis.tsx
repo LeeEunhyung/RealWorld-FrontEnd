@@ -5,24 +5,11 @@ export const httpClient = axios.create({
 })
 
 export class ArticlesApis {
-    static getFeeds(offset: number) {
-        if (localStorage.getItem('token')) {
-            return httpClient.get('articles', {
-                headers: {
-                    Authorization: `Token ${localStorage.getItem('token')}`,
-                },
-                params: {
-                    offset,
-                    limit: 6,
-                },
-            })
+    static getArticles(selectedMenu: string, config: any) {
+        if (selectedMenu === 'Your Feed') {
+            return httpClient.get('articles/feed', config)
         } else {
-            return httpClient.get('articles', {
-                params: {
-                    offset,
-                    limit: 6,
-                },
-            })
+            return httpClient.get('articles', config)
         }
     }
 
@@ -65,16 +52,6 @@ export class ArticlesApis {
         }
     }
 
-    static getFavoritedArticles(offset: number, favorited: string) {
-        return httpClient.get('articles', {
-            params: {
-                offset,
-                limit: 6,
-                favorited,
-            },
-        })
-    }
-
     static getClickedArticle(slug: string) {
         if (localStorage.getItem('token')) {
             return httpClient.get(`articles/${slug}`, {
@@ -103,7 +80,7 @@ export class ArticlesApis {
         })
     }
 
-    static postFavoriteArticle(slug: string) {
+    static turnOnFavoriteButton(slug: string) {
         return httpClient.post(`articles/${slug}/favorite`, null, {
             headers: {
                 Authorization: `Token ${localStorage.getItem('token')}`,
@@ -111,7 +88,7 @@ export class ArticlesApis {
         })
     }
 
-    static deleteFavoriteArticle(slug: string) {
+    static turnOffFavoriteButton(slug: string) {
         return httpClient.delete(`articles/${slug}/favorite`, {
             headers: {
                 Authorization: `Token ${localStorage.getItem('token')}`,
