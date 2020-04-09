@@ -31,6 +31,12 @@ const StyledList = styled.li`
         text-decoration: none;
         color: #000000;
     }
+    &.true {
+        border-bottom: 6px solid #ff4501;
+    }
+    &.false {
+        border-bottom: 6px solid #c8c8c8;
+    }
 `
 
 export const ContentsNavi = observer(() => {
@@ -38,7 +44,7 @@ export const ContentsNavi = observer(() => {
 
     return (
         <StyledNavi>
-            <StyledList>
+            <StyledList className={String(articles.selectedMenu.feed)}>
                 <Link
                     to="/"
                     onClick={() => {
@@ -48,7 +54,7 @@ export const ContentsNavi = observer(() => {
                     Feed
                 </Link>
             </StyledList>
-            <StyledList>
+            <StyledList className={String(articles.selectedMenu.yourFeed)}>
                 <Link
                     to="/your-feed"
                     onClick={() => {
@@ -59,7 +65,7 @@ export const ContentsNavi = observer(() => {
                 </Link>
             </StyledList>
             {articles.selectedTag && (
-                <StyledList>
+                <StyledList className={String(articles.selectedMenu.tagFeed)}>
                     <Link to={`/tag/${articles.selectedTag}`}>
                         # {articles.selectedTag}
                     </Link>

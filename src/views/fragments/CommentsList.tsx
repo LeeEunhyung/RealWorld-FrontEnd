@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { observer } from 'mobx-react'
 import { ArticleContext } from '../../contexts/ArticleContext'
 import { Link } from 'react-router-dom'
+import { DeleteButton } from './DeleteButton'
 
 const StyledCommentsList = styled.div`
     max-width: 1200px;
@@ -15,6 +16,7 @@ const StyledComment = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
     border-bottom: 1px solid #c8c8c8;
     a {
         text-decoration: none;
@@ -29,7 +31,7 @@ const StyledComment = styled.div`
         color: #c8c8c8;
     }
     img {
-        margin: 0 0 0 8px;
+        margin: 0 8px 0 0;
         width: 40px;
         height: 40px;
         border-radius: 70px;
@@ -42,15 +44,20 @@ const StyledComment = styled.div`
     }
 `
 
+const StyledDesc = styled.div`
+    display: flex;
+    flex-direction: row;
+`
+
 const StyledBody = styled.div`
-    margin-left: 6px;
+    padding-left: 16px;
 `
 
 const StyledAuthor = styled.div`
-    width: 200px;
+    padding-right: 16px;
     display: flex;
     flex-direction: row;
-    justify-content: flex-end;
+    border-right: 1px dotted #c8c8c8;
 `
 
 export const CommentsList = observer(() => {
@@ -61,23 +68,31 @@ export const CommentsList = observer(() => {
             {article.commentList.map(data => {
                 return (
                     <StyledComment key={data.id}>
-                        <StyledBody>{data.body}</StyledBody>
-                        <StyledAuthor>
-                            <div>
+                        <StyledDesc>
+                            <StyledAuthor>
                                 <Link to="/profile">
-                                    {data.author.username}
+                                    <img
+                                        src={data.author.image}
+                                        alt={data.author.username}
+                                    />
                                 </Link>
-                                <span>
-                                    {String(data.createdAt).substr(0, 10)}
-                                </span>
-                            </div>
-                            <Link to="/profile">
-                                <img
-                                    src={data.author.image}
-                                    alt={data.author.username}
-                                />
-                            </Link>
-                        </StyledAuthor>
+                                <div>
+                                    <Link to="/profile">
+                                        {data.author.username}
+                                    </Link>
+                                    <span>
+                                        {String(data.createdAt).substr(0, 10)}
+                                    </span>
+                                </div>
+                            </StyledAuthor>
+                            <StyledBody>{data.body}</StyledBody>
+                        </StyledDesc>
+                        <DeleteButton
+                            author={data.author.username}
+                            onClick={() => {
+                                article.deleteComment(data.id)
+                            }}
+                        />
                     </StyledComment>
                 )
             })}

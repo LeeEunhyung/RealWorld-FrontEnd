@@ -12,12 +12,13 @@ export class Article {
 
     @observable state: string = 'loading'
 
-    @asyncAction public *getClickedArticle(slug: string) {
+    @asyncAction public *getClickedArticle(
+        slug: string = this.articleInfo.slug,
+    ) {
         this.state = 'loading'
         try {
             const res = yield ArticlesApis.getClickedArticle(slug)
             this.setArticleInfo(res.data.article)
-            this.getComments()
             this.state = 'done'
         } catch (e) {
             console.error(e.message)
@@ -28,7 +29,7 @@ export class Article {
     @asyncAction public *followAuthor() {
         try {
             yield ArticlesApis.followAuthor(this.articleInfo.author.username)
-            this.getClickedArticle(this.articleInfo.slug)
+            this.getClickedArticle()
         } catch (e) {
             console.error(e.message)
         }
@@ -37,7 +38,7 @@ export class Article {
     @asyncAction public *unFollowAuthor() {
         try {
             yield ArticlesApis.unFollowAuthor(this.articleInfo.author.username)
-            this.getClickedArticle(this.articleInfo.slug)
+            this.getClickedArticle()
         } catch (e) {
             console.error(e.message)
         }
@@ -74,10 +75,19 @@ export class Article {
         }
     }
 
-    @asyncAction public *getComments() {
-        this.commentList = []
+    @asyncAction public *deleteComment(id: number) {
         try {
-            const res = yield ArticlesApis.getComments(this.articleInfo.slug)
+            yield ArticlesApis.deleteComment(this.articleInfo.slug, id)
+            this.getComments()
+        } catch (e) {
+            console.error(e.message)
+        }
+    }
+
+    @asyncAction public *getComments(slug: string = this.articleInfo.slug) {
+        try {
+            const res = yield ArticlesApis.getComments(slug)
+            this.commentList = []
             this.commentList = res.data.comments
         } catch (e) {
             console.log(e.message)

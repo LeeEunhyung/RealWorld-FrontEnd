@@ -1,7 +1,8 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
 import { observer } from 'mobx-react'
 import { UserContext } from '../../contexts/UserContext'
+import { LoadingSpinner } from './LoadingSpinner'
 
 const StyledUserInfo = styled.div`
     margin: 20px;
@@ -49,14 +50,12 @@ const StyledNotice = styled.div`
 export const UserInfo = observer(() => {
     const user = useContext(UserContext)
 
-    useEffect(() => {
-        user.getUserInfo()
-    }, [user])
-
     return (
         <>
             {user.state === 'loading' && (
-                <StyledNotice>Loading...</StyledNotice>
+                <StyledNotice>
+                    <LoadingSpinner />
+                </StyledNotice>
             )}
             {user.state === 'done' && (
                 <StyledUserInfo>

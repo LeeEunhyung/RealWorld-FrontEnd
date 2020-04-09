@@ -4,6 +4,7 @@ import { Banner } from '../fragments/Banner'
 import { ContentContainer } from '../fragments/ContentContainer'
 import { observer } from 'mobx-react'
 import { ArticleContext } from '../../contexts/ArticleContext'
+import { LoadingSpinner } from '../fragments/LoadingSpinner'
 
 const StyledArticle = styled.div`
     margin-top: 16px;
@@ -19,6 +20,7 @@ const StyledArticle = styled.div`
 `
 
 const StyledNotice = styled.div`
+    align-self: center;
     margin-top: 3rem;
     height: 302px;
     font-weight: bolder;
@@ -27,25 +29,29 @@ const StyledNotice = styled.div`
 
 export const ArticlePage = observer(() => {
     const article = useContext(ArticleContext)
+    const slug = document.location.href.split('/article/')[1]
 
     useEffect(() => {
-        article.getClickedArticle(document.location.href.split('/article/')[1])
-    }, [article])
+        article.getClickedArticle(slug)
+        article.getComments(slug)
+    }, [article, slug])
 
     return (
-        <>
+        <StyledArticle>
             {article.state === 'loading' && (
-                <StyledNotice>Loading...</StyledNotice>
+                <StyledNotice>
+                    <LoadingSpinner />
+                </StyledNotice>
             )}
             {article.state === 'done' && (
-                <StyledArticle>
+                <>
                     <Banner />
                     <ContentContainer />
-                </StyledArticle>
+                </>
             )}
             {article.state === 'error' && (
                 <StyledNotice>Error X___X</StyledNotice>
             )}
-        </>
+        </StyledArticle>
     )
 })

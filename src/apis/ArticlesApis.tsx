@@ -5,8 +5,8 @@ export const httpClient = axios.create({
 })
 
 export class ArticlesApis {
-    static getArticles(selectedMenu: string, config: any) {
-        if (selectedMenu === 'Your Feed') {
+    static getArticles(selectedMenu: any, config: any) {
+        if (selectedMenu.yourFeed) {
             return httpClient.get('articles/feed', config)
         } else {
             return httpClient.get('articles', config)
@@ -75,6 +75,14 @@ export class ArticlesApis {
                 },
             },
         )
+    }
+
+    static deleteComment(slug: string, id: number) {
+        return httpClient.delete(`articles/${slug}/comments/${id}`, {
+            headers: {
+                Authorization: `Token ${localStorage.getItem('token')}`,
+            },
+        })
     }
 
     static getComments(slug: string) {

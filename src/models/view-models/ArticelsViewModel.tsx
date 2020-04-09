@@ -8,7 +8,11 @@ export class Articles {
     @observable public articlesList: any[] = []
     @observable public pageNumberList: any[] = []
 
-    @observable public selectedMenu: string = 'Feed'
+    @observable public selectedMenu: any = {
+        feed: true,
+        yourFeed: false,
+        tagFeed: false,
+    }
     @observable public selectedTag: string = ''
     @observable public selectedPage: number = 1
     @observable public pageCount: number = 1
@@ -42,7 +46,7 @@ export class Articles {
     @action public setConfig() {
         const config: any = {}
 
-        if (this.selectedMenu === 'Tag Feed') {
+        if (this.selectedMenu.tagFeed) {
             config.params = {
                 offset: (this.selectedPage - 1) * 6 + 1,
                 limit: 6,
@@ -90,8 +94,16 @@ export class Articles {
         this.articlesList = []
         this.pageNumberList = []
         this.selectedPage = 1
-        this.selectedMenu = value.includes('Feed') ? value : 'Tag Feed'
-        if (this.selectedMenu === 'Tag Feed') {
+
+        if (value === 'Feed') {
+            this.selectedMenu = { feed: true, yourFeed: false, tagFeed: false }
+        } else if (value === 'Your Feed') {
+            this.selectedMenu = { feed: false, yourFeed: true, tagFeed: false }
+        } else {
+            this.selectedMenu = { feed: false, yourFeed: false, tagFeed: true }
+        }
+
+        if (this.selectedMenu.tagFeed) {
             this.selectedTag = value
         } else {
             this.selectedTag = ''

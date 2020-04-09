@@ -39,7 +39,6 @@ export class User {
             this.getUserInfo()
         } catch (e) {
             this.errorMessage = e.response.data.errors
-            console.log(this.errorMessage)
         }
 
         return this.isLogin
@@ -51,8 +50,9 @@ export class User {
             const res = yield UserApis.getUserInfo()
             this.userInfo = res.data.user
             this.userInfo.image =
-                'https://static.productionready.io/images/smiley-cyrus.jpg' ??
-                this.userInfo.image
+                this.userInfo.image === null
+                    ? 'https://static.productionready.io/images/smiley-cyrus.jpg'
+                    : this.userInfo.image
             this.state = 'done'
         } catch (e) {
             console.log(e.message)

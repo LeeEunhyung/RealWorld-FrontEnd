@@ -1,12 +1,10 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 import { ContentImage } from '../components/ContentImage'
 import { ContentText } from '../components/ContentText'
 import { FavoriteButton } from './FavoriteButton'
-import { observer } from 'mobx-react'
-import { ArticleContext } from '../../contexts/ArticleContext'
 
 const StyledContent = styled.article`
     background-color: #ffffff;
@@ -32,17 +30,10 @@ interface IProps {
     data: any
 }
 
-export const Contents = observer((props: IProps) => {
-    const article = useContext(ArticleContext)
-
+export function Contents(props: IProps) {
     return (
         <StyledContent>
-            <Link
-                to={`/article/${props.data.slug}`}
-                onClick={() => {
-                    article.getClickedArticle(props.data.slug)
-                }}
-            >
+            <Link to={`/article/${props.data.slug}`}>
                 <ContentImage imgSrc={props.data.author.image} />
                 <ContentText title={props.data.title} desc={props.data.desc} />
             </Link>
@@ -52,4 +43,4 @@ export const Contents = observer((props: IProps) => {
             />
         </StyledContent>
     )
-})
+}
