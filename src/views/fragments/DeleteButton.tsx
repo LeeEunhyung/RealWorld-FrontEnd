@@ -9,6 +9,9 @@ interface IProps {
 }
 
 const StyledDeleteButton = styled.input`
+    height: 40px;
+    outline: none;
+    border-radius: 10px;
     border: 1px solid #c8c8c8;
     color: #c8c8c8;
     background-color: #ffffff;
