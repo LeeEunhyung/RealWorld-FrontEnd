@@ -19,7 +19,9 @@ const StyledCommentText = styled.div`
 `
 
 const StyledBody = styled.div`
+    width: 70%;
     padding-left: 16px;
+    word-wrap: break-word;
 `
 
 const StyledAuthor = styled.div`

@@ -3,17 +3,17 @@ import styled from 'styled-components'
 import { CommentForm } from './CommentForm'
 import { CommentsList } from './CommentsList'
 
-const StyledContentContainer = styled.div`
-    max-width: 1200px;
+const StyledCommentsContainer = styled.div`
+    max-width: 100%;
     display: flex;
     flex-direction: column;
 `
 
-export function ContentContainer() {
+export function CommentsContainer() {
     return (
-        <StyledContentContainer>
+        <StyledCommentsContainer>
             <CommentForm />
             <CommentsList />
-        </StyledContentContainer>
+        </StyledCommentsContainer>
     )
 }

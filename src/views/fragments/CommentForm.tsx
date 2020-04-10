@@ -4,7 +4,6 @@ import { observer } from 'mobx-react'
 import { ArticleContext } from '../../contexts/ArticleContext'
 
 const StyledCommnetForm = styled.div`
-    width: 100%;
     min-height: 100px;
     display: flex;
     flex-direction: row;

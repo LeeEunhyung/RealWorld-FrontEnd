@@ -6,7 +6,6 @@ import { DeleteButton } from './DeleteButton'
 import { CommentText } from '../components/CommentText'
 
 const StyledCommentsList = styled.div`
-    max-width: 1200px;
     display: flex;
     flex-direction: column;
 `

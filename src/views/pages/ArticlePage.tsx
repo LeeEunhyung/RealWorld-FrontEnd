@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react'
 import styled from 'styled-components'
 import { Banner } from '../fragments/Banner'
-import { ContentContainer } from '../fragments/ContentContainer'
+import { CommentsContainer } from '../fragments/CommentsContainer'
 import { observer } from 'mobx-react'
 import { ArticleContext } from '../../contexts/ArticleContext'
 import { LoadingSpinner } from '../fragments/LoadingSpinner'
@@ -46,7 +46,7 @@ export const ArticlePage = observer(() => {
             {article.state === 'done' && (
                 <>
                     <Banner />
-                    <ContentContainer />
+                    <CommentsContainer />
                 </>
             )}
             {article.state === 'error' && (
