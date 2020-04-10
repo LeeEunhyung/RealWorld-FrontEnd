@@ -15,6 +15,7 @@ const StyledEditorPage = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     box-shadow: 3px 3px 6px 0 #bdb9a6, -3px -3px 6px 0 #fffefa;
     font-size: 1rem;
     & input[type='button'] {
@@ -75,44 +76,42 @@ export const EditorPage = observer(() => {
     let config: any = {}
     return (
         <StyledEditorPage>
-            <form>
-                <StyledTitle
-                    type="textbox"
-                    placeholder="Article Title"
-                    onChange={e => {
-                        config.title = e.target.value
-                    }}
-                />
-                <StyledDesc
-                    type="textbox"
-                    placeholder="What's this article about"
-                    onChange={e => {
-                        config.description = e.target.value
-                    }}
-                />
-                <StyledBody
-                    type="textarea"
-                    placeholder="Write your article"
-                    onChange={e => {
-                        config.body = e.target.value
-                    }}
-                />
-                <StyledTags
-                    type="textbox"
-                    placeholder="Enter tags"
-                    onChange={e => {
-                        config.tagList = e.target.value
-                    }}
-                />
-                <input
-                    type="button"
-                    value="Publish Article"
-                    onClick={() => {
-                        articles.addArticle(config)
-                        history.push('/')
-                    }}
-                />
-            </form>
+            <StyledTitle
+                type="textbox"
+                placeholder="Article Title"
+                onChange={e => {
+                    config.title = e.target.value
+                }}
+            />
+            <StyledDesc
+                type="textbox"
+                placeholder="What's this article about"
+                onChange={e => {
+                    config.description = e.target.value
+                }}
+            />
+            <StyledBody
+                type="textarea"
+                placeholder="Write your article"
+                onChange={e => {
+                    config.body = e.target.value
+                }}
+            />
+            <StyledTags
+                type="textbox"
+                placeholder="Enter tags"
+                onChange={e => {
+                    config.tagList = e.target.value
+                }}
+            />
+            <input
+                type="button"
+                value="Publish Article"
+                onClick={() => {
+                    articles.addArticle(config)
+                    history.push('/')
+                }}
+            />
         </StyledEditorPage>
     )
 })
