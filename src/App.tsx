@@ -25,13 +25,13 @@ function App() {
         <StyledApp>
             <BrowserRouter>
                 <Header />
-                <Switch>
+                {/* <Switch>
                     <Route path="/login" component={LoginPage} />
                     <Route path="/register" component={RegisterPage} />
                     <Route path="/article" component={ArticlePage} />
                     <PrivateRoute path="/profile" component={MyPage} />
                     <Route path="/" component={HomePage} />
-                </Switch>
+                </Switch> */}
             </BrowserRouter>
         </StyledApp>
     )
