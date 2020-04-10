@@ -6,7 +6,7 @@ import { NumberButton } from '../components/NumberButton'
 import { ArticlesContext } from '../../contexts/ArticlesContext'
 
 const StyledPageNumber = styled.div`
-    width: 576px;
+    max-width: 576px;
     background-color: #ffffff;
     box-shadow: 3px 3px 6px 0 #bdb9a6, -3px -3px 6px 0 #fffefa;
     border-radius: 24.9px;

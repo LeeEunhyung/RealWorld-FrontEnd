@@ -19,6 +19,20 @@ export class Articles {
     @observable public pageCount: number = 1
     @observable public pageRange: number = 1
 
+    @asyncAction public *addArticle(config: any) {
+        this.state = 'loading'
+        const headers = {
+            Authorization: `Token ${localStorage.getItem('token')}`,
+        }
+        try {
+            yield ArticlesApis.addArticle(config, headers)
+            this.state = 'done'
+        } catch (e) {
+            console.error(e.message)
+            this.state = 'error'
+        }
+    }
+
     @asyncAction public *getArticles() {
         this.state = 'loading'
         const config = this.setConfig()
@@ -29,7 +43,6 @@ export class Articles {
             )
             this.articlesList = []
             this.setArticles(res.data)
-            console.log(this.articlesList)
         } catch (e) {
             console.error(e.message)
             this.state = 'error'
@@ -42,10 +55,6 @@ export class Articles {
         this.pageRange = this.setNumberRange(this.selectedPage)
         this.setPageNumberList()
         this.state = this.articlesList.length === 0 ? 'none' : 'done'
-    }
-
-    @action setNumberRange(n: number) {
-        return n % 6 === 0 ? n / 6 : Math.floor(n / 6) + 1
     }
 
     @action public setConfig() {
@@ -71,6 +80,10 @@ export class Articles {
         }
 
         return config
+    }
+
+    @action setNumberRange(n: number) {
+        return n % 6 === 0 ? n / 6 : Math.floor(n / 6) + 1
     }
 
     @action public setSelectedPage = (selectedPage: string | number) => {

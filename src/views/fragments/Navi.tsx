@@ -31,13 +31,13 @@ const StyledNaviList = styled.li`
     }
     &.mypage {
         padding: 0;
-        width: 60px;
-        height: 60px;
+        width: 50px;
+        height: 50px;
         border-radius: 70px;
         background-color: rgba(0, 0, 0, 0);
         img {
-            width: 60px;
-            height: 60px;
+            width: 50px;
+            height: 50px;
             border-radius: 70px;
         }
     }

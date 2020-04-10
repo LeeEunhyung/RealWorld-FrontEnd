@@ -21,7 +21,7 @@ const StyledList = styled.li`
     text-align: center;
     font-size: 1.2rem;
     line-height: 3rem;
-    width: 184px;
+    width: 160px;
     height: 60px;
     color: #000000;
     text-decoration: none;

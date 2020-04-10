@@ -26,6 +26,20 @@ export class Article {
         }
     }
 
+    @asyncAction public *deleteArticle(slug: string) {
+        this.state = 'loading'
+        const headers = {
+            Authorization: `Token ${localStorage.getItem('token')}`,
+        }
+        try {
+            yield ArticlesApis.deleteArticle(slug, headers)
+            this.state = 'done'
+        } catch (e) {
+            console.error(e.message)
+            this.state = 'error'
+        }
+    }
+
     @asyncAction public *followAuthor() {
         try {
             yield ArticlesApis.followAuthor(this.articleInfo.author.username)

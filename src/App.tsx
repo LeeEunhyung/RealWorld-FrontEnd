@@ -8,9 +8,11 @@ import { HomePage } from './views/pages/HomePage'
 import { LoginPage } from './views/pages/LoginPage'
 import { RegisterPage } from './views/pages/RegisterPage'
 import { ArticlePage } from './views/pages/ArticlePage'
-import { MyPage } from './views/pages/MyPage'
+import { ProfilePage } from './views/pages/ProfilePage'
 
 import { PrivateRoute } from './views/fragments/PrivateRoute'
+import { SettingPage } from './views/pages/SettingPage'
+import { EditorPage } from './views/pages/EditorPage'
 
 configure({ enforceActions: 'observed' })
 
@@ -29,7 +31,9 @@ function App() {
                     <Route path="/login" component={LoginPage} />
                     <Route path="/register" component={RegisterPage} />
                     <Route path="/article" component={ArticlePage} />
-                    <PrivateRoute path="/profile" component={MyPage} />
+                    <PrivateRoute path="/profile" component={ProfilePage} />
+                    <PrivateRoute path="/settings" component={SettingPage} />
+                    <PrivateRoute path="/editor" component={EditorPage} />
                     <Route path="/" component={HomePage} />
                 </Switch>
             </BrowserRouter>

@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { observer } from 'mobx-react'
 import { ArticleContext } from '../../contexts/ArticleContext'
 import { Link, useHistory } from 'react-router-dom'
+import { DeleteButton } from './DeleteButton'
 
 const StyledAuthorInfo = styled.div`
     margin: 8px;
@@ -103,6 +104,13 @@ export const AuthorInfo = observer(() => {
                         } else {
                             history.push('/login')
                         }
+                    }}
+                />
+                <DeleteButton
+                    author={article.articleInfo.author.username}
+                    onClick={() => {
+                        article.deleteArticle(article.articleInfo.slug)
+                        history.push('/')
                     }}
                 />
             </div>

@@ -5,6 +5,14 @@ export const httpClient = axios.create({
 })
 
 export class ArticlesApis {
+    static addArticle(article: any, headers: any) {
+        return httpClient.post('articles', { article }, { headers })
+    }
+
+    static deleteArticle(slug: string, headers: any) {
+        return httpClient.delete(`articles/${slug}`, { headers })
+    }
+
     static getArticles(selectedMenu: any, config: any) {
         if (selectedMenu.yourFeed) {
             return httpClient.get('articles/feed', config)

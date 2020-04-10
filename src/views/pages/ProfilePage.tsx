@@ -12,7 +12,7 @@ const StyledMain = styled.main`
     flex-wrap: wrap;
 `
 
-export function MyPage() {
+export function ProfilePage() {
     return (
         <StyledMain>
             <UserInfo />

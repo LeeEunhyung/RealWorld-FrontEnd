@@ -9,7 +9,7 @@ const StyledButton = styled.input`
     box-shadow: inset 1px 1px 1px 0 rgba(108, 108, 108, 0.4),
         inset -1px -1px 1px 0 rgba(184, 184, 184, 0.1);
     outline: none;
-    margin: 4px;
+    margin: 2px;
     cursor: pointer;
     :hover {
         background-color: #ff4501;
