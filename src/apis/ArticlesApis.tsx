@@ -5,15 +5,35 @@ export const httpClient = axios.create({
 })
 
 export class ArticlesApis {
-    static addArticle(article: any, headers: any) {
-        return httpClient.post('articles', { article }, { headers })
+    static addArticle(article: any) {
+        return httpClient.post(
+            'articles',
+            { article },
+            {
+                headers: {
+                    Authorization: `Token ${localStorage.getItem('token')}`,
+                },
+            },
+        )
     }
 
-    static deleteArticle(slug: string, headers: any) {
-        return httpClient.delete(`articles/${slug}`, { headers })
+    static deleteArticle(slug: string) {
+        return httpClient.delete(`articles/${slug}`, {
+            headers: {
+                Authorization: `Token ${localStorage.getItem('token')}`,
+            },
+        })
     }
 
-    static getArticles(selectedMenu: any, config: any) {
+    static getArticles(selectedMenu: any, data: any) {
+        const config: any = {}
+        config.params = data
+        if (localStorage.getItem('token')) {
+            config.headers = {
+                Authorization: `Token ${localStorage.getItem('token')}`,
+            }
+        }
+
         if (selectedMenu.yourFeed) {
             return httpClient.get('articles/feed', config)
         } else {

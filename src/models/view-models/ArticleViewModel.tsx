@@ -28,11 +28,8 @@ export class Article {
 
     @asyncAction public *deleteArticle(slug: string) {
         this.state = 'loading'
-        const headers = {
-            Authorization: `Token ${localStorage.getItem('token')}`,
-        }
         try {
-            yield ArticlesApis.deleteArticle(slug, headers)
+            yield ArticlesApis.deleteArticle(slug)
             this.state = 'done'
         } catch (e) {
             console.error(e.message)

@@ -23,9 +23,14 @@ const StyledButton = styled.input`
         background-color: #ffffff;
         color: #000000;
     }
+    &#true {
+        background-color: #ff4501;
+        color: #ffffff;
+    }
 `
 
 interface IProps {
+    selected: number | string
     className: string
     value: string | number
     onClick: (e: any) => void
@@ -35,6 +40,7 @@ export function NumberButton(props: IProps) {
     return (
         <StyledButton
             className={props.className}
+            id={String(props.value === props.selected)}
             type="button"
             value={props.value}
             onClick={props.onClick}

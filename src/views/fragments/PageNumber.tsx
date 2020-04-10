@@ -22,6 +22,7 @@ export const PageNumber = observer(() => {
     return (
         <StyledPageNumber>
             <NumberButton
+                selected={articles.selectedPage}
                 key="<"
                 className="arrow"
                 value="<"
@@ -32,6 +33,7 @@ export const PageNumber = observer(() => {
             {articles.pageNumberList.map(data => {
                 return (
                     <NumberButton
+                        selected={articles.selectedPage}
                         key={data}
                         className="number"
                         value={data}
@@ -42,6 +44,7 @@ export const PageNumber = observer(() => {
                 )
             })}
             <NumberButton
+                selected={articles.selectedPage}
                 key=">"
                 className="arrow"
                 value=">"

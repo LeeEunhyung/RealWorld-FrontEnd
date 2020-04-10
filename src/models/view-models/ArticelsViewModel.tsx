@@ -21,11 +21,8 @@ export class Articles {
 
     @asyncAction public *addArticle(config: any) {
         this.state = 'loading'
-        const headers = {
-            Authorization: `Token ${localStorage.getItem('token')}`,
-        }
         try {
-            yield ArticlesApis.addArticle(config, headers)
+            yield ArticlesApis.addArticle(config)
             this.state = 'done'
         } catch (e) {
             console.error(e.message)
@@ -35,12 +32,9 @@ export class Articles {
 
     @asyncAction public *getArticles() {
         this.state = 'loading'
-        const config = this.setConfig()
+        const data = this.setData()
         try {
-            const res = yield ArticlesApis.getArticles(
-                this.selectedMenu,
-                config,
-            )
+            const res = yield ArticlesApis.getArticles(this.selectedMenu, data)
             this.articlesList = []
             this.setArticles(res.data)
         } catch (e) {
@@ -57,29 +51,23 @@ export class Articles {
         this.state = this.articlesList.length === 0 ? 'none' : 'done'
     }
 
-    @action public setConfig() {
-        const config: any = {}
+    public setData() {
+        let data: any = {}
 
         if (this.selectedMenu.tagFeed) {
-            config.params = {
+            data = {
                 offset: (this.selectedPage - 1) * 6,
                 limit: 6,
                 tag: this.selectedTag,
             }
         } else {
-            config.params = {
+            data = {
                 offset: (this.selectedPage - 1) * 6,
                 limit: 6,
             }
         }
 
-        if (localStorage.getItem('token')) {
-            config.headers = {
-                Authorization: `Token ${localStorage.getItem('token')}`,
-            }
-        }
-
-        return config
+        return data
     }
 
     @action setNumberRange(n: number) {
