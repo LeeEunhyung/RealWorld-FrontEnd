@@ -15,7 +15,9 @@ export class Articles {
     }
     @observable public selectedTag: string = ''
     @observable public selectedPage: number = 1
+
     @observable public pageCount: number = 1
+    @observable public pageRange: number = 1
 
     @asyncAction public *getArticles() {
         this.state = 'loading'
@@ -27,6 +29,7 @@ export class Articles {
             )
             this.articlesList = []
             this.setArticles(res.data)
+            console.log(this.articlesList)
         } catch (e) {
             console.error(e.message)
             this.state = 'error'
@@ -35,12 +38,14 @@ export class Articles {
 
     @action public setArticles(data: any) {
         this.articlesList = data.articles
-        this.pageCount =
-            data.articlesCount % 6 === 0
-                ? data.articlesCount / 6
-                : Math.floor(data.articlesCount / 6) + 1
+        this.pageCount = this.setNumberRange(data.articlesCount)
+        this.pageRange = this.setNumberRange(this.selectedPage)
         this.setPageNumberList()
         this.state = this.articlesList.length === 0 ? 'none' : 'done'
+    }
+
+    @action setNumberRange(n: number) {
+        return n % 6 === 0 ? n / 6 : Math.floor(n / 6) + 1
     }
 
     @action public setConfig() {
@@ -48,13 +53,13 @@ export class Articles {
 
         if (this.selectedMenu.tagFeed) {
             config.params = {
-                offset: (this.selectedPage - 1) * 6 + 1,
+                offset: (this.selectedPage - 1) * 6,
                 limit: 6,
                 tag: this.selectedTag,
             }
         } else {
             config.params = {
-                offset: (this.selectedPage - 1) * 6 + 1,
+                offset: (this.selectedPage - 1) * 6,
                 limit: 6,
             }
         }
@@ -69,32 +74,49 @@ export class Articles {
     }
 
     @action public setSelectedPage = (selectedPage: string | number) => {
-        if (selectedPage === '<') {
-            this.selectedPage = 1
-        } else if (selectedPage === '>') {
-            this.selectedPage = this.pageCount
+        if (selectedPage === '<' || selectedPage === '...') {
+            if (this.pageRange > 1) {
+                this.pageRange--
+                this.setPageNumberList()
+            }
+        } else if (selectedPage === '>' || selectedPage === '....') {
+            if (this.pageRange < this.setNumberRange(this.pageCount)) {
+                this.pageRange++
+                this.setPageNumberList()
+            }
         } else {
             this.selectedPage = Number(selectedPage)
+            this.getArticles()
         }
-        this.getArticles()
     }
 
     @action public setPageNumberList() {
+        this.pageNumberList = []
         let i = 0
-        let count = 1
+        let pageNum = 1
+        let count = 6
 
-        this.pageNumberList[i++] = '<'
-        while (i < this.pageCount + 1) {
-            this.pageNumberList[i++] = count++
+        if (this.pageRange > 1) {
+            this.pageNumberList[i++] = 1
+            this.pageNumberList[i++] = '...'
         }
-        this.pageNumberList[i] = '>'
+
+        while (pageNum <= count) {
+            this.pageNumberList[i++] = pageNum + (this.pageRange - 1) * count
+            pageNum++
+            if (pageNum + (this.pageRange - 1) * count > this.pageCount) break
+        }
+
+        if (this.pageRange < this.setNumberRange(this.pageCount)) {
+            this.pageNumberList[i++] = '....'
+            this.pageNumberList[i++] = this.pageCount
+        }
     }
 
     @action public setSelectedMenu(value: string) {
-        this.articlesList = []
         this.pageNumberList = []
+        this.articlesList = []
         this.selectedPage = 1
-
         if (value === 'Feed') {
             this.selectedMenu = { feed: true, yourFeed: false, tagFeed: false }
         } else if (value === 'Your Feed') {

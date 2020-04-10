@@ -11,15 +11,22 @@ const StyledButton = styled.input`
     outline: none;
     margin: 4px;
     cursor: pointer;
-    background-color: #ffffff;
-    color: #000000;
     :hover {
         background-color: #ff4501;
         color: #ffffff;
     }
+    &.arrow {
+        background-color: #000000;
+        color: #ffffff;
+    }
+    &.number {
+        background-color: #ffffff;
+        color: #000000;
+    }
 `
 
 interface IProps {
+    className: string
     value: string | number
     onClick: (e: any) => void
 }
@@ -27,6 +34,7 @@ interface IProps {
 export function NumberButton(props: IProps) {
     return (
         <StyledButton
+            className={props.className}
             type="button"
             value={props.value}
             onClick={props.onClick}
