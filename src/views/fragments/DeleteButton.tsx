@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { observer } from 'mobx-react'
 import { UserContext } from '../../contexts/UserContext'
 import styled from 'styled-components'
@@ -25,7 +25,7 @@ const StyledDeleteButton = styled.input`
 export const DeleteButton = observer((props: IProps) => {
     const user = useContext(UserContext)
 
-    return props.author === user.userInfo.username ? (
+    return user.userInfo && props.author === user.userInfo.username ? (
         <StyledDeleteButton
             type="button"
             value="delete"
