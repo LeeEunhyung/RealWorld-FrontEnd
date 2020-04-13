@@ -60,6 +60,18 @@ export class User {
         }
     }
 
+    @asyncAction public *updateUserInfo(user: any) {
+        this.state = 'loading'
+        try {
+            yield UserApis.updateUserInfo(user)
+            this.getUserInfo()
+            this.state = 'done'
+        } catch (e) {
+            console.error(e.message)
+            this.state = 'error'
+        }
+    }
+
     @action public resetErrorMessage() {
         this.errorMessage = {}
     }

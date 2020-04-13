@@ -31,4 +31,16 @@ export class UserApis {
             },
         })
     }
+
+    static updateUserInfo(user: any) {
+        return httpClient.put(
+            'user',
+            { user },
+            {
+                headers: {
+                    Authorization: `Token ${localStorage.getItem('token')}`,
+                },
+            },
+        )
+    }
 }

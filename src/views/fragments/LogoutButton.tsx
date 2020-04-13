@@ -6,11 +6,17 @@ import { useHistory } from 'react-router-dom'
 import { ArticlesContext } from '../../contexts/ArticlesContext'
 
 const StyledButton = styled.input`
-    background-color: #ff4501;
-    color: #ffffff;
+    width: 90%;
+    height: 50px;
+    outline: none;
+    border-radius: 5px;
     border: none;
-    text-align: center;
-    font-size: 1rem;
+    background-color: #000000;
+    font-size: 18px;
+    font-family: inherit;
+    color: #ffffff;
+    font-weight: bolder;
+    margin: 8px 8px 16px;
 `
 
 export const LogoutButton = observer(() => {
