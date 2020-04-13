@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react'
 import styled from 'styled-components'
 
-import { TagsLink } from '../components/TagLink'
+import { TagLink } from '../components/TagLink'
 import { observer } from 'mobx-react'
 import { TagsContext } from '../../contexts/TagsContext'
 import { ArticlesContext } from '../../contexts/ArticlesContext'
@@ -37,7 +37,7 @@ export const AsideContainer = observer(() => {
             <StyledTagList>
                 {tags.tagsList.map(data => {
                     return (
-                        <TagsLink
+                        <TagLink
                             key={data}
                             value={data}
                             onClick={() => {

@@ -3,7 +3,7 @@ import { observer } from 'mobx-react'
 import { useHistory } from 'react-router-dom'
 import styled from 'styled-components'
 
-import { Contents } from './Contents'
+import { Content } from './Content'
 import { ArticlesContext } from '../../contexts/ArticlesContext'
 
 const StyledTagFeed = styled.section`
@@ -25,7 +25,7 @@ export const TagFeed = observer(() => {
     return (
         <StyledTagFeed>
             {articles.articlesList.map(data => {
-                return <Contents key={data.slug} data={data} />
+                return <Content key={data.slug} data={data} />
             })}
         </StyledTagFeed>
     )

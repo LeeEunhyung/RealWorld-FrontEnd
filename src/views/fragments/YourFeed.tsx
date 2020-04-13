@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from 'react'
 import { observer } from 'mobx-react'
 import styled from 'styled-components'
 
-import { Contents } from './Contents'
+import { Content } from './Content'
 import { ArticlesContext } from '../../contexts/ArticlesContext'
 
 const StyledYourFeed = styled.section`
@@ -23,7 +23,7 @@ export const YourFeed = observer(() => {
     return (
         <StyledYourFeed>
             {articles.articlesList.map(data => {
-                return <Contents key={data.slug} data={data} />
+                return <Content key={data.slug} data={data} />
             })}
         </StyledYourFeed>
     )

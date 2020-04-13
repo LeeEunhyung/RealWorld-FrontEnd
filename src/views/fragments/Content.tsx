@@ -30,7 +30,7 @@ interface IProps {
     data: any
 }
 
-export function Contents(props: IProps) {
+export function Content(props: IProps) {
     return (
         <StyledContent>
             <Link to={`/article/${props.data.slug}`}>

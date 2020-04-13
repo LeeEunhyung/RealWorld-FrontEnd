@@ -4,7 +4,7 @@ import styled from 'styled-components'
 
 import { ArticlesContext } from '../../contexts/ArticlesContext'
 
-import { Contents } from './Contents'
+import { Content } from './Content'
 
 const StyledFeed = styled.section`
     max-width: 900px;
@@ -24,7 +24,7 @@ export const Feed = observer(() => {
     return (
         <StyledFeed>
             {articles.articlesList.map(data => {
-                return <Contents key={data.slug} data={data} />
+                return <Content key={data.slug} data={data} />
             })}
         </StyledFeed>
     )

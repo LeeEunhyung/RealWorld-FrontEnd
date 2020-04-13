@@ -19,7 +19,7 @@ interface IProps {
     onClick: () => void
 }
 
-export function TagsLink(props: IProps) {
+export function TagLink(props: IProps) {
     return (
         <StyledLink
             as={Link}

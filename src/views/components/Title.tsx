@@ -10,7 +10,6 @@ const StyledTitle = styled.h1`
     font-style: normal;
     line-height: normal;
     letter-spacing: normal;
-    text-align: center;
     color: #000000;
 `
 
