@@ -57,7 +57,7 @@ export const LoginForm = observer(() => {
     user.resetErrorMessage()
     return (
         <StyledForm>
-            <ErrorMessage />
+            <ErrorMessage color="white" />
             <input
                 type="text"
                 placeholder="Email"

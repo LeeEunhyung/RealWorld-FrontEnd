@@ -5,13 +5,17 @@ import { observer } from 'mobx-react'
 
 const StyledErrorMessage = styled.span`
     font-weight: bolder;
-    color: #ffffff;
+    color: ${props => props.color};
 `
 
-export const ErrorMessage = observer(() => {
+interface IProps {
+    color: string
+}
+
+export const ErrorMessage = observer((props: IProps) => {
     const user = useContext(UserContext)
     return (
-        <StyledErrorMessage>
+        <StyledErrorMessage color={props.color}>
             {user.errorMessage.username && (
                 <span>
                     {`- username ${user.errorMessage.username}.`}

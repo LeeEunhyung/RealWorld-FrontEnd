@@ -59,7 +59,7 @@ export const RegisterForm = observer(() => {
     user.resetErrorMessage()
     return (
         <StyledForm>
-            <ErrorMessage />
+            <ErrorMessage color="white" />
             <input
                 type="text"
                 placeholder="Username"

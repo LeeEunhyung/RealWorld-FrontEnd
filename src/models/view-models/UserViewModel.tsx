@@ -61,14 +61,13 @@ export class User {
     }
 
     @asyncAction public *updateUserInfo(user: any) {
-        this.state = 'loading'
         try {
             yield UserApis.updateUserInfo(user)
             this.getUserInfo()
-            this.state = 'done'
+            return true
         } catch (e) {
-            console.error(e.message)
-            this.state = 'error'
+            this.errorMessage = e.response.data.errors
+            return false
         }
     }
 
@@ -88,6 +87,7 @@ export class User {
 
     @action public setLogout() {
         localStorage.removeItem('token')
+        this.userInfo = {}
         this.isLogin = false
     }
 }

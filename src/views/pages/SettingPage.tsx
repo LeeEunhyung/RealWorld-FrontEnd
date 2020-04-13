@@ -4,6 +4,7 @@ import { LogoutButton } from '../fragments/LogoutButton'
 import { Title } from '../components/Title'
 import { observer } from 'mobx-react'
 import { UserContext } from '../../contexts/UserContext'
+import { ErrorMessage } from '../fragments/ErrorMessage'
 import { useHistory } from 'react-router-dom'
 
 const StyledSettingPage = styled.div`
@@ -55,8 +56,8 @@ const StyledButton = styled.input`
 `
 
 export const SettingPage = observer(() => {
-    const user = useContext(UserContext)
     const history = useHistory()
+    const user = useContext(UserContext)
 
     const [image, setImage] = useState(user.userInfo.image)
     const [username, setUsername] = useState(user.userInfo.username)
@@ -67,6 +68,7 @@ export const SettingPage = observer(() => {
     return (
         <StyledSettingPage>
             <Title title="Your Settings" />
+            <ErrorMessage color="gray" />
             <StyledTextBox
                 type="textbox"
                 placeholder="URL of profile picture"
@@ -109,15 +111,15 @@ export const SettingPage = observer(() => {
             <StyledButton
                 type="button"
                 value="Update Setting"
-                onClick={() => {
+                onClick={async () => {
                     let userInfo: any = {}
                     userInfo.image = image
                     userInfo.username = username
                     userInfo.bio = bio
                     userInfo.email = email
                     if (password) userInfo.password = password
-                    user.updateUserInfo(userInfo)
-                    history.push('/profile')
+                    const result = await user.updateUserInfo(userInfo)
+                    if (result) history.push('/profile')
                 }}
             />
             <LogoutButton />
