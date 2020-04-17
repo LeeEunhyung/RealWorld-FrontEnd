@@ -8,7 +8,7 @@ export class User {
 
     @observable errorMessage: any = {}
 
-    @observable state: string = 'loading'
+    @observable state: 'loading' | 'done' | 'none' | 'error' = 'loading'
 
     @observable isFeedSelected: boolean = true
     @observable isYourFeedSelected: boolean = false

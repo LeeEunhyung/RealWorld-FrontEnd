@@ -20,7 +20,7 @@ const StyledTagList = styled.div`
     display: flex;
     flex-wrap: wrap;
     background-color: #ffffff;
-    border-radius: 30px;
+    border-radius: 16px;
     box-shadow: 3px 3px 6px 0 #bdb9a6, -3px -3px 6px 0 #fffefa;
 `
 

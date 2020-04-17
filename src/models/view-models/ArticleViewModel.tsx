@@ -10,7 +10,7 @@ export class Article {
 
     @observable commentList: any[] = []
 
-    @observable state: string = 'loading'
+    @observable state: 'loading' | 'done' | 'none' | 'error' = 'loading'
 
     @asyncAction public *getClickedArticle(
         slug: string = this.articleInfo.slug,
@@ -39,8 +39,13 @@ export class Article {
 
     @asyncAction public *followAuthor() {
         try {
-            yield ArticlesApis.followAuthor(this.articleInfo.author.username)
-            this.getClickedArticle()
+            const res = yield ArticlesApis.followAuthor(
+                this.articleInfo.author.username,
+            )
+            this.setButtonValue(
+                res.data.profile.following,
+                this.articleInfo.favorited,
+            )
         } catch (e) {
             console.error(e.message)
         }
@@ -48,8 +53,13 @@ export class Article {
 
     @asyncAction public *unFollowAuthor() {
         try {
-            yield ArticlesApis.unFollowAuthor(this.articleInfo.author.username)
-            this.getClickedArticle()
+            const res = yield ArticlesApis.unFollowAuthor(
+                this.articleInfo.author.username,
+            )
+            this.setButtonValue(
+                res.data.profile.following,
+                this.articleInfo.favorited,
+            )
         } catch (e) {
             console.error(e.message)
         }
@@ -60,7 +70,11 @@ export class Article {
     ) {
         try {
             const res = yield ArticlesApis.turnOnFavoriteButton(slug)
-            this.setArticleInfo(res.data.article)
+            this.setButtonValue(
+                this.articleInfo.author.fallowing,
+                res.data.article.favorited,
+                res.data.article.favoritesCount,
+            )
         } catch (e) {
             console.error(e.message)
         }
@@ -71,7 +85,11 @@ export class Article {
     ) {
         try {
             const res = yield ArticlesApis.turnOffFavoriteButton(slug)
-            this.setArticleInfo(res.data.article)
+            this.setButtonValue(
+                this.articleInfo.author.fallowing,
+                res.data.article.favorited,
+                res.data.article.favoritesCount,
+            )
         } catch (e) {
             console.error(e.message)
         }
@@ -101,19 +119,31 @@ export class Article {
             this.commentList = []
             this.commentList = res.data.comments
         } catch (e) {
-            console.log(e.message)
+            console.error(e.message)
         }
     }
 
     @action public setArticleInfo(data: any) {
         this.articleInfo = data
+        this.setButtonValue(
+            this.articleInfo.author.following,
+            this.articleInfo.favorited,
+        )
+    }
 
-        this.followingValue = this.articleInfo.author.following
+    @action public setButtonValue(
+        follow: boolean,
+        favorite: boolean,
+        favoritesCount: number = this.articleInfo.favoritesCount,
+    ) {
+        this.articleInfo.author.following = follow
+        this.articleInfo.favorited = favorite
+        this.followingValue = follow
             ? `+ Unfollow ${this.articleInfo.author.username}`
             : `+ Follow ${this.articleInfo.author.username}`
 
-        this.favoritedValue = this.articleInfo.favorited
-            ? `♥ Unfavorite Article (${this.articleInfo.favoritesCount})`
-            : `♥ Favorite Article (${this.articleInfo.favoritesCount})`
+        this.favoritedValue = favorite
+            ? `♥ Unfavorite Article (${favoritesCount})`
+            : `♥ Favorite Article (${favoritesCount})`
     }
 }

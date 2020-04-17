@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 const StyledButton = styled.input`
+    font-size: 20px;
     width: 40px;
     height: 40px;
     border: none;

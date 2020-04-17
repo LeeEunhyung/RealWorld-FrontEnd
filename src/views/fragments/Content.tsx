@@ -10,7 +10,7 @@ const StyledContent = styled.article`
     background-color: #ffffff;
     width: 290px;
     height: 302px;
-    border-radius: 30px;
+    border-radius: 16px;
     box-shadow: 3px 3px 6px 0 #bdb9a6, -3px -3px 6px 0 #fffefa;
     margin: 5px;
     display: flex;

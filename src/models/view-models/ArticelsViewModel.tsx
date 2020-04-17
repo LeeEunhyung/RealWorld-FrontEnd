@@ -3,7 +3,7 @@ import { ArticlesApis } from '../../apis/ArticlesApis'
 import { asyncAction } from 'mobx-utils'
 
 export class Articles {
-    @observable public state: string = 'loading'
+    @observable public state: 'loading' | 'done' | 'none' | 'error' = 'loading'
 
     @observable public articlesList: any[] = []
     @observable public pageNumberList: any[] = []
@@ -30,12 +30,11 @@ export class Articles {
         }
     }
 
-    @asyncAction public *getArticles() {
+    @action public async getArticles() {
         this.state = 'loading'
         const data = this.setData()
         try {
-            const res = yield ArticlesApis.getArticles(this.selectedMenu, data)
-            this.articlesList = []
+            const res = await ArticlesApis.getArticles(this.selectedMenu, data)
             this.setArticles(res.data)
         } catch (e) {
             console.error(e.message)
@@ -44,6 +43,7 @@ export class Articles {
     }
 
     @action public setArticles(data: any) {
+        this.articlesList = []
         this.articlesList = data.articles
         this.pageCount = this.setNumberRange(data.articlesCount)
         this.pageRange = this.setNumberRange(this.selectedPage)

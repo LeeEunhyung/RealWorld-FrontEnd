@@ -61,14 +61,14 @@ export const LoginForm = observer(() => {
             <input
                 type="text"
                 placeholder="Email"
-                onChange={function(e) {
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                     email = e.target.value
                 }}
             />
             <input
                 type="password"
                 placeholder="Password"
-                onChange={function(e) {
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                     password = e.target.value
                 }}
             />

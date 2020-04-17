@@ -8,7 +8,7 @@ const StyledImage = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 30px 30px 0 0 / 30px 30px 0 0;
+    border-radius: 16px 16px 0 0 / 16px 16px 0 0;
     img {
         width: 100%;
     }

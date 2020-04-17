@@ -33,7 +33,7 @@ export const CommentForm = observer(() => {
         <StyledCommnetForm>
             <StyledText
                 placeholder="Write a comment..."
-                onChange={e => {
+                onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => {
                     comment = e.target.value
                 }}
             />

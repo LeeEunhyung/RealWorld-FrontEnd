@@ -3,7 +3,7 @@ import { ArticlesApis } from '../../apis/ArticlesApis'
 import { asyncAction } from 'mobx-utils'
 
 export class Tags {
-    @observable public state: string = 'loading'
+    @observable public state: 'loading' | 'done' | 'none' | 'error' = 'loading'
     @observable public tagsList: string[] = []
 
     @asyncAction public *getTags() {
