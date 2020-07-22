@@ -23,6 +23,7 @@ const StyledApp = styled.div`
 `
 
 function App() {
+    localStorage.clear()
     return (
         <StyledApp>
             <BrowserRouter>

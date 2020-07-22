@@ -107,8 +107,8 @@ export const EditorPage = observer(() => {
             <input
                 type="button"
                 value="Publish Article"
-                onClick={() => {
-                    articles.addArticle(config)
+                onClick={async () => {
+                    await articles.addArticle(config)
                     history.push('/')
                 }}
             />
